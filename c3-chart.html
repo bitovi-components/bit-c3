@@ -7,8 +7,10 @@
     <script type="text/stache" id="demo-html" can-autorender>
 <can-import from="c3-chart" />
 <c3-chart>
-  <c3-data type="{type}" columns="{dataSources}" colors="{colors}">
+  <c3-data type="{type}" columns="{dataSources}" colors="{colors}" names="{names}">
     <c3-data-column value="{dataSource}" />
+    <c3-data-name key="source1" value="{source1Name}" />
+    <c3-data-type key="source2" value="{source2Type}" />
   </c3-data>
 </c3-chart>
     </script>
@@ -27,12 +29,17 @@ vm.attr({
   dataSource: dataSource,
   dataSources: [
     ['source1', 3, 5, 1, 0],
-    ['source2', 7, 6, 5, 4, 3]
+    ['source2', 7, 6, 8, 4, 3]
   ],
+  source2Type: 'spline',
   type: 'line',
   colors: {
     'dataSource': '#F00'
-  }
+  },
+  names: {
+    'dataSource': 'namedDataSource'
+  },
+  source1Name: 'source1Name'
 });
 
 window.setTimeout(() => {
@@ -41,6 +48,9 @@ window.setTimeout(() => {
   vm.attr('colors', {
     'source2': '#00F'
   });
+  vm.attr('source1Name', 'Kyle Data');
+  vm.attr('names', {'dataSource': 'namedDataSource2'});
+  vm.attr('source2Type', 'area');
   can.batch.stop();
 }, 8000);
 

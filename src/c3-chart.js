@@ -32,6 +32,62 @@ import template from "./c3-chart.stache!";
 import C3ChartViewModel from './viewmodel';
 
 can.Component.extend({
+	tag: "c3-data-type",
+	viewModel: {
+		define: {
+			chart: {
+				type: '*',
+				value: null
+			}
+		},
+		'key': null,
+		'updateType': function() {
+			var chart = this.attr('chart'),
+				newType = {};
+			newType[this.attr('key')] = this.attr('value');
+			chart.load({'types':newType});
+		}
+	},
+	events: {
+		inserted: function(viewModel, ev) {
+			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.updateType();
+		},
+		"{viewModel} value": function() {
+			this.viewModel.updateType();
+		}
+	}
+});
+
+can.Component.extend({
+	tag: "c3-data-name",
+	viewModel: {
+		define: {
+			chart: {
+				type: '*',
+				value: null
+			}
+		},
+		'key': null,
+		'updateName': function() {
+			var chart = this.attr('chart'),
+				newName = {};
+			newName[this.attr('key')] = this.attr('value');
+			chart.data.names(newName);
+		}
+	},
+	events: {
+		inserted: function(viewModel, ev) {
+			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.updateName();
+		},
+		"{viewModel} value": function() {
+			this.viewModel.updateName();
+		}
+	}
+});
+
+can.Component.extend({
 	tag: "c3-data-column",
 	viewModel: {
 		define: {
@@ -92,42 +148,58 @@ can.Component.extend({
 				value: null
 			}	
 		},
-		standardAttributes: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done']
+		standardAttributes: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done'],
+		loadAllAttributesOnChart: function() {
+			this.each((item, key) => {
+				this.loadAttributeOnChart(key, item);
+			});
+		},
+		loadAttributeOnChart: function(attribute, value) {
+			// if no value is passed, retrieve it
+			if(value === undefined) {
+				value = this.attr(attribute);
+			}
+
+			var chart = this.attr('chart');
+			if(attribute.indexOf('.') !== -1) {
+				attribute = attribute.substr(0, attr.indexOf('.'));
+				value = this.attr(attribute);
+			}
+			// console.log(attribute, 'to', value);
+
+			switch(true) {
+				// type change - full graph
+				case (attribute === 'type'):
+					chart.transform(value);
+					break;
+				// attributes to ignore
+				case (attribute === 'chart'):
+				case (attribute === 'standardAttributes'):
+					break;
+				// names change
+				case (attribute === 'names'):
+					chart.data.names(value);
+					break;
+				// standard attributes
+				case (this.attr('standardAttributes').indexOf(attribute) !== -1):
+					var loadVal = {};
+					loadVal[attribute] = value;
+					chart.load(loadVal);
+					break;
+				// we don't have a setter for this, warn and ignore it
+				default:
+					console.warn('The', attribute, 'property cannot be updated');
+					break;
+			}
+		}
 	},
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
-			var loadVal = {};
-			can.$.each(this.viewModel.attr('standardAttributes'), (index, attribute) => {
-				if(this.viewModel.attr(attribute) !== undefined) {
-					loadVal[attribute] = this.viewModel.attr(attribute);
-				};
-			});
-			this.viewModel.attr('chart').load(loadVal);
+			this.viewModel.loadAllAttributesOnChart();
 		},
 		"{viewModel} change": function(viewModel, ev, attr, type, newVal, oldVal) {
-			var chart = this.viewModel.attr('chart');
-			if(attr.indexOf('.') !== -1) {
-				attr = attr.substr(0, attr.indexOf('.'));
-				newVal = this.viewModel.attr(attr);
-			}
-			// console.log(attr, type, 'to', newVal, 'from', oldVal);
-
-			switch(true) {
-				case (attr === 'type'):
-					chart.transform(newVal);
-					break;
-				case (attr === 'chart'):
-					break;
-				case (this.viewModel.attr('standardAttributes').indexOf(attr) !== -1):
-					var loadVal = {};
-					loadVal[attr] = newVal;
-					chart.load(loadVal);
-					break;
-				default:
-					console.warn('The', attr, 'property cannot be updated');
-					break;
-			}
+			this.viewModel.loadAttributeOnChart(attr);
 		}
 	}
 });
