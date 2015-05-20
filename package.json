@@ -35,6 +35,11 @@
   },
   "system": {
     "main": "c3-chart",
+    "paths": {
+        "d3": "bower_components/d3/d3.js",
+        "c3": "bower_components/c3/c3.js",
+        "c3/*": "bower_components/c3/*"
+    },
     "npmIgnore": [
       "testee",
       "cssify",

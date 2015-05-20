@@ -7,7 +7,7 @@
     <script type="text/stache" id="demo-html" can-autorender>
 <can-import from="c3-chart" />
 <c3-chart>
-  <c3-data>
+  <c3-data type="{type}" columns="{dataSources}" colors="{colors}">
     <c3-data-column value="{dataSource}" />
   </c3-data>
 </c3-chart>
@@ -19,21 +19,38 @@ import $ from "jquery";
 import can from "can";
 
 var dataSource = new can.List([
-  'dataSource', 1, 2, 3, 4, 5, 3, 1, 3, 5
+  'dataSource', 1, 2, 3
 ]);
 
 var vm = $("#demo-html").viewModel();
 vm.attr({
-  dataSource: dataSource
+  dataSource: dataSource,
+  dataSources: [
+    ['source1', 3, 5, 1, 0],
+    ['source2', 7, 6, 5, 4, 3]
+  ],
+  type: 'line',
+  colors: {
+    'dataSource': '#F00'
+  }
 });
 
-// window.setInterval(() => {
-//   var val = Math.floor(Math.random() * 10) + 1;
-//   can.batch.start();
-//     console.log('pushing', val);
-//     dataSource.push(val);
-//   can.batch.stop();
-// }, 8000);
+window.setTimeout(() => {
+  can.batch.start();
+  vm.attr('type', 'spline');
+  vm.attr('colors', {
+    'source2': '#00F'
+  });
+  can.batch.stop();
+}, 8000);
+
+window.setInterval(() => {
+  var val = Math.floor(Math.random() * 10) + 1;
+  can.batch.start();
+    // console.log('pushing', val);
+    dataSource.push(val);
+  can.batch.stop();
+}, 5000);
     </script>
   </body>
 </html>
