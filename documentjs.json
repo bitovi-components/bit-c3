@@ -1,0 +1,18 @@
+{
+    "sites": {
+        "docs": {
+            "glob": {
+              "pattern": "./**/*.{js,md}",
+              "ignore": "./{bower_components,node_modules,docs}/**/*.*"
+            },
+            "dest": "./docs",
+            "parent": "c3-chart",
+            "package": {
+                "repository": {
+                    "github": "https://github.com/bitovi-components/c3-chart"
+                },
+                "version": "0.0.1"
+            }
+        }
+    }
+}
