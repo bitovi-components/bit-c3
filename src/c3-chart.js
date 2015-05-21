@@ -1,28 +1,3 @@
-/**
- * @module {can.Component} c3-chart C3-Chart
- * @parent components
- * @group c3-chart/events 0 Events
- * @group c3-chart/viewModel 1 ViewModel
- *
- * @author Kyle Gifford
- *
- *
- * @description
- * Implementation of C3's charting system
- *
- *
- * @signature '<c3-chart />'
- *
- * @body
- *
- * ## Component Initialization
- *
- * ```html
- *   <c3-chart></c3-chart>
- * ```
- *
- * @demo c3-chart.html
- */
 import can from "can";
 import 'can/map/define/';
 import d3 from "d3";
@@ -59,6 +34,27 @@ can.Component.extend({
 	}
 });
 
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-name <c3-data-name>
+ * @parent c3-chart.reference.c3-chart.c3-data 1
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart data name element
+ *
+ * @signature '<c3-data-name></c3-data-name>'
+ * @param {String} key Key for the data column.
+ * @param {String} value Name for the data column.
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-data-name key="dataSet1" value="Data Set 1"></c3-data-name>
+ * ```
+ */
 can.Component.extend({
 	tag: "c3-data-name",
 	viewModel: {
@@ -87,6 +83,31 @@ can.Component.extend({
 	}
 });
 
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-column <c3-data-column>
+ * @parent c3-chart.reference.c3-chart.c3-data 0
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart data column element
+ *
+ * @signature '<c3-data-column></c3-data-column>'
+ * @param {String} key Key for the data column.
+ * @param {Array} value Data values.
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-data-column value="['dataSet1', 1, 2, 3, 2]"></c3-data-column>
+ * ```
+ *
+ * ```html
+ *   <c3-data-column key="dataSet1" value="[1, 2, 3, 2]"></c3-data-column>
+ * ```
+ */
 can.Component.extend({
 	tag: "c3-data-column",
 	viewModel: {
@@ -95,37 +116,39 @@ can.Component.extend({
 				type: '*',
 				value: null
 			},
-			value: {
-				set: function(newVal) {
-					// if no key is set, or the first value === key, pop off the first value as the key
-					var key = this.attr('key');
-					if(key === null || (newVal.length && newVal[0] === key)) {
-						this.attr('key', newVal.shift());
-					}
-					return newVal;
-				}
-			},
 			valueSerialized: {
 				get: function(val) {
 					return this.attr('value').serialize();
 				}
 			}
 		},
+		'value': null,
 		'key': null,
+		'dequeueKey': function() {
+			var value = this.attr('value').attr(),
+				key = this.attr('key');
+			if(key === null || (value !== null && value.length && value[0] === key)) {
+				this.attr('key', value.shift());
+			}
+			return value;
+		},
 		'updateColumn': function() {
-			var value = this.attr('value'),
+			var value = this.dequeueKey(this.attr('value')),
 				key = this.attr('key'),
 				chart = this.attr('chart'),
-				pushing = [key].concat(value.attr());
-			if(value.attr('length')) {
+				pushing = [key].concat(value);
+			if(value.length) {
 				chart.load({
 					columns: [pushing]
 				});
 			} else {
-				chart.unload({
-					ids: this.attr('key')
-				});
+				this.unloadColumn();
 			}
+		},
+		'unloadColumn': function() {
+			this.attr('chart').unload({
+				ids: this.attr('key')
+			});
 		}
 	},
 	events: {
@@ -133,12 +156,58 @@ can.Component.extend({
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
 			this.viewModel.updateColumn();
 		},
+		removed: function() {
+			this.viewModel.unloadColumn();
+		},
 		"{viewModel} valueSerialized": function() {
 			this.viewModel.updateColumn();
 		}
 	}
 });
 
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-grid <c3-grid>
+ * @parent c3-chart.reference.c3-chart 1
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart grid element
+ *
+ * @signature '<c3-grid></c3-grid>'
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-grid></c3-grid>
+ * ```
+ */
+can.Component.extend({
+	tag: "c3-grid"
+});
+
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-data <c3-data>
+ * @parent c3-chart.reference.c3-chart 0
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart data element
+ *
+ * @signature '<c3-data></c3-data>'
+ * @param {String} type Type of the graph.
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-data type="line"></c3-data>
+ * ```
+ */
 can.Component.extend({
 	tag: "c3-data",
 	viewModel: {
@@ -165,7 +234,6 @@ can.Component.extend({
 				attribute = attribute.substr(0, attr.indexOf('.'));
 				value = this.attr(attribute);
 			}
-			// console.log(attribute, 'to', value);
 
 			switch(true) {
 				// type change - full graph
@@ -204,20 +272,33 @@ can.Component.extend({
 	}
 });
 
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart <c3-chart>
+ * @parent c3-chart.reference 1
+ * @group c3-chart.reference.c3-chart.c3-data 0 <c3-data>
+ *
+ * @author Kyle Gifford
+ *
+ *
+ * @description
+ * Chart container
+ *
+ * @signature '<c3-chart></chart>'
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-chart></c3-chart>
+ * ```
+ */
 can.Component.extend({
     tag: "c3-chart",
     template: template,
     viewModel: C3ChartViewModel,
     events: {
-
-        /**
-         * @function c3-chart.events.inserted Chart Inserted Event
-         * @parent c3-chart/events
-         * @description Sets up the chart container element.
-         * @param {viewModel} viewModel The viewModel of the chart
-         * @param {event} ev The jQuery event triggered by DOM insertion 
-         */
-        inserted: function(viewModel, ev) {
+		inserted: function(viewModel, ev) {
             var rootElement = ev.target,
                 graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]),
                 chart = c3.generate({
