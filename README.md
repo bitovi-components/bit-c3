@@ -13,9 +13,7 @@ A live-reloading chart widget that can be loaded by:
 
 Use NPM to install `c3-chart`:
 
-```bash
-npm install c3-chart --save
-```
+Coming soon!
 
 ## Usage
 
