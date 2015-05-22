@@ -33,7 +33,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">{{makeParentTitle}}</a>
+				<a class="brand" href="{{urlFromConfig 'index.html'}}">c3-chart</a>
 			</div>
 
 			<ul class="nav">
@@ -67,7 +67,7 @@
 	{{^hideFooter}}
 	<footer>
 		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
+			<a class="brand javascriptmvc" href="{{urlFromConfig 'index.html'}}"></a>
 		</nav>
 	</footer>
 	{{/hideFooter}}

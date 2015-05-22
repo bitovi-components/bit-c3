@@ -6,7 +6,8 @@
 	},
 	"defaultVersion": "0.0.1",
 	"siteDefaults": {
-		"templates": "theme/templates"
+		"templates": "theme/templates",
+        "static": "theme/static"
 	},
 	"sites": {
 		"pages": {
