@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [spline chart example](http://c3js.org/sampl
 
 @body
 
-@demo ../c3-chart/examples/chart/spline.html
+@demo ./c3-chart/examples/chart/spline.html

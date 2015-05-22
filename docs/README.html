@@ -148,11 +148,12 @@
 <li>RequireJS / AMD</li>
 <li>Standalone with CanJS and jQuery</li>
 </ul>
-<h2>Usage</h2>
-<p>See https://github.com/bitovi-components/c3-chart/wiki/Proposal-for-Examples.</p>
 <h2>Install</h2>
+<p>Use NPM to install <code>c3-chart</code>:</p>
 <pre><code class="language-bash">npm install c3-chart --save
 </code></pre>
+<h2>Usage</h2>
+<p>See <a href="http://bitovi-components.github.io/c3-chart">http://bitovi-components.github.io/c3-chart</a> for usage instructions, examples and documentation.</p>
 <h2>ES6 use</h2>
 <p>With StealJS, you can import this module directly in a template that is autorendered:</p>
 <pre><code class="language-html">&lt;script type=&quot;text/stache&quot; id=&quot;demo&quot; can-autorender&gt;
@@ -269,6 +270,23 @@ $(&quot;body&quot;).viewModel().attr({
     });
 &lt;/script&gt;
 </code></pre>
+<h2>Contributing</h2>
+<p>To setup your dev environment:</p>
+<ol>
+<li>Clone and fork this repo.</li>
+<li>Run <code>npm install</code>.</li>
+<li>Run <code>grunt test</code>. Everything should pass.</li>
+<li>Launch development server by running <code>grunt serve</code>.</li>
+<li>Run <code>grunt build</code>.  Everything should build ok.</li>
+</ol>
+<p>To publish:</p>
+<ol>
+<li>Update the version number in package.json and commit and push this.</li>
+<li>Run <code>npm publish</code>.  This should generate the dist folder.</li>
+<li>Create and checkout a &quot;release&quot; branch.</li>
+<li>Run <code>git add -f dist</code>.</li>
+<li>Commit the addition and tag it <code>git tag v0.2.0</code>.  Push the tag <code>git push origin --tags</code>.</li>
+</ol>
 
 		</section>
 		

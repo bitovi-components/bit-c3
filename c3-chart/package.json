@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "can": "2.2.5",
-    "cssify": "^0.6.0"
+    "cssify": "0.6.0",
+    "d3": "<=3.5.5",
+    "c3": "0.4.10"
   },
   "devDependencies": {
     "documentjs": "git://github.com/bitovi/documentjs#master",
@@ -35,10 +37,13 @@
   },
   "system": {
     "main": "c3-chart",
-    "paths": {
-        "d3": "bower_components/d3/d3.js",
-        "c3": "bower_components/c3/c3.js",
-        "c3/*": "bower_components/c3/*"
+    "meta": {
+      "c3": {
+        "format": "cjs"
+      }
+    },
+    "map": {
+      "d3": "d3/d3"
     },
     "npmIgnore": [
       "testee",

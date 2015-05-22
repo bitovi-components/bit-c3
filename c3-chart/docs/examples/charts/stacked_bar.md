@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [stacked bar chart](http://c3js.org/samples/
 
 @body
 
-@demo ../c3-chart/examples/chart/stacked_bar.html
+@demo ./c3-chart/examples/chart/stacked_bar.html

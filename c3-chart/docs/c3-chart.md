@@ -6,5 +6,5 @@
 
 Implementation of [C3's](http://c3js.org/) charting system with [canJS](http://canjs.org) components.
 
-@demo ../c3-chart/examples/c3-chart.html
+@demo ./c3-chart/examples/c3-chart.html
  

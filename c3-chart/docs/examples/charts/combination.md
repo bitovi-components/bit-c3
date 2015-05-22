@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [combination chart example](http://c3js.org/
 
 @body
 
-@demo ../c3-chart/examples/chart/combination.html
+@demo ./c3-chart/examples/chart/combination.html

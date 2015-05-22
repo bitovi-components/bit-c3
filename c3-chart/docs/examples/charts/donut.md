@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [donut chart example](http://c3js.org/sample
 
 @body
 
-@demo ../c3-chart/examples/chart/donut.html
+@demo ./c3-chart/examples/chart/donut.html

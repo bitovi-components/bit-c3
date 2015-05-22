@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [area chart example](http://c3js.org/samples
 
 @body
 
-@demo ../c3-chart/examples/chart/area.html
+@demo ./c3-chart/examples/chart/area.html
