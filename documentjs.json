@@ -5,6 +5,9 @@
 		}
 	},
 	"defaultVersion": "0.0.1",
+	"siteDefaults": {
+		"templates": "theme/templates"
+	},
 	"sites": {
 		"pages": {
 			"parent": "index",

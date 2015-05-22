@@ -25,7 +25,7 @@
 	
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="static/html5shiv.js"></script>
-    <!--<![endif]-->
+	<!--<![endif]-->
 </head>
 
 <body class="docs">
@@ -35,6 +35,16 @@
 			<div class="logo-menu">
 				<a class="brand" href="./index.html">index</a>
 			</div>
+
+			<ul class="nav">
+				<li class="active">
+					<a href="index.html">Home</a>
+				</li>
+				<li >
+				  <a href="docs/index.html">Examples and API</a>
+				</li>
+				<li class=""><a href="https://github.com/bitovi-components/c3-chart">GitHub</a></li>
+			</ul>
 
 			<div class="pull-right">
 				<div class="bitovi-menu">
@@ -233,22 +243,22 @@ $(&quot;body&quot;).viewModel().attr({
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"page","name":"index","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","glob":{"pattern":"_pages/**/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs"},"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs","generators":["html"],"docConfigDest":"documentjs.json","project":{}};
+		var docObject = {"type":"page","name":"index","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/templates","glob":{"pattern":"_pages/**/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs"},"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs","forceBuild":true,"generators":["html"],"docConfigDest":"documentjs.json","project":{}};
 	</script>
 	
 	
 		<script>
 		  steal = {
-		    instantiated: {
-		      "bundles/static.css!$css" : null
-		    }
+			instantiated: {
+			  "bundles/static.css!$css" : null
+			}
 		  }
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
 				data-config="./static/config.js"
 				src="./static/steal.production.js"
-	    		bundles-path="bundles"></script>
+				bundles-path="bundles"></script>
 	
 </body>
 
