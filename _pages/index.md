@@ -12,7 +12,7 @@
 
 [![Build Status](https://travis-ci.org/bitovi-components/c3-chart.svg?branch=master)](https://travis-ci.org/bitovi-components/c3-chart)
 
-A live-reloading chart widget that can be loaded by:
+Build C3 charts with CanJS components that can be loaded by:
 
 - StealJS + ES6
 - npm / browserify / CJS
@@ -29,7 +29,7 @@ npm install c3-chart --save
 
 ## Usage
 
-Similar to how C3 constructs charts using a JavaScript object, `c3-chart` constructs charts using [canJS](http://canjs.org) components. Creating a chart as quick as installing the NPM packages, importing the module using one of the methods below, and adding the elements to your template.
+Similar to how C3 constructs charts using a JavaScript object, `c3-chart` provides an easy-to-use interface for building C3 charts using [CanJS](http://canjs.org) components. Creating a chart as quick as installing the NPM packages, importing the module using one of the methods below, and adding the elements to your template.
 
 We are currently working on a getting started guide. Until then, the [examples](docs) in the documentation are a great place to start!
 
