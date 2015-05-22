@@ -1,0 +1,16 @@
+{
+	"globals": {
+		"equal": true,
+		"ok": true,
+		"test": true,
+		"start": true,
+		"stop": true,
+		"io": true
+	},
+	"loopfunc": true,
+	"eqnull": true,
+	"node": true,
+	"unused": true,
+	"undef": true,
+	"browser": true
+}
