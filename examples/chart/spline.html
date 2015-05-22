@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Spline Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html" can-autorender>
+<can-import from="c3-chart" />
+<c3-chart>
+  <c3-data type="{type}">
+    {{#each dataColumns}}
+      <c3-data-column value="{.}" />
+    {{/each}}
+  </c3-data>
+</c3-chart>
+    </script>
+
+    <!-- Loading Script -->
+    <script src="/node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+import $ from "jquery";
+import can from "can";
+
+var data1 = new can.List(['data1', 30, 200, 100, 400, 150, 250]),
+    data2 = new can.List(['data2', 50, 20, 10, 40, 15, 25]),
+    type = "spline";
+
+var vm = $("#demo-html").viewModel();
+vm.attr({
+  dataColumns: new can.List([data1, data2]),
+  type: type
+});
+    </script>
+  </body>
+</html>
+  

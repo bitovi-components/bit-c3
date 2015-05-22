@@ -6,6 +6,95 @@ import "c3/c3.css!";
 import template from "./c3-chart.stache!";
 import C3ChartViewModel from './viewmodel';
 
+var randomString = function(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-group <c3-data-group>
+ * @parent c3-chart.reference.c3-chart.c3-data 3
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart data group element
+ *
+ * @signature '<c3-data-group></c3-data-group>'
+ * @param {Array} value Data keys to be grouped.
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-data-group value="['data1', 'data2']"></c3-data-group>
+ * ```
+ */
+can.Component.extend({
+	tag: "c3-data-group",
+	viewModel: {
+		define: {
+			'valueSerialized': {
+				get: function() {
+					return this.attr('value').serialize();
+				}
+			}
+		},
+		'groups': null,
+		'key': null,
+		'value': null,
+		'addToGroups': function() {
+			var key = randomString(50);
+			this.attr('key', key);
+			this.attr('groups').attr(key, this.attr('value'));
+		},
+		'updateGroup': function() {
+			this.attr('groups').attr(this.attr('key'), this.attr('value'));
+		},
+		'removeFromGroups': function() {
+			this.attr('groups').removeAttr(this.attr('key'));
+		}
+	},
+	events: {
+		inserted: function(viewModel, ev) {
+			this.viewModel.attr('groups', this.element.parent().scope().attr('groups'));
+			this.viewModel.addToGroups();
+		},
+		removed: function() {
+			this.viewModel.removeFromGroups();
+		},
+		"{viewModel} valueSerialized": function() {
+			this.viewModel.updateGroup();
+		}
+	}
+});
+
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-type <c3-data-type>
+ * @parent c3-chart.reference.c3-chart.c3-data 2
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart data type element
+ *
+ * @signature '<c3-data-type></c3-data-type>'
+ * @param {String} key Key for the data column.
+ * @param {String} value Type for the data column.
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ *   <c3-data-type key="dataSet1" value="spline"></c3-data-type>
+ * ```
+ */
 can.Component.extend({
 	tag: "c3-data-type",
 	viewModel: {
@@ -17,10 +106,8 @@ can.Component.extend({
 		},
 		'key': null,
 		'updateType': function() {
-			var chart = this.attr('chart'),
-				newType = {};
-			newType[this.attr('key')] = this.attr('value');
-			chart.load({'types':newType});
+			var chart = this.attr('chart');
+			chart.transform(this.attr('value'), this.attr('key'));
 		}
 	},
 	events: {
@@ -198,14 +285,29 @@ can.Component.extend({
  * Chart data element
  *
  * @signature '<c3-data></c3-data>'
- * @param {String} type Type of the graph.
+ * @param {String} type Type of the graph (see http://c3js.org/reference.html#data-type).
+ * @param {Object} names Names of the data elements, keyed by the data Key (see http://c3js.org/reference.html#api-data-names).
+ * @param {String} url Load a CSV or JSON file from a URL (see http://c3js.org/reference.html#data-url).
+ * @param {Object} json Parse a JSON object for data (see http://c3js.org/reference.html#data-json).
+ * @param {Array} columns Load series data from a multidimensional array (see http://c3js.org/reference.html#data-columns).
+ * @param {Array} rows Load row data from a multidimensional array (see http://c3js.org/reference.html#data-rows).
+ * @param {Object} classes Set custom data classes (http://c3js.org/reference.html#data-classes).
+ * @param {Array} categories Set custom X axis categories (see http://c3js.org/reference.html#axis-x-categories).
+ * @param {Object} axes Relate data to an axis (see http://c3js.org/reference.html#api-data-axes).
+ * @param {Object} colors Set color for data (see http://c3js.org/reference.html#data-colors).
+ * @param {Object} types Set types for data series (see http://c3js.org/reference.html#data-types).
+ * @param {String|Array} unload Data ID(s) to be unloaded.
+ * @param {Function} done Function that will be ran after data is loaded.
+ * @param {Object} groups Grouped data (keyed by a unique group name)
  *
  * @body
  *
  * ## Component Initialization
  *
  * ```html
- *   <c3-data type="line"></c3-data>
+ * <c3-chart>
+ *   <c3-data></c3-data>
+ * </c3-chart>
  * ```
  */
 can.Component.extend({
@@ -215,8 +317,14 @@ can.Component.extend({
 			chart: {
 				type: '*',
 				value: null
-			}	
+			},
+			groupsSerialized: {
+				get: function() {
+					return this.attr('groups').serialize();
+				}
+			}
 		},
+		groups: {},
 		standardAttributes: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done'],
 		loadAllAttributesOnChart: function() {
 			this.each((item, key) => {
@@ -229,13 +337,22 @@ can.Component.extend({
 				value = this.attr(attribute);
 			}
 
-			var chart = this.attr('chart');
 			if(attribute.indexOf('.') !== -1) {
-				attribute = attribute.substr(0, attr.indexOf('.'));
+				attribute = attribute.substr(0, attribute.indexOf('.'));
 				value = this.attr(attribute);
 			}
 
+			var chart = this.attr('chart');
 			switch(true) {
+				// groups change
+				case (attribute === 'groupsSerialized' || attribute === 'groups'):
+					var groups = [];
+					// console.log(this.attr('groups'));
+					this.attr('groups').each(function(value, key) {
+						groups.push(value);
+					});
+					chart.groups(groups);
+					break;
 				// type change - full graph
 				case (attribute === 'type'):
 					chart.transform(value);
@@ -267,10 +384,19 @@ can.Component.extend({
 			this.viewModel.loadAllAttributesOnChart();
 		},
 		"{viewModel} change": function(viewModel, ev, attr, type, newVal, oldVal) {
+			// console.log(attr, 'from', oldVal, 'to', newVal);
 			this.viewModel.loadAttributeOnChart(attr);
 		}
 	}
 });
+
+can.Component.extend({
+	tag: 'c3-x-axis',
+	viewModel: {
+
+	},
+
+})
 
 /**
  * @module {can.Component} c3-chart.reference.c3-chart <c3-chart>
