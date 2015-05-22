@@ -9,15 +9,17 @@ A live-reloading chart widget that can be loaded by:
 - RequireJS / AMD
 - Standalone with CanJS and jQuery
 
-## Usage
-
-See https://github.com/bitovi-components/c3-chart/wiki/Proposal-for-Examples.
-
 ## Install
+
+Use NPM to install `c3-chart`:
 
 ```bash
 npm install c3-chart --save
 ```
+
+## Usage
+
+See [http://bitovi-components.github.io/c3-chart](http://bitovi-components.github.io/c3-chart) for usage instructions, examples and documentation.
 
 ## ES6 use
 
@@ -157,3 +159,21 @@ Load the `global` css and js files:
 	});
 </script>
 ```
+
+## Contributing
+
+To setup your dev environment:
+
+1. Clone and fork this repo.  
+2. Run `npm install`.
+3. Run `grunt test`. Everything should pass.
+4. Launch development server by running `grunt serve`.
+5. Run `grunt build`.  Everything should build ok.
+
+To publish:
+
+1.  Update the version number in package.json and commit and push this.
+2.  Run `npm publish`.  This should generate the dist folder.
+3.  Create and checkout a "release" branch.
+4.  Run `git add -f dist`.
+5.  Commit the addition and tag it `git tag v0.2.0`.  Push the tag `git push origin --tags`.
