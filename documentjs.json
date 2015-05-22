@@ -1,0 +1,18 @@
+{
+	"versions": {
+		"0.0.1": {
+			"source": "https://github.com/bitovi-components/c3-chart#master"
+		}
+	},
+	"defaultVersion": "0.0.1",
+	"sites": {
+		"pages": {
+			"parent": "index",
+			"glob": "_pages/**/*.md",
+			"dest": "."
+		}
+	},
+	"siteDefaults": {
+		"templates": "theme/templates"
+	}
+}

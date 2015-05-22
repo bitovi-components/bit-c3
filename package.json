@@ -1,0 +1,28 @@
+{
+  "name": "c3-chart-docs",
+  "version": "0.0.1",
+  "description": "Documentation for bitovi-components/c3-chart",
+  "scripts": {
+    "documentjs": "./node_modules/.bin/documentjs"
+  },
+  "devDependencies": {
+    "documentjs": "bitovi/documentjs#v0.3.0-pre.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitovi-components/c3-chart"
+  },
+  "keywords": [
+    "CanJS",
+    "UI",
+    "Chart",
+    "D3",
+    "SVG"
+  ],
+  "author": "Bitovi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitovi-components/c3-chart/issues"
+  },
+  "homepage": "http://bitovi-components.github.io/c3-chart"
+}
