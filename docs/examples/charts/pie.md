@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [pie chart example](http://c3js.org/samples/
 
 @body
 
-@demo ../c3-chart/examples/chart/pie.html
+@demo ./c3-chart/examples/chart/pie.html

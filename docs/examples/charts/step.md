@@ -5,4 +5,4 @@ C3-chart implementation of C3.org's [step chart example](http://c3js.org/samples
 
 @body
 
-@demo ../c3-chart/examples/chart/step.html
+@demo ./c3-chart/examples/chart/step.html
