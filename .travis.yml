@@ -3,8 +3,7 @@ script: npm test
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-node_js:
-  - "0.10"
-before_script:
   - npm install -g bower
   - bower install
+node_js:
+  - "0.10"
