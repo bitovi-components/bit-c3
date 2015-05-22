@@ -1,43 +1,25 @@
-@page index
-@hide sidebar
-@hide title
-@hide footer
-@hide container
-@hide article
-@body
-
-<section style="width: 800px; margin:100px auto 20px auto; overflow:hidden;">
-
 # c3-chart
 
 [![Build Status](https://travis-ci.org/bitovi-components/c3-chart.svg?branch=master)](https://travis-ci.org/bitovi-components/c3-chart)
 
-Build C3 charts with CanJS components that can be loaded by:
+A live-reloading chart widget that can be loaded by:
 
 - StealJS + ES6
 - npm / browserify / CJS
 - RequireJS / AMD
 - Standalone with CanJS and jQuery
 
-## Install
+## Usage
 
-Use NPM to install `c3-chart`:
+See https://github.com/bitovi-components/c3-chart/wiki/Proposal-for-Examples.
+
+## Install
 
 ```bash
 npm install c3-chart --save
 ```
 
-## Usage
-
-Similar to how C3 constructs charts using a JavaScript object, `c3-chart` provides an easy-to-use interface for building C3 charts using [CanJS](http://canjs.org) components. Creating a chart as quick as installing the NPM packages, importing the module using one of the methods below, and adding the elements to your template.
-
-We are currently working on a getting started guide. Until then, we would recommend these resources:
-
-- [Example](docs) chart implementations
-- [Component APIs](docs/c3-chart.components.c3-chart.html)
-- [C3JS.org](http://c3js.org/gettingstarted.html) for understanding C3.js
-
-### ES6 use
+## ES6 use
 
 With StealJS, you can import this module directly in a template that is autorendered:
 
@@ -84,7 +66,7 @@ $("body").viewModel().attr({
 
 ```
 
-### CJS use
+## CJS use
 
 Use `require` to load `c3-chart` and everything else
 needed to create a template that uses `c3-chart`:
@@ -110,7 +92,7 @@ $("body").viewModel().attr({
 
 ```
 
-### AMD use
+## AMD use
 
 Configure the `can` and `jquery` paths and the `c3-charts` package:
 
@@ -150,7 +132,7 @@ define(["can", "jquery", "can/view/stache", "c3-chart"], function(can, $) {
 });
 ```
 
-### Standalone use
+## Standalone use
 
 Load the `global` css and js files:
 
@@ -175,5 +157,3 @@ Load the `global` css and js files:
 	});
 </script>
 ```
-
-</section>

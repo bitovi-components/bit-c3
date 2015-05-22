@@ -11,8 +11,5 @@
 			"glob": "_pages/**/*.md",
 			"dest": "."
 		}
-	},
-	"siteDefaults": {
-		"templates": "theme/templates"
 	}
 }

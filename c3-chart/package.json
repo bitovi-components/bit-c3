@@ -1,0 +1,70 @@
+{
+  "name": "c3-chart",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/cjs/c3-chart",
+  "browser": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "scripts": {
+    "test": "grunt test --stack",
+    "prepublish": "./node_modules/.bin/grunt build"
+  },
+  "dependencies": {
+    "can": "2.2.5",
+    "cssify": "^0.6.0"
+  },
+  "devDependencies": {
+    "documentjs": "git://github.com/bitovi/documentjs#master",
+    "funcunit": "^3.0.0",
+    "grunt": "~0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-serve": "^0.1.6",
+    "jquery": ">1.11.3",
+    "steal": "^0.10.4",
+    "steal-qunit": "^0.0.4",
+    "steal-tools": "^0.10.4",
+    "testee": "^0.2.0"
+  },
+  "system": {
+    "main": "c3-chart",
+    "paths": {
+        "d3": "bower_components/d3/d3.js",
+        "c3": "bower_components/c3/c3.js",
+        "c3/*": "bower_components/c3/*"
+    },
+    "npmIgnore": [
+      "testee",
+      "cssify",
+      "documentjs"
+    ],
+    "directories": {
+      "lib": "src"
+    },
+    "transpiler": "babel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitovi-components/c3-chart"
+  },
+  "keywords": [
+    "CanJS",
+    "UI",
+    "Chart",
+    "D3",
+    "SVG"
+  ],
+  "author": "Bitovi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitovi-components/c3-chart/issues"
+  },
+  "homepage": "https://github.com/bitovi-components/c3-chart"
+}
