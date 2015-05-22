@@ -16,6 +16,150 @@ var randomString = function(length) {
 }
 
 /**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-y-grid.c3-y-grid-line <c3-y-grid-line>
+ * @parent c3-chart.reference.c3-chart.c3-y-grid 0
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart Y grid line element
+ *
+ * @signature '<c3-y-grid value="" text="" position="" class=""></c3-y-grid>'
+ * @param {Number} value Value where the grid line will start from
+ * @param {String} text Label for the grid line
+ * @param {String} position Position of the grid line
+ * @param {String} class Class name of the grid line
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ * <c3-chart>
+ *   <c3-y-grid>
+ *     <c3-y-grid-line value="0" text="Break Even" />
+ *   </c3-y-grid>
+ * </c3-chart>
+ * ```
+ */
+can.Component.extend({
+	tag: "c3-y-grid-line",
+	viewModel: {
+		define: {
+			"gridLine": {
+				get: function() {
+					return {
+						value: this.attr('value'),
+						text: this.attr('text'),
+						position: this.attr('position'),
+						class: this.attr('class')
+					}
+				}
+			} 
+		},
+		lines: null,
+		value: null,
+		text: null,
+		position: null,
+		class: null,
+		'key': null,
+		'addToLines': function() {
+			var key = randomString(50);
+			this.attr('key', key);
+			this.attr('lines').attr(key, this.attr('gridLine'));
+		},
+		'updateLines': function() {
+			this.attr('lines').attr(this.attr('key'), this.attr('gridLine'));
+		},
+		'removeFromLines': function() {
+			this.attr('lines').removeAttr(this.attr('key'));
+		}
+	},
+	events: {
+		inserted: function(viewModel, ev) {
+			this.viewModel.attr('lines', this.element.parent().scope().attr('lines'));
+			this.viewModel.addToLines();
+		},
+		removed: function() {
+			this.viewModel.removeFromLines();
+		},
+		"{viewModel} value": function() {
+			this.viewModel.updateLines();
+		},
+		"{viewModel} text": function() {
+			this.viewModel.updateLines();
+		},
+		"{viewModel} position": function() {
+			this.viewModel.updateLines();
+		},
+		"{viewModel} class": function() {
+			this.viewModel.updateLines();
+		},
+		"{viewModel} gridLine": function() {
+			console.log('changed - update?');
+		}
+	}
+})
+
+/**
+ * @module {can.Component} c3-chart.reference.c3-chart.c3-y-grid <c3-y-grid>
+ * @parent c3-chart.reference.c3-chart 1
+ *
+ * @author Kyle Gifford
+ *
+ * @description
+ * Chart Y grid element
+ *
+ * @signature '<c3-y-grid></c3-y-grid>'
+ *
+ * @body
+ *
+ * ## Component Initialization
+ *
+ * ```html
+ * <c3-chart>
+ *   <c3-y-grid></c3-y-grid>
+ * </c3-chart>
+ * ```
+ */
+can.Component.extend({
+	tag: "c3-y-grid",
+	viewModel: {
+		define: {
+			chart: {
+				type: '*',
+				value: null
+			},
+			linesSerialized: {
+				get: function() {
+					return this.attr('lines').serialize();
+				}
+			}
+		},
+		lines: {},
+		updateLines: function() {
+			var lines = [];
+			this.attr('lines').each(function(value, key) {
+				lines.push(value);
+			});
+			this.attr('chart').ygrids(lines);
+		}
+	},
+	events: {
+		inserted: function(viewModel, ev) {
+			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.updateLines();
+		},
+		removed: function() {
+			this.viewModel.updateLines();
+		},
+		"{viewModel} linesSerialized": function() {
+			this.viewModel.updateLines();
+		}
+	}
+});
+
+/**
  * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-group <c3-data-group>
  * @parent c3-chart.reference.c3-chart.c3-data 3
  *
@@ -253,29 +397,6 @@ can.Component.extend({
 });
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-grid <c3-grid>
- * @parent c3-chart.reference.c3-chart 1
- *
- * @author Kyle Gifford
- *
- * @description
- * Chart grid element
- *
- * @signature '<c3-grid></c3-grid>'
- *
- * @body
- *
- * ## Component Initialization
- *
- * ```html
- *   <c3-grid></c3-grid>
- * ```
- */
-can.Component.extend({
-	tag: "c3-grid"
-});
-
-/**
  * @module {can.Component} c3-chart.reference.c3-chart.c3-data <c3-data>
  * @parent c3-chart.reference.c3-chart 0
  *
@@ -298,7 +419,6 @@ can.Component.extend({
  * @param {Object} types Set types for data series (see http://c3js.org/reference.html#data-types).
  * @param {String|Array} unload Data ID(s) to be unloaded.
  * @param {Function} done Function that will be ran after data is loaded.
- * @param {Object} groups Grouped data (keyed by a unique group name)
  *
  * @body
  *
@@ -347,7 +467,6 @@ can.Component.extend({
 				// groups change
 				case (attribute === 'groupsSerialized' || attribute === 'groups'):
 					var groups = [];
-					// console.log(this.attr('groups'));
 					this.attr('groups').each(function(value, key) {
 						groups.push(value);
 					});
