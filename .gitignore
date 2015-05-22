@@ -1,6 +1,5 @@
 node_modules/
 bower_components/
 dist/**
-lib/**
 docs-generated/
 .DS_Store
