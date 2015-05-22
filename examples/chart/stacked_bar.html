@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Stacked Bar Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html" can-autorender>
+<can-import from="c3-chart" />
+<c3-chart>
+  <c3-data type="{type}">
+    {{#each dataColumns}}
+      <c3-data-column value="{.}" />
+    {{/each}}
+    <c3-data-group value="{dataGroup}" />
+  </c3-data>
+  <c3-y-grid>
+    {{#each yGridLines}}
+      <c3-y-grid-line value="{{value}}" />
+    {{/each}}}
+  </c3-y-grid>
+</c3-chart>
+    </script>
+
+    <!-- Loading Script -->
+    <script src="/node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+import $ from "jquery";
+import can from "can";
+
+var data1 = new can.List(['data1', 30, 200, 100, 400, -150, 250]),
+    data2 = new can.List(['data2', 130, 100, -100, 200, -150, 50]),
+    data3 = new can.List(['data3', -230, 200, 200, -300, 250, 250]),
+    data4 = new can.List(['data4', 100, -50, 150, 200, -300, -100]),
+    type = 'bar',
+    yGridLines = new can.List([{value: 0}]);
+
+var vm = $("#demo-html").viewModel();
+vm.attr({
+  dataColumns: new can.List([data1, data2, data3]),
+  dataGroup: ['data1', 'data2'],
+  type: type,
+  yGridLines: yGridLines
+});
+
+window.setTimeout(() => {
+  vm.attr('dataGroup').push('data3');
+}, 1000);
+
+window.setTimeout(() => {
+  vm.attr('dataColumns').push(data4);
+}, 1500);
+
+window.setTimeout(() => {
+  vm.attr('dataGroup').push('data4');
+}, 2000);
+    </script>
+  </body>
+</html>
+  

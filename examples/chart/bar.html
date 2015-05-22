@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Bar Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html" can-autorender>
+<can-import from="c3-chart" />
+<c3-chart>
+  <c3-data type="{type}">
+    {{#each dataColumns}}
+      <c3-data-column value="{.}" />
+    {{/each}}
+  </c3-data>
+</c3-chart>
+    </script>
+
+<!-- TODO add support for 
+  <c3-bar width-ratio="0.5" width="100" />
+-->
+
+    <!-- Loading Script -->
+    <script src="/node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+import $ from "jquery";
+import can from "can";
+
+var data1 = new can.List(['data1', 30, 200, 100, 400, 150, 250]),
+    data2 = new can.List(['data2', 130, 100, 140, 200, 150, 50]),
+    data3 = new can.List(['data3', 130, -150, 200, 300, -200, 100]),
+    type = 'bar';
+
+var vm = $("#demo-html").viewModel();
+vm.attr({
+  dataColumns: new can.List([data1, data2]),
+  type: type
+});
+
+window.setTimeout(() => {
+  vm.attr('dataColumns').push(data3);
+}, 1500);
+    </script>
+  </body>
+</html>
+  
