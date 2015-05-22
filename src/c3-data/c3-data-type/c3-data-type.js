@@ -2,8 +2,8 @@ import can from "can";
 import C3DataTypeVM from "./viewmodel";
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-type <c3-data-type>
- * @parent c3-chart.reference.c3-chart.c3-data 2
+ * @module {can.Component} c3-chart.components.c3-data-type <c3-data-type>
+ * @parent c3-chart.components 5
  *
  * @author Kyle Gifford
  *

@@ -2,8 +2,8 @@ import can from "can";
 import C3DataColumnVM from './viewmodel'
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-data.c3-data-column <c3-data-column>
- * @parent c3-chart.reference.c3-chart.c3-data 0
+ * @module {can.Component} c3-chart.components.c3-data-column <c3-data-column>
+ * @parent c3-chart.components 2
  *
  * @author Kyle Gifford
  *

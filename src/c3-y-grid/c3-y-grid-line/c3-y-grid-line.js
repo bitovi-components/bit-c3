@@ -2,8 +2,8 @@ import can from "can";
 import C3YGridLineVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-y-grid.c3-y-grid-line <c3-y-grid-line>
- * @parent c3-chart.reference.c3-chart.c3-y-grid 0
+ * @module {can.Component} c3-chart.components.c3-y-grid-line <c3-y-grid-line>
+ * @parent c3-chart.components 7
  *
  * @author Kyle Gifford
  *

@@ -3,8 +3,8 @@ import "./c3-y-grid-line/";
 import C3YGridVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-y-grid <c3-y-grid>
- * @parent c3-chart.reference.c3-chart 1
+ * @module {can.Component} c3-chart.components.c3-y-grid <c3-y-grid>
+ * @parent c3-chart.components 6
  *
  * @author Kyle Gifford
  *

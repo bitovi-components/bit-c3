@@ -6,8 +6,8 @@ import './c3-data-column/';
 import C3DataVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart.c3-data <c3-data>
- * @parent c3-chart.reference.c3-chart 0
+ * @module {can.Component} c3-chart.components.c3-data <c3-data>
+ * @parent c3-chart.components 1
  *
  * @author Kyle Gifford
  *

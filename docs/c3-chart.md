@@ -1,10 +1,10 @@
 @page  c3-chart C3-Chart
 @group c3-chart.examples 0 Examples
-@group c3-chart.reference 1 Reference
+@group c3-chart.components 1 Components
 
 @body
 
-Implementation of C3's charting system - http://c3js.org/
+Implementation of [C3's](http://c3js.org/) charting system with [canJS](http://canjs.org) components.
 
-@demo examples/c3-chart.html
+@demo ../c3-chart/examples/c3-chart.html
  

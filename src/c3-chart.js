@@ -8,9 +8,8 @@ import template from "./c3-chart.stache!";
 import C3ChartViewModel from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.reference.c3-chart <c3-chart>
- * @parent c3-chart.reference 1
- * @group c3-chart.reference.c3-chart.c3-data 0 <c3-data>
+ * @module {can.Component} c3-chart.components.c3-chart <c3-chart>
+ * @parent c3-chart.components 0
  *
  * @author Kyle Gifford
  *
