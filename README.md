@@ -60,9 +60,9 @@ var template = stache('<bit-c3>' +
 	'</bit-c3-data>' +
 '</bit-c3>');
 
-$("body").viewModel().attr({
+$("body").append(template({
 	dataSource: new can.List([1, 2, 3])
-});
+}));
 
 ```
 
@@ -80,21 +80,21 @@ require("bit-c3");
 // Use stache
 require("canjs/view/stache/stache");
 
-var template = stache('<bit-c3>' +
-	'<bit-c3-data>' +
-		'<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
-	'</bit-c3-data>' +
+var bitC3template = can.stache('<bit-c3>' +
+    '<bit-c3-data>' +
+        '<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+    '</bit-c3-data>' +
 '</bit-c3>');
 
-$("body").viewModel().attr({
-	dataSource: new can.List([1, 2, 3])
-});
+$("body").append(bitC3template({
+    dataSource: new can.List([1, 2, 3])
+}));
 
 ```
 
 ## AMD use
 
-Configure the `can` and `jquery` paths and the `bit-c3s` package:
+Configure the `can`, `jquery`, `c3`, and `d3` paths and the `bit-c3s` package:
 
 ```html
 <script src="require.js"></script>
@@ -120,15 +120,15 @@ Use bit-c3 like:
 
 ```js
 define(["can", "jquery", "can/view/stache", "bit-c3"], function(can, $) {
-	var template = stache('<bit-c3>' +
-		'<bit-c3-data>' +
-			'<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
-		'</bit-c3-data>' +
+	var bitC3template = can.stache('<bit-c3>' +
+	    '<bit-c3-data>' +
+	        '<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+	    '</bit-c3-data>' +
 	'</bit-c3>');
 
-	$("body").viewModel().attr({
-		dataSource: new can.List([1, 2, 3])
-	});
+	$("body").append(bitC3template({
+	    dataSource: new can.List([1, 2, 3])
+	}));
 });
 ```
 
@@ -138,7 +138,7 @@ Load the `global` css and js files:
 
 ```html
 <link rel="stylesheet" type="text/css" 
-      href="./node_modules/bit-c3/dist/global/bit-c3.css">
+      href="./node_modules/bit-c3/dist/global/bit-c3.css" />
       
 <script src='./node_modules/jquery/dist/jquery.js'></script>
 <script src='./node_modules/canjs/dist/can.jquery.js'></script>
@@ -152,9 +152,15 @@ Load the `global` css and js files:
 	</bit-c3>
 </script>
 <script>
-	$("body").viewModel().attr({
-		dataSource: new can.List([1, 2, 3])
-	});
+	var bitC3template = can.stache('<h2>bit-c3</h2><bit-c3>' +
+	    '<bit-c3-data>' +
+	        '<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+	    '</bit-c3-data>' +
+	'</bit-c3>');
+
+	$("body").append(bitC3template({
+	    dataSource: new can.List([1, 2, 3])
+	}));
 </script>
 ```
 
