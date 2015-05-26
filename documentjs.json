@@ -1,7 +1,7 @@
 {
 	"versions": {
 		"0.0.1": {
-			"source": "https://github.com/bitovi-components/c3-chart#master"
+			"source": "https://github.com/bitovi-components/bit-c3#master"
 		}
 	},
 	"defaultVersion": "0.0.1",

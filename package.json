@@ -1,7 +1,7 @@
 {
-  "name": "c3-chart-docs",
+  "name": "bit-c3-docs",
   "version": "0.0.1",
-  "description": "Documentation for bitovi-components/c3-chart",
+  "description": "Documentation for bitovi-components/bit-c3",
   "scripts": {
     "documentjs": "./node_modules/.bin/documentjs"
   },
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitovi-components/c3-chart"
+    "url": "https://github.com/bitovi-components/bit-c3"
   },
   "keywords": [
     "CanJS",
@@ -22,7 +22,7 @@
   "author": "Bitovi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bitovi-components/c3-chart/issues"
+    "url": "https://github.com/bitovi-components/bit-c3/issues"
   },
-  "homepage": "http://bitovi-components.github.io/c3-chart"
+  "homepage": "http://bitovi-components.github.io/bit-c3"
 }

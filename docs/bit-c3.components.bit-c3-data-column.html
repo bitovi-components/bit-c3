@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Bit-C3 - Bit-C3 </title>
+	<title>Bit-C3 - &lt;bit-c3-data-column&gt; </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
@@ -262,7 +262,7 @@
 			
 				
 				
-				<li class="search-container">
+				<li class="search-container active ">
 					<a class="module" href="bit-c3.components.bit-c3-data-column.html" data-search="&lt;bit-c3-data-column&gt;">
 						&lt;bit-c3-data-column&gt;
 					</a>
@@ -356,9 +356,9 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>Bit-C3</h1>
+<h1>&lt;bit-c3-data-column&gt;</h1>
 	<ul class="tags">
-		<li>page</li>
+		<li>module</li>
 	</ul>
 	
 	
@@ -367,9 +367,11 @@
 <div class="sub-heading">
 	
 	
-		<span class="module">bit-c3</span>
+		<span class="module">bit-c3.components.bit-c3-data-column</span>
 	
 	
+	
+	<h2><code>{can.Component}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -377,7 +379,7 @@
 <ul class="links">
 	
 	
-		<li><a href="https://github.com/bitovi-components/bit-c3#master/docs/c3-chart.md">source</a></li>
+		<li><a href="https://github.com/bitovi-components/bit-c3#master/src/data/column/column.js#L3">source</a></li>
 	
 	
 	
@@ -394,8 +396,58 @@
 		
 
 		
+		<section class="description">
+			<p>Chart data column element</p>
+
+		</section>
+		
 
 		
+			
+				<section class="signature">
+					<h2 id="sig__lt_bit_c3_data_column__gt_">&lt;bit-c3-data-column /&gt;
+</h2>
+<div class="signature-wrapper">
+
+
+	<h3>Parameters</h3>
+
+	<ol class="parameters">
+		
+		<li class="parameter">
+			<h4>key
+				<code>{String}</code></h4>
+			<div class="description">
+				<p>Key for the data column.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+		<li class="parameter">
+			<h4>value
+				<code>{Array}</code></h4>
+			<div class="description">
+				<p>Data values.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+	</ol>
+
+
+
+
+
+
+</div>
+
+				</section>
 			
 		
 		
@@ -404,8 +456,20 @@
 
 		
 		<section class="comment">
-			<p>Implementation of <a href="http://c3js.org/">C3's</a> charting system with <a href="http://canjs.org">canJS</a> components.</p>
-<div class='demo_wrapper' data-demo-src='./bit-c3/examples/bit-c3.html'></div>
+			<h2>Component Initialization</h2>
+<pre><code class="language-html">&lt;bit-c3&gt;
+  &lt;bit-c3-data&gt;
+    &lt;bit-c3-data-column value=&quot;['dataSet1', 1, 2, 3, 2]&quot; /&gt;
+  &lt;/bit-c3-data&gt;
+&lt;/bit-c3&gt;
+  
+</code></pre>
+<pre><code class="language-html">&lt;bit-c3&gt;
+  &lt;bit-c3-data&gt;
+    &lt;bit-c3-data-column key=&quot;dataSet1&quot; value=&quot;[1, 2, 3, 2]&quot; /&gt;
+  &lt;/bit-c3-data&gt;
+&lt;/bit-c3&gt;
+</code></pre>
 
 		</section>
 		
@@ -435,7 +499,7 @@
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"page","name":"bit-c3","src":"./docs/c3-chart.md","description":"","title":"Bit-C3","comment":" ","templates":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/static","glob":{"pattern":"./**/*.{js,md}","ignore":"./{node_modules}/**/*.*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs/bit-c3"},"package":{"repository":{"github":"https://github.com/bitovi-components/bit-c3"},"version":"0.0.1"},"forceBuild":true,"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.0.1","name":"bit-c3","source":"https://github.com/bitovi-components/bit-c3#master"}};
+		var docObject = {"src":"./src/data/column/column.js","line":3,"codeLine":37,"type":"module","description":"Chart data column element","title":"<bit-c3-data-column>","types":[{"type":"can.Component"}],"name":"bit-c3.components.bit-c3-data-column","parent":"bit-c3.components","order":2,"author":"Kyle Gifford","signatures":[{"code":"<bit-c3-data-column />","description":"","params":[{"types":[{"type":"String"}],"name":"key","description":"Key for the data column."},{"types":[{"type":"Array","options":[]}],"name":"value","description":"Data values."}]}],"comment":" ","templates":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/static","glob":{"pattern":"./**/*.{js,md}","ignore":"./{node_modules}/**/*.*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs/bit-c3"},"package":{"repository":{"github":"https://github.com/bitovi-components/bit-c3"},"version":"0.0.1"},"forceBuild":true,"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.0.1","name":"bit-c3","source":"https://github.com/bitovi-components/bit-c3#master"}};
 	</script>
 	
 	

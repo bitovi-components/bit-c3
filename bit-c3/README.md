@@ -1,18 +1,8 @@
-@page index
-@hide sidebar
-@hide title
-@hide footer
-@hide container
-@hide article
-@body
-
-<section style="width: 800px; margin:100px auto 20px auto; overflow:hidden;">
-
-# bit-c3
+# Bit-C3
 
 [![Build Status](https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master)](https://travis-ci.org/bitovi-components/bit-c3)
 
-Build C3 charts with CanJS components that can be loaded by:
+A live-reloading chart widget that can be loaded by:
 
 - StealJS + ES6
 - npm / browserify / CJS
@@ -27,15 +17,9 @@ Coming soon!
 
 ## Usage
 
-Similar to how C3 constructs charts using a JavaScript object, `bit-c3` provides an easy-to-use interface for building C3 charts using [CanJS](http://canjs.org) components. Creating a chart as quick as installing the NPM packages, importing the module using one of the methods below, and adding the elements to your template.
+See [http://bitovi-components.github.io/bit-c3](http://bitovi-components.github.io/bit-c3) for usage instructions, examples and documentation.
 
-We are currently working on a getting started guide. Until then, we would recommend these resources:
-
-- [Example](docs) chart implementations
-- [Component APIs](docs/bit-c3.components.bit-c3.html)
-- [C3JS.org](http://c3js.org/gettingstarted.html) for understanding C3.js
-
-### ES6 use
+## ES6 use
 
 With StealJS, you can import this module directly in a template that is autorendered:
 
@@ -82,7 +66,7 @@ $("body").viewModel().attr({
 
 ```
 
-### CJS use
+## CJS use
 
 Use `require` to load `bit-c3` and everything else
 needed to create a template that uses `bit-c3`:
@@ -108,7 +92,7 @@ $("body").viewModel().attr({
 
 ```
 
-### AMD use
+## AMD use
 
 Configure the `can` and `jquery` paths and the `bit-c3s` package:
 
@@ -148,7 +132,7 @@ define(["can", "jquery", "can/view/stache", "bit-c3"], function(can, $) {
 });
 ```
 
-### Standalone use
+## Standalone use
 
 Load the `global` css and js files:
 
@@ -174,4 +158,20 @@ Load the `global` css and js files:
 </script>
 ```
 
-</section>
+## Contributing
+
+To setup your dev environment:
+
+1. Clone and fork this repo.  
+2. Run `npm install`.
+3. Run `grunt test`. Everything should pass.
+4. Launch development server by running `grunt serve`.
+5. Run `grunt build`.  Everything should build ok.
+
+To publish:
+
+1.  Update the version number in package.json and commit and push this.
+2.  Run `npm publish`.  This should generate the dist folder.
+3.  Create and checkout a "release" branch.
+4.  Run `git add -f dist`.
+5.  Commit the addition and tag it `git tag v0.2.0`.  Push the tag `git push origin --tags`.

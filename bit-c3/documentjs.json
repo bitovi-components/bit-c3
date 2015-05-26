@@ -1,0 +1,18 @@
+{
+    "sites": {
+        "docs": {
+            "parent": "bit-c3",
+            "pageConfig": {"page": "docs"},
+            "glob": {
+              "pattern": "./**/*.{js,md}",
+              "ignore": "./{node_modules}/**/*.*"
+            },
+            "package": {
+                "repository": {
+                    "github": "https://github.com/bitovi-components/bit-c3"
+                },
+                "version": "0.0.1"
+            }
+        }
+    }
+}

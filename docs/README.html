@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>C3-Chart  - README</title>
+	<title>Bit-C3  - README</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
@@ -33,7 +33,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="../index.html">c3-chart</a>
+				<a class="brand" href="../index.html">bit-c3</a>
 			</div>
 
 			<ul class="nav">
@@ -43,7 +43,7 @@
 				<li class='active'>
 				  <a href="../docs/index.html">Examples and API</a>
 				</li>
-				<li class=""><a href="https://github.com/bitovi-components/c3-chart">GitHub</a></li>
+				<li class=""><a href="https://github.com/bitovi-components/bit-c3">GitHub</a></li>
 			</ul>
 
 			<div class="pull-right">
@@ -73,8 +73,8 @@
 	
 		
 		<li class="search-container active parent">
-			<a class="sidebar-title" href="index.html" data-search="C3-Chart">
-				C3-Chart
+			<a class="sidebar-title" href="index.html" data-search="Bit-C3">
+				Bit-C3
 			</a>
 			
 		</li>
@@ -118,7 +118,7 @@
 <ul class="links">
 	
 	
-		<li><a href="https://github.com/bitovi-components/c3-chart#master/README.md">source</a></li>
+		<li><a href="https://github.com/bitovi-components/bit-c3#master/README.md">source</a></li>
 	
 	
 	
@@ -136,7 +136,7 @@
 
 		
 		<section class="description">
-			<h1>c3-chart</h1>
+			<h1>Bit-C3</h1>
 
 		</section>
 		
@@ -150,7 +150,7 @@
 
 		
 		<section class="comment">
-			<p><a href="https://travis-ci.org/bitovi-components/c3-chart"><img src="https://travis-ci.org/bitovi-components/c3-chart.svg?branch=master" alt="Build Status" /></a></p>
+			<p><a href="https://travis-ci.org/bitovi-components/bit-c3"><img src="https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master" alt="Build Status" /></a></p>
 <p>A live-reloading chart widget that can be loaded by:</p>
 <ul>
 <li>StealJS + ES6</li>
@@ -159,20 +159,19 @@
 <li>Standalone with CanJS and jQuery</li>
 </ul>
 <h2>Install</h2>
-<p>Use NPM to install <code>c3-chart</code>:</p>
-<pre><code class="language-bash">npm install c3-chart --save
-</code></pre>
+<p>Use NPM to install <code>bit-c3</code>:</p>
+<p>Coming soon!</p>
 <h2>Usage</h2>
-<p>See <a href="http://bitovi-components.github.io/c3-chart">http://bitovi-components.github.io/c3-chart</a> for usage instructions, examples and documentation.</p>
+<p>See <a href="http://bitovi-components.github.io/bit-c3">http://bitovi-components.github.io/bit-c3</a> for usage instructions, examples and documentation.</p>
 <h2>ES6 use</h2>
 <p>With StealJS, you can import this module directly in a template that is autorendered:</p>
 <pre><code class="language-html">&lt;script type=&quot;text/stache&quot; id=&quot;demo&quot; can-autorender&gt;
-    &lt;can-import from=&quot;c3-chart&quot; /&gt;
-    &lt;c3-chart&gt;
-        &lt;c3-data&gt;
-            &lt;c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
-        &lt;/c3-data&gt;
-    &lt;/c3-chart&gt;
+    &lt;can-import from=&quot;bit-c3&quot; /&gt;
+    &lt;bit-c3&gt;
+        &lt;bit-c3-data&gt;
+            &lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
+        &lt;/bit-c3-data&gt;
+    &lt;/bit-c3&gt;
 &lt;/script&gt;
 
 &lt;script src='./node_modules/steal/steal.js'
@@ -188,16 +187,16 @@
 
 </code></pre>
 <p>Alternatively, you can import this module like:</p>
-<pre><code class="language-js">import &quot;c3-chart&quot;;
+<pre><code class="language-js">import &quot;bit-c3&quot;;
 import can from &quot;can&quot;;
 import $ from &quot;jquery&quot;;
 import stache from &quot;can/view/stache/stache&quot;;
 
-var template = stache('&lt;c3-chart&gt;' +
-    '&lt;c3-data&gt;' +
-        '&lt;c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
-    '&lt;/c3-data&gt;' +
-'&lt;/c3-chart&gt;');
+var template = stache('&lt;bit-c3&gt;' +
+    '&lt;bit-c3-data&gt;' +
+        '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+    '&lt;/bit-c3-data&gt;' +
+'&lt;/bit-c3&gt;');
 
 $(&quot;body&quot;).viewModel().attr({
     dataSource: new can.List([1, 2, 3])
@@ -205,21 +204,21 @@ $(&quot;body&quot;).viewModel().attr({
 
 </code></pre>
 <h2>CJS use</h2>
-<p>Use <code>require</code> to load <code>c3-chart</code> and everything else
-needed to create a template that uses <code>c3-chart</code>:</p>
+<p>Use <code>require</code> to load <code>bit-c3</code> and everything else
+needed to create a template that uses <code>bit-c3</code>:</p>
 <pre><code class="language-js">var can = require(&quot;canjs&quot;);
 var $ = require(&quot;jquery&quot;)
 
-// Add's c3-chart tag
-require(&quot;c3-chart&quot;);
+// Add's bit-c3 tag
+require(&quot;bit-c3&quot;);
 // Use stache
 require(&quot;canjs/view/stache/stache&quot;);
 
-var template = stache('&lt;c3-chart&gt;' +
-    '&lt;c3-data&gt;' +
-        '&lt;c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
-    '&lt;/c3-data&gt;' +
-'&lt;/c3-chart&gt;');
+var template = stache('&lt;bit-c3&gt;' +
+    '&lt;bit-c3-data&gt;' +
+        '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+    '&lt;/bit-c3-data&gt;' +
+'&lt;/bit-c3&gt;');
 
 $(&quot;body&quot;).viewModel().attr({
     dataSource: new can.List([1, 2, 3])
@@ -227,7 +226,7 @@ $(&quot;body&quot;).viewModel().attr({
 
 </code></pre>
 <h2>AMD use</h2>
-<p>Configure the <code>can</code> and <code>jquery</code> paths and the <code>c3-charts</code> package:</p>
+<p>Configure the <code>can</code> and <code>jquery</code> paths and the <code>bit-c3s</code> package:</p>
 <pre><code class="language-html">&lt;script src=&quot;require.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
     require.config({
@@ -236,22 +235,22 @@ $(&quot;body&quot;).viewModel().attr({
             &quot;can&quot;: &quot;node_modules/canjs/dist/amd/can&quot;
         },
         packages: [{
-                name: 'c3-chart',
-                location: 'node_modules/c3-chart/dist/amd',
-                main: 'c3-chart'
+                name: 'bit-c3',
+                location: 'node_modules/bit-c3/dist/amd',
+                main: 'bit-c3'
         }]
     });
     require([&quot;main-amd&quot;], function(){});
 &lt;/script&gt;
 </code></pre>
 <p>Make sure you have the <code>css</code> plugin configured also!</p>
-<p>Use c3-chart like:</p>
-<pre><code class="language-js">define([&quot;can&quot;, &quot;jquery&quot;, &quot;can/view/stache&quot;, &quot;c3-chart&quot;], function(can, $) {
-    var template = stache('&lt;c3-chart&gt;' +
-        '&lt;c3-data&gt;' +
-            '&lt;c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
-        '&lt;/c3-data&gt;' +
-    '&lt;/c3-chart&gt;');
+<p>Use bit-c3 like:</p>
+<pre><code class="language-js">define([&quot;can&quot;, &quot;jquery&quot;, &quot;can/view/stache&quot;, &quot;bit-c3&quot;], function(can, $) {
+    var template = stache('&lt;bit-c3&gt;' +
+        '&lt;bit-c3-data&gt;' +
+            '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+        '&lt;/bit-c3-data&gt;' +
+    '&lt;/bit-c3&gt;');
 
     $(&quot;body&quot;).viewModel().attr({
         dataSource: new can.List([1, 2, 3])
@@ -261,18 +260,18 @@ $(&quot;body&quot;).viewModel().attr({
 <h2>Standalone use</h2>
 <p>Load the <code>global</code> css and js files:</p>
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; 
-      href=&quot;./node_modules/c3-chart/dist/global/c3-chart.css&quot;&gt;
+      href=&quot;./node_modules/bit-c3/dist/global/bit-c3.css&quot;&gt;
       
 &lt;script src='./node_modules/jquery/dist/jquery.js'&gt;&lt;/script&gt;
 &lt;script src='./node_modules/canjs/dist/can.jquery.js'&gt;&lt;/script&gt;
 &lt;script src='./node_modules/canjs/dist/can.stache.js'&gt;&lt;/script&gt;
-&lt;script src='./node_modules/c3-chart/dist/global/c3-chart.js'&gt;&lt;/script&gt;
+&lt;script src='./node_modules/bit-c3/dist/global/bit-c3.js'&gt;&lt;/script&gt;
 &lt;script id='main-stache' text='text/stache'&gt;
-    &lt;c3-chart&gt;
-        &lt;c3-data&gt;
-            &lt;c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
-        &lt;/c3-data&gt;
-    &lt;/c3-chart&gt;
+    &lt;bit-c3&gt;
+        &lt;bit-c3-data&gt;
+            &lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
+        &lt;/bit-c3-data&gt;
+    &lt;/bit-c3&gt;
 &lt;/script&gt;
 &lt;script&gt;
     $(&quot;body&quot;).viewModel().attr({
@@ -326,7 +325,7 @@ $(&quot;body&quot;).viewModel().attr({
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"page","name":"README","src":"./README.md","description":"# c3-chart","templates":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/static","glob":{"pattern":"./**/*.{js,md}","ignore":"./{bower_components,node_modules}/**/*.*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs/c3-chart"},"package":{"repository":{"github":"https://github.com/bitovi-components/c3-chart"},"version":"0.0.1"},"forceBuild":true,"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.0.1","name":"c3-chart","source":"https://github.com/bitovi-components/c3-chart#master"}};
+		var docObject = {"type":"page","name":"README","src":"./README.md","description":"# Bit-C3","templates":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/c3-chart-docs/theme/static","glob":{"pattern":"./**/*.{js,md}","ignore":"./{node_modules}/**/*.*","cwd":"/Users/kyle/projects/bitovi-components/c3-chart-docs/bit-c3"},"package":{"repository":{"github":"https://github.com/bitovi-components/bit-c3"},"version":"0.0.1"},"forceBuild":true,"dest":"/Users/kyle/projects/bitovi-components/c3-chart-docs/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.0.1","name":"bit-c3","source":"https://github.com/bitovi-components/bit-c3#master"}};
 	</script>
 	
 	

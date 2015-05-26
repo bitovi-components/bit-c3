@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>Gauge Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html" can-autorender>
+<can-import from="bit-c3" />
+<bit-c3 size-height="{height}">
+  <bit-c3-data type="{type}">
+    {{#each dataColumns}}
+      <bit-c3-data-column value="{.}" />
+    {{/each}}
+  </bit-c3-data>
+</bit-c3>
+    </script>
+
+    <!-- Loading Script -->
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+import $ from "jquery";
+import can from "can";
+
+var type = "gauge",
+    data = new can.List(['data', 91.4]),
+    gauge: {
+      // label: {
+      //   format: function(value, ratio) {
+      //     return value;
+      //   },
+      //   show: false // to turn off the min/max labels.
+      // },
+      // min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+      // max: 100, // 100 is default
+      // units: ' %',
+      // width: 39 // for adjusting arc thickness
+    },
+    colorPattern = new can.List(['#FF0000', '#F97600', '#F6C600', '#60B044']),
+    colorThreshold = {
+      // unit: 'value', // percentage is default
+      // max: 200, // 100 is default
+      values: [30, 60, 90, 100]
+    },
+    height = 180;
+
+var vm = $("#demo-html").viewModel();
+vm.attr({
+  dataColumns: new can.List([data]),
+  type: type,
+  height: height
+});
+
+setTimeout(function () {
+  can.batch.start();
+  data.pop();
+  data.push(10);
+  can.batch.stop();
+}, 1000);
+
+
+setTimeout(function () {
+  can.batch.start();
+  data.pop();
+  data.push(50);
+  can.batch.stop();
+}, 2000);
+
+
+setTimeout(function () {
+  can.batch.start();
+  data.pop();
+  data.push(70);
+  can.batch.stop();
+}, 3000);
+
+
+setTimeout(function () {
+  can.batch.start();
+  data.pop();
+  data.push(0);
+  can.batch.stop();
+}, 4000);
+
+
+setTimeout(function () {
+  can.batch.start();
+  data.pop();
+  data.push(100);
+  can.batch.stop();
+}, 5000);
+    </script>
+  </body>
+</html>
+  
