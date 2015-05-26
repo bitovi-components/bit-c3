@@ -1,5 +1,5 @@
 import can from "can";
-import C3YGridLineVM from './viewmodel';
+import YGridLineVM from './viewmodel';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-y-grid-line <bit-c3-y-grid-line>
@@ -30,7 +30,7 @@ import C3YGridLineVM from './viewmodel';
  */
 can.Component.extend({
 	tag: "bit-c3-y-grid-line",
-	viewModel: C3YGridLineVM,
+	viewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.attr('lines', this.element.parent().scope().attr('lines'));
@@ -57,4 +57,4 @@ can.Component.extend({
 	}
 });
 
-export default C3YGridLineVM;
+export default YGridLineVM;
