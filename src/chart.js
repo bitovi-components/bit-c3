@@ -15,7 +15,7 @@ import C3ChartViewModel from './viewmodel';
  * @description
  * Chart container
  *
- * @signature '<bit-c3></chart>'
+ * @signature '<bit-c3></bit-c3>'
  *
  * @body
  *
