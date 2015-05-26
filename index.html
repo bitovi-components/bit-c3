@@ -141,9 +141,9 @@ var template = stache('&lt;bit-c3&gt;' +
     '&lt;/bit-c3-data&gt;' +
 '&lt;/bit-c3&gt;');
 
-$(&quot;body&quot;).viewModel().attr({
+$(&quot;body&quot;).append(template({
     dataSource: new can.List([1, 2, 3])
-});
+}));
 
 </code></pre>
 <h3>CJS use</h3>
@@ -157,19 +157,19 @@ require(&quot;bit-c3&quot;);
 // Use stache
 require(&quot;canjs/view/stache/stache&quot;);
 
-var template = stache('&lt;bit-c3&gt;' +
+var bitC3template = can.stache('&lt;bit-c3&gt;' +
     '&lt;bit-c3-data&gt;' +
         '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
     '&lt;/bit-c3-data&gt;' +
 '&lt;/bit-c3&gt;');
 
-$(&quot;body&quot;).viewModel().attr({
+$(&quot;body&quot;).append(bitC3template({
     dataSource: new can.List([1, 2, 3])
-});
+}));
 
 </code></pre>
 <h3>AMD use</h3>
-<p>Configure the <code>can</code> and <code>jquery</code> paths and the <code>bit-c3s</code> package:</p>
+<p>Configure the <code>can</code>, <code>jquery</code>, <code>c3</code>, and <code>d3</code> paths and the <code>bit-c3s</code> package:</p>
 <pre><code class="language-html">&lt;script src=&quot;require.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
     require.config({
@@ -189,21 +189,21 @@ $(&quot;body&quot;).viewModel().attr({
 <p>Make sure you have the <code>css</code> plugin configured also!</p>
 <p>Use bit-c3 like:</p>
 <pre><code class="language-js">define([&quot;can&quot;, &quot;jquery&quot;, &quot;can/view/stache&quot;, &quot;bit-c3&quot;], function(can, $) {
-    var template = stache('&lt;bit-c3&gt;' +
+    var bitC3template = can.stache('&lt;bit-c3&gt;' +
         '&lt;bit-c3-data&gt;' +
             '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
         '&lt;/bit-c3-data&gt;' +
     '&lt;/bit-c3&gt;');
 
-    $(&quot;body&quot;).viewModel().attr({
+    $(&quot;body&quot;).append(bitC3template({
         dataSource: new can.List([1, 2, 3])
-    });
+    }));
 });
 </code></pre>
 <h3>Standalone use</h3>
 <p>Load the <code>global</code> css and js files:</p>
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; 
-      href=&quot;./node_modules/bit-c3/dist/global/bit-c3.css&quot;&gt;
+      href=&quot;./node_modules/bit-c3/dist/global/bit-c3.css&quot; /&gt;
       
 &lt;script src='./node_modules/jquery/dist/jquery.js'&gt;&lt;/script&gt;
 &lt;script src='./node_modules/canjs/dist/can.jquery.js'&gt;&lt;/script&gt;
@@ -217,9 +217,15 @@ $(&quot;body&quot;).viewModel().attr({
     &lt;/bit-c3&gt;
 &lt;/script&gt;
 &lt;script&gt;
-    $(&quot;body&quot;).viewModel().attr({
+    var bitC3template = can.stache('&lt;h2&gt;bit-c3&lt;/h2&gt;&lt;bit-c3&gt;' +
+        '&lt;bit-c3-data&gt;' +
+            '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+        '&lt;/bit-c3-data&gt;' +
+    '&lt;/bit-c3&gt;');
+
+    $(&quot;body&quot;).append(bitC3template({
         dataSource: new can.List([1, 2, 3])
-    });
+    }));
 &lt;/script&gt;
 </code></pre>
 </section>
@@ -242,7 +248,7 @@ $(&quot;body&quot;).viewModel().attr({
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"page","name":"index","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/static","glob":{"pattern":"_pages/**/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/kyle/projects/bitovi-components/bit-c3-docs"},"dest":"/Users/kyle/projects/bitovi-components/bit-c3-docs","forceBuild":true,"generators":["html"],"docConfigDest":"documentjs.json","project":{}};
+		var docObject = {"type":"page","name":"index","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/static","glob":{"pattern":"_pages/**/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/kyle/projects/bitovi-components/bit-c3-docs"},"dest":"/Users/kyle/projects/bitovi-components/bit-c3-docs","generators":["html"],"docConfigDest":"documentjs.json","project":{}};
 	</script>
 	
 	

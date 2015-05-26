@@ -9,14 +9,14 @@ export default can.Map.extend({
 		},
 		valueSerialized: {
 			get: function(val) {
-				return this.attr('value').serialize();
+				return this.attr('value') && this.attr('value').serialize();
 			}
 		}
 	},
 	'value': null,
 	'key': null,
 	'dequeueKey': function() {
-		var value = this.attr('value').attr(),
+		var value = this.attr('value') && this.attr('value').attr(),
 			key = this.attr('key');
 		if(key === null || (value !== null && value.length && value[0] === key)) {
 			this.attr('key', value.shift());
@@ -28,7 +28,7 @@ export default can.Map.extend({
 			key = this.attr('key'),
 			chart = this.attr('chart'),
 			pushing = [key].concat(value);
-		if(value.length) {
+		if(value && value.length) {
 			chart.load({
 				columns: [pushing]
 			});

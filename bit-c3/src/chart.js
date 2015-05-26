@@ -1,7 +1,6 @@
 import can from "can";
 import d3 from "d3";
 import c3 from "c3";
-import "c3/c3.css!";
 import template from "./chart.stache!";
 import ChartVM from './viewmodel';
 
