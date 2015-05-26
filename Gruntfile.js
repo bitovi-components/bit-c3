@@ -39,8 +39,7 @@ module.exports = function (grunt) {
 				outputs: {
 					'+cjs': {},
 					'+amd': {},
-					'+global-js': {},
-					'+global-css': {}
+					'+global-js': {}
 				}
 			}
 		}

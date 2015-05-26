@@ -1,6 +1,6 @@
 import can from "can";
 import 'can/map/define/';
-import {randomString} from 'lib/';
+import {randomString} from 'bit-c3/lib/lib';
 
 export default can.Map.extend({
 	define: {

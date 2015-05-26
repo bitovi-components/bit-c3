@@ -1,8 +1,8 @@
 import './chart';
-import './data/';
-import './data/column/';
-import './data/group/';
-import './data/name/';
-import './data/type/';
-import './y-grid/';
-import './y-grid/y-grid-line/';
+import './data/data';
+import './data/column/column';
+import './data/group/group';
+import './data/name/name';
+import './data/type/type';
+import './y-grid/y-grid';
+import './y-grid/y-grid-line/y-grid-line';
