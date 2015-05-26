@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [gauge chart example](http://c3js.org/samples/
 
 @body
 
-@demo ./bit-c3/examples/chart/gauge.html
+@demo ./bit-c3/examples/chart/gauge.html 320

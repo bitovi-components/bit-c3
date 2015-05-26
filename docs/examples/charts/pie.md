@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [pie chart example](http://c3js.org/samples/ch
 
 @body
 
-@demo ./bit-c3/examples/chart/pie.html
+@demo ./bit-c3/examples/chart/pie.html 320

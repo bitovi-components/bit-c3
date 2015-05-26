@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [line chart example](http://c3js.org/samples/s
 
 @body
 
-@demo ./bit-c3/examples/chart/line.html
+@demo ./bit-c3/examples/chart/line.html 320

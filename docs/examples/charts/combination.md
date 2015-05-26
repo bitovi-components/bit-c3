@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [combination chart example](http://c3js.org/sa
 
 @body
 
-@demo ./bit-c3/examples/chart/combination.html
+@demo ./bit-c3/examples/chart/combination.html 320
