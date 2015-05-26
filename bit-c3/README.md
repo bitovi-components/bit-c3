@@ -13,7 +13,7 @@ A live-reloading chart widget that can be loaded by:
 
 Use NPM to install `bit-c3`:
 
-Coming soon!
+`npm install bit-c3 --save`
 
 ## Usage
 

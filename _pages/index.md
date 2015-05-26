@@ -23,7 +23,7 @@ Build C3 charts with CanJS components that can be loaded by:
 
 Use NPM to install `bit-c3`:
 
-Coming soon!
+`npm install bit-c3 --save`
 
 ## Usage
 
@@ -34,27 +34,6 @@ We are currently working on a getting started guide. Until then, we would recomm
 - [Example](docs) chart implementations
 - [Component APIs](docs/bit-c3.components.bit-c3.html)
 - [C3JS.org](http://c3js.org/gettingstarted.html) for understanding C3.js
-
-# Bit-C3
-
-[![Build Status](https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master)](https://travis-ci.org/bitovi-components/bit-c3)
-
-A live-reloading chart widget that can be loaded by:
-
-- StealJS + ES6
-- npm / browserify / CJS
-- RequireJS / AMD
-- Standalone with CanJS and jQuery
-
-## Install
-
-Use NPM to install `bit-c3`:
-
-Coming soon!
-
-## Usage
-
-See [http://bitovi-components.github.io/bit-c3](http://bitovi-components.github.io/bit-c3) for usage instructions, examples and documentation.
 
 ### ES6 use
 
