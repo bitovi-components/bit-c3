@@ -1,8 +1,4 @@
 import can from "can";
-import './c3-data-group/';
-import './c3-data-type/';
-import './c3-data-name/';
-import './c3-data-column/';
 import C3DataVM from './viewmodel';
 
 /**

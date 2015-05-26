@@ -1,5 +1,4 @@
 import can from "can";
-import "./c3-y-grid-line/";
 import C3YGridVM from './viewmodel';
 
 /**
