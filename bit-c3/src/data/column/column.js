@@ -1,5 +1,5 @@
 import can from "can";
-import C3DataColumnVM from './viewmodel'
+import ColumnVM from './viewmodel'
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-column <bit-c3-data-column>
@@ -37,7 +37,7 @@ import C3DataColumnVM from './viewmodel'
  */
 can.Component.extend({
 	tag: "bit-c3-data-column",
-	viewModel: C3DataColumnVM,
+	viewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
@@ -52,4 +52,4 @@ can.Component.extend({
 	}
 });
 
-export default C3DataColumnVM;
+export default ColumnVM;

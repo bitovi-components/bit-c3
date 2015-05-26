@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [area chart example](http://c3js.org/samples/c
 
 @body
 
-@demo ./bit-c3/examples/chart/area.html
+@demo ./bit-c3/examples/chart/area.html 320

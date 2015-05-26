@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [spline chart example](http://c3js.org/samples
 
 @body
 
-@demo ./bit-c3/examples/chart/spline.html
+@demo ./bit-c3/examples/chart/spline.html 320

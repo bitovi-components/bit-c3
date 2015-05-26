@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [step chart example](http://c3js.org/samples/c
 
 @body
 
-@demo ./bit-c3/examples/chart/step.html
+@demo ./bit-c3/examples/chart/step.html 320

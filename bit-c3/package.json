@@ -3,37 +3,16 @@
   "version": "0.0.1",
   "description": "",
   "main": "dist/cjs/bit-c3",
-  "browser": {
-    "transform": [
-      "cssify"
-    ]
-  },
-  "browserify": {
-    "transform": [
-      "cssify"
-    ]
-  },
-  "scripts": {
-    "test": "grunt test --stack",
-    "prepublish": "./node_modules/.bin/grunt build"
-  },
   "dependencies": {
     "can": "2.2.5",
-    "cssify": "0.6.0",
     "d3": "<=3.5.0",
     "c3": "0.4.10"
   },
   "devDependencies": {
-    "documentjs": "git://github.com/bitovi/documentjs#master",
-    "funcunit": "^3.0.0",
-    "grunt": "~0.4.4",
-    "grunt-cli": "^0.1.13",
-    "grunt-serve": "^0.1.6",
     "jquery": ">1.11.3",
     "steal": "^0.10.4",
     "steal-qunit": "^0.0.4",
-    "steal-tools": "^0.10.4",
-    "testee": "^0.2.0"
+    "steal-tools": "^0.10.4"
   },
   "system": {
     "main": "bit-c3",
@@ -45,11 +24,6 @@
     "map": {
       "d3": "d3/d3"
     },
-    "npmIgnore": [
-      "testee",
-      "cssify",
-      "documentjs"
-    ],
     "directories": {
       "lib": "src"
     },

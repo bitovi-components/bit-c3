@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [stacked area chart](http://c3js.org/samples/c
 
 @body
 
-@demo ./bit-c3/examples/chart/stacked_area.html
+@demo ./bit-c3/examples/chart/stacked_area.html 320

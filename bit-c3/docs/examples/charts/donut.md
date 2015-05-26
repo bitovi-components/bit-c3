@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [donut chart example](http://c3js.org/samples/
 
 @body
 
-@demo ./bit-c3/examples/chart/donut.html
+@demo ./bit-c3/examples/chart/donut.html 320

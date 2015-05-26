@@ -5,4 +5,4 @@ Bit-C3 implementation of C3.org's [stacked bar chart](http://c3js.org/samples/ch
 
 @body
 
-@demo ./bit-c3/examples/chart/stacked_bar.html
+@demo ./bit-c3/examples/chart/stacked_bar.html 320
