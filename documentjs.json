@@ -1,15 +1,15 @@
 {
     "sites": {
         "docs": {
-            "parent": "c3-chart",
+            "parent": "bit-c3",
             "pageConfig": {"page": "docs"},
             "glob": {
               "pattern": "./**/*.{js,md}",
-              "ignore": "./{bower_components,node_modules}/**/*.*"
+              "ignore": "./{node_modules}/**/*.*"
             },
             "package": {
                 "repository": {
-                    "github": "https://github.com/bitovi-components/c3-chart"
+                    "github": "https://github.com/bitovi-components/bit-c3"
                 },
                 "version": "0.0.1"
             }

@@ -2,15 +2,15 @@ import can from "can";
 import C3DataVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.components.c3-data <c3-data>
- * @parent c3-chart.components 1
+ * @module {can.Component} bit-c3.components.bit-c3-data <bit-c3-data>
+ * @parent bit-c3.components 1
  *
  * @author Kyle Gifford
  *
  * @description
  * Chart data element
  *
- * @signature '<c3-data></c3-data>'
+ * @signature '<bit-c3-data></bit-c3-data>'
  * @param {String} type Type of the graph (see http://c3js.org/reference.html#data-type).
  * @param {Object} names Names of the data elements, keyed by the data Key (see http://c3js.org/reference.html#api-data-names).
  * @param {String} url Load a CSV or JSON file from a URL (see http://c3js.org/reference.html#data-url).
@@ -30,13 +30,13 @@ import C3DataVM from './viewmodel';
  * ## Component Initialization
  *
  * ```html
- * <c3-chart>
- *   <c3-data></c3-data>
- * </c3-chart>
+ * <bit-c3>
+ *   <bit-c3-data></bit-c3-data>
+ * </bit-c3>
  * ```
  */
 can.Component.extend({
-	tag: "c3-data",
+	tag: "bit-c3-data",
 	viewModel: C3DataVM,
 	events: {
 		inserted: function(viewModel, ev) {

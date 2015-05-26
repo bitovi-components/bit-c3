@@ -2,15 +2,15 @@ import can from "can";
 import C3DataTypeVM from "./viewmodel";
 
 /**
- * @module {can.Component} c3-chart.components.c3-data-type <c3-data-type>
- * @parent c3-chart.components 5
+ * @module {can.Component} bit-c3.components.bit-c3-data-type <bit-c3-data-type>
+ * @parent bit-c3.components 5
  *
  * @author Kyle Gifford
  *
  * @description
  * Chart data type element
  *
- * @signature '<c3-data-type />'
+ * @signature '<bit-c3-data-type />'
  * @param {String} key Key for the data column.
  * @param {String} value Type for the data column.
  *
@@ -19,15 +19,15 @@ import C3DataTypeVM from "./viewmodel";
  * ## Component Initialization
  *
  * ```html
- * <c3-chart>
- *   <c3-data>
- *     <c3-data-type key="dataSet1" value="spline" />
- *   </c3-data>
- * </c3-chart>
+ * <bit-c3>
+ *   <bit-c3-data>
+ *     <bit-c3-data-type key="dataSet1" value="spline" />
+ *   </bit-c3-data>
+ * </bit-c3>
  * ```
  */
 can.Component.extend({
-	tag: "c3-data-type",
+	tag: "bit-c3-data-type",
 	viewModel: C3DataTypeVM,
 	events: {
 		inserted: function(viewModel, ev) {

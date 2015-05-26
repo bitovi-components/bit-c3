@@ -1,6 +1,6 @@
-# c3-chart
+# Bit-C3
 
-[![Build Status](https://travis-ci.org/bitovi-components/c3-chart.svg?branch=master)](https://travis-ci.org/bitovi-components/c3-chart)
+[![Build Status](https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master)](https://travis-ci.org/bitovi-components/bit-c3)
 
 A live-reloading chart widget that can be loaded by:
 
@@ -11,13 +11,13 @@ A live-reloading chart widget that can be loaded by:
 
 ## Install
 
-Use NPM to install `c3-chart`:
+Use NPM to install `bit-c3`:
 
 Coming soon!
 
 ## Usage
 
-See [http://bitovi-components.github.io/c3-chart](http://bitovi-components.github.io/c3-chart) for usage instructions, examples and documentation.
+See [http://bitovi-components.github.io/bit-c3](http://bitovi-components.github.io/bit-c3) for usage instructions, examples and documentation.
 
 ## ES6 use
 
@@ -25,12 +25,12 @@ With StealJS, you can import this module directly in a template that is autorend
 
 ```html
 <script type="text/stache" id="demo" can-autorender>
-	<can-import from="c3-chart" />
-	<c3-chart>
-		<c3-data>
-			<c3-data-column key="dataSource" value="{dataSource}" />
-		</c3-data>
-	</c3-chart>
+	<can-import from="bit-c3" />
+	<bit-c3>
+		<bit-c3-data>
+			<bit-c3-data-column key="dataSource" value="{dataSource}" />
+		</bit-c3-data>
+	</bit-c3>
 </script>
 
 <script src='./node_modules/steal/steal.js'
@@ -49,16 +49,16 @@ With StealJS, you can import this module directly in a template that is autorend
 Alternatively, you can import this module like:
 
 ```js
-import "c3-chart";
+import "bit-c3";
 import can from "can";
 import $ from "jquery";
 import stache from "can/view/stache/stache";
 
-var template = stache('<c3-chart>' +
-	'<c3-data>' +
-		'<c3-data-column key="dataSource" value="{dataSource}" />' +
-	'</c3-data>' +
-'</c3-chart>');
+var template = stache('<bit-c3>' +
+	'<bit-c3-data>' +
+		'<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+	'</bit-c3-data>' +
+'</bit-c3>');
 
 $("body").viewModel().attr({
 	dataSource: new can.List([1, 2, 3])
@@ -68,23 +68,23 @@ $("body").viewModel().attr({
 
 ## CJS use
 
-Use `require` to load `c3-chart` and everything else
-needed to create a template that uses `c3-chart`:
+Use `require` to load `bit-c3` and everything else
+needed to create a template that uses `bit-c3`:
 
 ```js
 var can = require("canjs");
 var $ = require("jquery")
 
-// Add's c3-chart tag
-require("c3-chart");
+// Add's bit-c3 tag
+require("bit-c3");
 // Use stache
 require("canjs/view/stache/stache");
 
-var template = stache('<c3-chart>' +
-	'<c3-data>' +
-		'<c3-data-column key="dataSource" value="{dataSource}" />' +
-	'</c3-data>' +
-'</c3-chart>');
+var template = stache('<bit-c3>' +
+	'<bit-c3-data>' +
+		'<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+	'</bit-c3-data>' +
+'</bit-c3>');
 
 $("body").viewModel().attr({
 	dataSource: new can.List([1, 2, 3])
@@ -94,7 +94,7 @@ $("body").viewModel().attr({
 
 ## AMD use
 
-Configure the `can` and `jquery` paths and the `c3-charts` package:
+Configure the `can` and `jquery` paths and the `bit-c3s` package:
 
 ```html
 <script src="require.js"></script>
@@ -105,9 +105,9 @@ Configure the `can` and `jquery` paths and the `c3-charts` package:
 	        "can": "node_modules/canjs/dist/amd/can"
 	    },
 	    packages: [{
-		    	name: 'c3-chart',
-		    	location: 'node_modules/c3-chart/dist/amd',
-		    	main: 'c3-chart'
+		    	name: 'bit-c3',
+		    	location: 'node_modules/bit-c3/dist/amd',
+		    	main: 'bit-c3'
 	    }]
 	});
 	require(["main-amd"], function(){});
@@ -116,15 +116,15 @@ Configure the `can` and `jquery` paths and the `c3-charts` package:
 
 Make sure you have the `css` plugin configured also!
 
-Use c3-chart like:
+Use bit-c3 like:
 
 ```js
-define(["can", "jquery", "can/view/stache", "c3-chart"], function(can, $) {
-	var template = stache('<c3-chart>' +
-		'<c3-data>' +
-			'<c3-data-column key="dataSource" value="{dataSource}" />' +
-		'</c3-data>' +
-	'</c3-chart>');
+define(["can", "jquery", "can/view/stache", "bit-c3"], function(can, $) {
+	var template = stache('<bit-c3>' +
+		'<bit-c3-data>' +
+			'<bit-c3-data-column key="dataSource" value="{dataSource}" />' +
+		'</bit-c3-data>' +
+	'</bit-c3>');
 
 	$("body").viewModel().attr({
 		dataSource: new can.List([1, 2, 3])
@@ -138,18 +138,18 @@ Load the `global` css and js files:
 
 ```html
 <link rel="stylesheet" type="text/css" 
-      href="./node_modules/c3-chart/dist/global/c3-chart.css">
+      href="./node_modules/bit-c3/dist/global/bit-c3.css">
       
 <script src='./node_modules/jquery/dist/jquery.js'></script>
 <script src='./node_modules/canjs/dist/can.jquery.js'></script>
 <script src='./node_modules/canjs/dist/can.stache.js'></script>
-<script src='./node_modules/c3-chart/dist/global/c3-chart.js'></script>
+<script src='./node_modules/bit-c3/dist/global/bit-c3.js'></script>
 <script id='main-stache' text='text/stache'>
-	<c3-chart>
-		<c3-data>
-			<c3-data-column key="dataSource" value="{dataSource}" />
-		</c3-data>
-	</c3-chart>
+	<bit-c3>
+		<bit-c3-data>
+			<bit-c3-data-column key="dataSource" value="{dataSource}" />
+		</bit-c3-data>
+	</bit-c3>
 </script>
 <script>
 	$("body").viewModel().attr({

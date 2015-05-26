@@ -1,8 +1,8 @@
-@page c3-chart.examples.gauge_chart Gauge Chart
-@parent c3-chart.examples 8
+@page bit-c3.examples.gauge_chart Gauge Chart
+@parent bit-c3.examples 8
 
-C3-chart implementation of C3.org's [gauge chart example](http://c3js.org/samples/chart_gauge.html).
+Bit-C3 implementation of C3.org's [gauge chart example](http://c3js.org/samples/chart_gauge.html).
 
 @body
 
-@demo ./c3-chart/examples/chart/gauge.html
+@demo ./bit-c3/examples/chart/gauge.html

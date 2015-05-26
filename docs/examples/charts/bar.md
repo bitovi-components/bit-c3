@@ -1,8 +1,8 @@
-@page c3-chart.examples.bar_chart Bar Chart
-@parent c3-chart.examples 4
+@page bit-c3.examples.bar_chart Bar Chart
+@parent bit-c3.examples 4
 
-C3-chart implementation of C3.org's [bar chart example](http://c3js.org/samples/chart_bar.html).
+Bit-C3 implementation of C3.org's [bar chart example](http://c3js.org/samples/chart_bar.html).
 
 @body
 
-@demo ./c3-chart/examples/chart/bar.html
+@demo ./bit-c3/examples/chart/bar.html

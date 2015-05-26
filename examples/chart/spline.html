@@ -5,14 +5,14 @@
   <body>
     <!-- Template to load -->
     <script type="text/stache" id="demo-html" can-autorender>
-<can-import from="c3-chart" />
-<c3-chart>
-  <c3-data type="{type}">
+<can-import from="bit-c3" />
+<bit-c3>
+  <bit-c3-data type="{type}">
     {{#each dataColumns}}
-      <c3-data-column value="{.}" />
+      <bit-c3-data-column value="{.}" />
     {{/each}}
-  </c3-data>
-</c3-chart>
+  </bit-c3-data>
+</bit-c3>
     </script>
 
     <!-- Loading Script -->

@@ -2,15 +2,15 @@ import can from "can";
 import C3DataGroupVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.components.c3-data-group <c3-data-group>
- * @parent c3-chart.components 3
+ * @module {can.Component} bit-c3.components.bit-c3-data-group <bit-c3-data-group>
+ * @parent bit-c3.components 3
  *
  * @author Kyle Gifford
  *
  * @description
  * Chart data group element
  *
- * @signature '<c3-data-group />'
+ * @signature '<bit-c3-data-group />'
  * @param {Array} value Data keys to be grouped.
  *
  * @body
@@ -18,15 +18,15 @@ import C3DataGroupVM from './viewmodel';
  * ## Component Initialization
  *
  * ```html
- * <c3-chart>
- *   <c3-data>
- *     <c3-data-group value="['data1', 'data2']" />
- *   </c3-data>
- * </c3-chart>
+ * <bit-c3>
+ *   <bit-c3-data>
+ *     <bit-c3-data-group value="['data1', 'data2']" />
+ *   </bit-c3-data>
+ * </bit-c3>
  * ```
  */
 can.Component.extend({
-	tag: "c3-data-group",
+	tag: "bit-c3-data-group",
 	viewModel: C3DataGroupVM,
 	events: {
 		inserted: function(viewModel, ev) {

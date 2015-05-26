@@ -1,8 +1,8 @@
-@page c3-chart.examples.stacked_bar_chart Stacked Bar Chart
-@parent c3-chart.examples 5
+@page bit-c3.examples.stacked_bar_chart Stacked Bar Chart
+@parent bit-c3.examples 5
 
-C3-chart implementation of C3.org's [stacked bar chart](http://c3js.org/samples/chart_bar_stacked.html).
+Bit-C3 implementation of C3.org's [stacked bar chart](http://c3js.org/samples/chart_bar_stacked.html).
 
 @body
 
-@demo ./c3-chart/examples/chart/stacked_bar.html
+@demo ./bit-c3/examples/chart/stacked_bar.html

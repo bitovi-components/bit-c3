@@ -5,20 +5,20 @@
   <body>
     <!-- Template to load -->
     <script type="text/stache" id="demo-html" can-autorender>
-<can-import from="c3-chart" />
-<c3-chart>
-  <c3-data type="{type}">
+<can-import from="bit-c3" />
+<bit-c3>
+  <bit-c3-data type="{type}">
     {{#each dataColumns}}
-      <c3-data-column value="{.}" />
+      <bit-c3-data-column value="{.}" />
     {{/each}}
-    <c3-data-group value="{dataGroup}" />
-  </c3-data>
-  <c3-y-grid>
+    <bit-c3-data-group value="{dataGroup}" />
+  </bit-c3-data>
+  <bit-c3-y-grid>
     {{#each yGridLines}}
-      <c3-y-grid-line value="{{value}}" />
+      <bit-c3-y-grid-line value="{{value}}" />
     {{/each}}}
-  </c3-y-grid>
-</c3-chart>
+  </bit-c3-y-grid>
+</bit-c3>
     </script>
 
     <!-- Loading Script -->

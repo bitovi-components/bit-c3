@@ -1,5 +1,3 @@
 node_modules/
-bower_components/
 dist/**
-docs-generated/
 .DS_Store

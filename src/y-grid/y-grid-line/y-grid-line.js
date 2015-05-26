@@ -2,15 +2,15 @@ import can from "can";
 import C3YGridLineVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.components.c3-y-grid-line <c3-y-grid-line>
- * @parent c3-chart.components 7
+ * @module {can.Component} bit-c3.components.bit-c3-y-grid-line <bit-c3-y-grid-line>
+ * @parent bit-c3.components 7
  *
  * @author Kyle Gifford
  *
  * @description
  * Chart Y grid line element
  *
- * @signature '<c3-y-grid value="" text="" position="" class="" />'
+ * @signature '<bit-c3-y-grid value="" text="" position="" class="" />'
  * @param {Number} value Value where the grid line will start from
  * @param {String} text Label for the grid line
  * @param {String} position Position of the grid line
@@ -21,15 +21,15 @@ import C3YGridLineVM from './viewmodel';
  * ## Component Initialization
  *
  * ```html
- * <c3-chart>
- *   <c3-y-grid>
- *     <c3-y-grid-line value="0" text="Break Even" class="label-0" position="middle" />
- *   </c3-y-grid>
- * </c3-chart>
+ * <bit-c3>
+ *   <bit-c3-y-grid>
+ *     <bit-c3-y-grid-line value="0" text="Break Even" class="label-0" position="middle" />
+ *   </bit-c3-y-grid>
+ * </bit-c3>
  * ```
  */
 can.Component.extend({
-	tag: "c3-y-grid-line",
+	tag: "bit-c3-y-grid-line",
 	viewModel: C3YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {

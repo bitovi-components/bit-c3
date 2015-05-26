@@ -1,8 +1,8 @@
 {
-  "name": "c3-chart",
+  "name": "bit-c3",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/cjs/c3-chart",
+  "main": "dist/cjs/bit-c3",
   "browser": {
     "transform": [
       "cssify"
@@ -36,7 +36,7 @@
     "testee": "^0.2.0"
   },
   "system": {
-    "main": "c3-chart",
+    "main": "bit-c3",
     "meta": {
       "c3": {
         "format": "cjs"
@@ -57,19 +57,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitovi-components/c3-chart"
+    "url": "https://github.com/bitovi-components/bit-c3"
   },
   "keywords": [
     "CanJS",
     "UI",
     "Chart",
     "D3",
+    "C3",
     "SVG"
   ],
   "author": "Bitovi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bitovi-components/c3-chart/issues"
+    "url": "https://github.com/bitovi-components/bit-c3/issues"
   },
-  "homepage": "https://github.com/bitovi-components/c3-chart"
+  "homepage": "https://github.com/bitovi-components/bit-c3"
 }

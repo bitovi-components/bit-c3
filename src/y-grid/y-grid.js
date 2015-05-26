@@ -2,28 +2,28 @@ import can from "can";
 import C3YGridVM from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.components.c3-y-grid <c3-y-grid>
- * @parent c3-chart.components 6
+ * @module {can.Component} bit-c3.components.bit-c3-y-grid <bit-c3-y-grid>
+ * @parent bit-c3.components 6
  *
  * @author Kyle Gifford
  *
  * @description
  * Chart Y grid element
  *
- * @signature '<c3-y-grid></c3-y-grid>'
+ * @signature '<bit-c3-y-grid></bit-c3-y-grid>'
  *
  * @body
  *
  * ## Component Initialization
  *
  * ```html
- * <c3-chart>
- *   <c3-y-grid></c3-y-grid>
- * </c3-chart>
+ * <bit-c3>
+ *   <bit-c3-y-grid></bit-c3-y-grid>
+ * </bit-c3>
  * ```
  */
 can.Component.extend({
-	tag: "c3-y-grid",
+	tag: "bit-c3-y-grid",
 	viewModel: C3YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {

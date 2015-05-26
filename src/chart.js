@@ -6,8 +6,8 @@ import template from "./chart.stache!";
 import C3ChartViewModel from './viewmodel';
 
 /**
- * @module {can.Component} c3-chart.components.c3-chart <c3-chart>
- * @parent c3-chart.components 0
+ * @module {can.Component} bit-c3.components.bit-c3 <bit-c3>
+ * @parent bit-c3.components 0
  *
  * @author Kyle Gifford
  *
@@ -15,18 +15,18 @@ import C3ChartViewModel from './viewmodel';
  * @description
  * Chart container
  *
- * @signature '<c3-chart></chart>'
+ * @signature '<bit-c3></chart>'
  *
  * @body
  *
  * ## Component Initialization
  *
  * ```html
- * <c3-chart></c3-chart>
+ * <bit-c3></bit-c3>
  * ```
  */
 can.Component.extend({
-    tag: "c3-chart",
+    tag: "bit-c3",
     template: template,
     viewModel: C3ChartViewModel,
     events: {
