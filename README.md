@@ -1,5 +1,3 @@
-# Bit-C3
-
 [![Build Status](https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master)](https://travis-ci.org/bitovi-components/bit-c3)
 
 A live-reloading chart widget that can be loaded by:
