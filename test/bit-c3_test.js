@@ -181,7 +181,7 @@ test('adding, removing, and updating groups', () => {
 
 QUnit.module('bit-c3-data-name');
 
-test('update name', 1, () => {
+test('updateName', 1, () => {
 	var key = 'foo',
 		value = 'bar',
 		chart = {
@@ -203,7 +203,7 @@ test('update name', 1, () => {
 
 QUnit.module('bit-c3-data-type');
 
-test('update name', 2, () => {
+test('updateType', 2, () => {
 	var key = 'foo',
 		value = 'bar',
 		chart = {
@@ -222,11 +222,56 @@ test('update name', 2, () => {
 
 QUnit.module('bit-c3-y-grid');
 
-// no tests currently
+test('updateLine', 1, () => {
+	var line = 'foo',
+		chart = {
+			ygrids: function(obj) {
+				deepEqual(obj, [line], "ygrids is passed the correct value");
+			}
+		},
+		vm = new YGridVM({
+			chart: chart,
+			lines: new can.List([line])
+		});
+	vm.updateLines();
+});
 
 QUnit.module('bit-c3-y-grid-line');
 
-// no tests currently
+test('adding, removing, and updating lines', () => {
+	var value = 'foo',
+		text = 'bar',
+		line = {
+			value: value,
+			text: text,
+			position: null,
+			class: null
+		},
+		vm = new YGridLineVM({
+			value: value,
+			text: text,
+			lines: {}
+		});
+
+	// gridline getter
+	deepEqual(vm.attr('gridLine'), line, "gridline getter makes correct object");
+
+	// adding a value creates a new entry in lines
+	vm.addToLines();
+	var key = vm.attr('key');
+	deepEqual(vm.attr('lines').attr(key).attr(), line, "lines is set correctly");
+
+	// updating value updates the lines
+	var newVal = 'baz';
+	line.value = newVal;
+	vm.attr('value', newVal);
+	vm.updateLines();
+	deepEqual(vm.attr('lines').attr(key).attr(), line, "lines is updated correctly");
+
+	// removal removes the line
+	vm.removeFromLines();
+	equal(vm.attr('lines').attr(key), undefined, "line no longer exists");
+});
 
 QUnit.module('lib');
 
