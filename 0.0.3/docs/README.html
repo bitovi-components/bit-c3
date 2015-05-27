@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Bit-C3  - README</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	
+	<!--[if lt IE 9]>
+   <script type="text/javascript" src="static/html5shiv.js"></script>
+	<!--<![endif]-->
+</head>
+
+<body class="docs">
+	<header>
+		<nav class="container">
+
+			<div class="logo-menu">
+				<a class="brand" href="../../index.html">bit-c3</a>
+			</div>
+
+			<ul class="nav">
+				<li >
+					<a href="../../index.html">Home</a>
+				</li>
+				<li class='active'>
+				  <a href="../../docs/index.html">Examples and API</a>
+				</li>
+				<li class=""><a href="https://github.com/bitovi-components/bit-c3">GitHub</a></li>
+			</ul>
+
+			<div class="pull-right">
+				<div class="bitovi-menu">
+					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
+					<ul class="dropdown-menu">
+						<li><a href="http://bitovi.com">Bitovi.com</a></li>
+						<li><a href="http://bitovi.com/blog/">Blog</a></li>
+						<li><a href="http://bitovi.com/consulting/">Consulting</a></li>
+						<li><a href="http://bitovi.com/training/">Training</a></li>
+						<li><a href="http://bitovi.com/open-source/">Open Source</a></li>
+						<li><a href="http://bitovi.com/people/">People</a></li>
+						<li><a href="http://bitovi.com/contact/">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+<div class="container api">
+
+	
+	<nav class="sidebar">
+		
+		<ul class="api cascading primary-grouping"> 
+	
+		
+		<li class="search-container active parent">
+			<a class="sidebar-title" href="index.html" data-search="Bit-C3">
+				Bit-C3
+			</a>
+			
+		</li>
+		
+		
+			
+			<li class="search-container active">
+			<a class="sidebar-title" href="README.html" data-search="README">
+				README
+			</a>
+			
+		</li>
+			
+		
+	
+</ul>
+	</nav>
+	
+	
+	
+	<article class="content docs">
+	
+	
+		
+		<section class="title">
+			<div class="heading">
+<h1>README</h1>
+	<ul class="tags">
+		<li>page</li>
+	</ul>
+	
+	
+</div>
+
+<div class="sub-heading">
+	
+	
+	<span class="inherits">&nbsp;</span>
+</div>
+
+<ul class="links">
+	
+	
+		<li><a href="https://github.com/bitovi-components/bit-c3#0.0.3/README.md">source</a></li>
+	
+	
+	
+</ul>
+<br />
+		</section>
+		
+		
+		
+		<section class="contents">
+		</section>
+		
+		
+		
+
+		
+		<section class="description">
+			<p><a href="https://travis-ci.org/bitovi-components/bit-c3"><img src="https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master" alt="Build Status" /></a></p>
+
+		</section>
+		
+
+		
+			
+		
+		
+		
+		
+
+		
+		<section class="comment">
+			<p>A live-reloading chart widget that can be loaded by:</p>
+<ul>
+<li>StealJS + ES6</li>
+<li>npm / browserify / CJS</li>
+<li>RequireJS / AMD</li>
+<li>Standalone with CanJS and jQuery</li>
+</ul>
+<h2>Install</h2>
+<p>Use NPM to install <code>bit-c3</code>:</p>
+<p><code>npm install bit-c3 --save</code></p>
+<h2>Usage</h2>
+<p>See <a href="http://bitovi-components.github.io/bit-c3">http://bitovi-components.github.io/bit-c3</a> for usage instructions, examples and documentation.</p>
+<h2>ES6 use</h2>
+<p>With StealJS, you can import this module directly in a template that is autorendered:</p>
+<pre><code class="language-html">&lt;script type=&quot;text/stache&quot; id=&quot;demo&quot; can-autorender&gt;
+    &lt;can-import from=&quot;bit-c3&quot; /&gt;
+    &lt;bit-c3&gt;
+        &lt;bit-c3-data&gt;
+            &lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
+        &lt;/bit-c3-data&gt;
+    &lt;/bit-c3&gt;
+&lt;/script&gt;
+
+&lt;script src='./node_modules/steal/steal.js'
+    main=&quot;can/view/autorender/&quot;&gt;
+
+    import can from &quot;can&quot;;
+    import $ from &quot;jquery&quot;;
+
+    $(&quot;#demo&quot;).viewModel().attr({
+        dataSource: new can.List([1, 2, 3])
+    });
+&lt;/script&gt;
+
+</code></pre>
+<p>Alternatively, you can import this module like:</p>
+<pre><code class="language-js">import &quot;bit-c3&quot;;
+import can from &quot;can&quot;;
+import $ from &quot;jquery&quot;;
+import stache from &quot;can/view/stache/stache&quot;;
+
+var template = stache('&lt;bit-c3&gt;' +
+    '&lt;bit-c3-data&gt;' +
+        '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+    '&lt;/bit-c3-data&gt;' +
+'&lt;/bit-c3&gt;');
+
+$(&quot;body&quot;).append(template({
+    dataSource: new can.List([1, 2, 3])
+}));
+
+</code></pre>
+<h2>CJS use</h2>
+<p>Use <code>require</code> to load <code>bit-c3</code> and everything else
+needed to create a template that uses <code>bit-c3</code>:</p>
+<pre><code class="language-js">var can = require(&quot;canjs&quot;);
+var $ = require(&quot;jquery&quot;)
+
+// Add's bit-c3 tag
+require(&quot;bit-c3&quot;);
+// Use stache
+require(&quot;canjs/view/stache/stache&quot;);
+
+var bitC3template = can.stache('&lt;bit-c3&gt;' +
+    '&lt;bit-c3-data&gt;' +
+        '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+    '&lt;/bit-c3-data&gt;' +
+'&lt;/bit-c3&gt;');
+
+$(&quot;body&quot;).append(bitC3template({
+    dataSource: new can.List([1, 2, 3])
+}));
+
+</code></pre>
+<h2>AMD use</h2>
+<p>Configure the <code>can</code>, <code>jquery</code>, <code>c3</code>, and <code>d3</code> paths and the <code>bit-c3s</code> package:</p>
+<pre><code class="language-html">&lt;script src=&quot;require.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    require.config({
+        paths: {
+            &quot;jquery&quot;: &quot;node_modules/jquery/dist/jquery&quot;,
+            &quot;can&quot;: &quot;node_modules/canjs/dist/amd/can&quot;
+        },
+        packages: [{
+                name: 'bit-c3',
+                location: 'node_modules/bit-c3/dist/amd',
+                main: 'bit-c3'
+        }]
+    });
+    require([&quot;main-amd&quot;], function(){});
+&lt;/script&gt;
+</code></pre>
+<p>Make sure you have the <code>css</code> plugin configured also!</p>
+<p>Use bit-c3 like:</p>
+<pre><code class="language-js">define([&quot;can&quot;, &quot;jquery&quot;, &quot;can/view/stache&quot;, &quot;bit-c3&quot;], function(can, $) {
+    var bitC3template = can.stache('&lt;bit-c3&gt;' +
+        '&lt;bit-c3-data&gt;' +
+            '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+        '&lt;/bit-c3-data&gt;' +
+    '&lt;/bit-c3&gt;');
+
+    $(&quot;body&quot;).append(bitC3template({
+        dataSource: new can.List([1, 2, 3])
+    }));
+});
+</code></pre>
+<h2>Standalone use</h2>
+<p>Load the <code>global</code> css and js files:</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; 
+      href=&quot;./node_modules/bit-c3/dist/global/bit-c3.css&quot; /&gt;
+      
+&lt;script src='./node_modules/jquery/dist/jquery.js'&gt;&lt;/script&gt;
+&lt;script src='./node_modules/canjs/dist/can.jquery.js'&gt;&lt;/script&gt;
+&lt;script src='./node_modules/canjs/dist/can.stache.js'&gt;&lt;/script&gt;
+&lt;script src='./node_modules/bit-c3/dist/global/bit-c3.js'&gt;&lt;/script&gt;
+&lt;script id='main-stache' text='text/stache'&gt;
+    &lt;bit-c3&gt;
+        &lt;bit-c3-data&gt;
+            &lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;
+        &lt;/bit-c3-data&gt;
+    &lt;/bit-c3&gt;
+&lt;/script&gt;
+&lt;script&gt;
+    var bitC3template = can.stache('&lt;h2&gt;bit-c3&lt;/h2&gt;&lt;bit-c3&gt;' +
+        '&lt;bit-c3-data&gt;' +
+            '&lt;bit-c3-data-column key=&quot;dataSource&quot; value=&quot;{dataSource}&quot; /&gt;' +
+        '&lt;/bit-c3-data&gt;' +
+    '&lt;/bit-c3&gt;');
+
+    $(&quot;body&quot;).append(bitC3template({
+        dataSource: new can.List([1, 2, 3])
+    }));
+&lt;/script&gt;
+</code></pre>
+<h2>Contributing</h2>
+<p>To setup your dev environment:</p>
+<ol>
+<li>Clone and fork this repo.</li>
+<li>Run <code>npm install</code>.</li>
+<li>Run <code>grunt test</code>. Everything should pass.</li>
+<li>Launch development server by running <code>grunt serve</code>.</li>
+<li>Run <code>grunt build</code>.  Everything should build ok.</li>
+</ol>
+<p>To publish:</p>
+<ol>
+<li>Update the version number in package.json and commit and push this.</li>
+<li>Run <code>npm publish</code>.  This should generate the dist folder.</li>
+<li>Create and checkout a &quot;release&quot; branch.</li>
+<li>Run <code>git add -f dist</code>.</li>
+<li>Commit the addition and tag it <code>git tag v0.2.0</code>.  Push the tag <code>git push origin --tags</code>.</li>
+</ol>
+
+		</section>
+		
+		
+
+		
+
+		
+	
+	
+	</article>
+	
+	
+
+</div>
+
+
+
+
+
+	
+	<footer>
+		<nav class="container">
+			<a class="brand javascriptmvc" href="../../index.html"></a>
+		</nav>
+	</footer>
+	
+	
+	<script type="text/javascript">
+		var docObject = {"type":"page","name":"README","src":"./README.md","description":"[![Build Status](https://travis-ci.org/bitovi-components/bit-c3.svg?branch=master)](https://travis-ci.org/bitovi-components/bit-c3)","templates":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/templates","static":"/Users/kyle/projects/bitovi-components/bit-c3-docs/theme/static","glob":{"pattern":"./**/*.{js,md}","ignore":"./{node_modules}/**/*.*","cwd":"/Users/kyle/projects/bitovi-components/bit-c3-docs/0.0.3/bit-c3"},"package":{"repository":{"github":"https://github.com/bitovi-components/bit-c3"},"version":"0.0.1"},"dest":"/Users/kyle/projects/bitovi-components/bit-c3-docs/0.0.3/docs","generators":["html"],"page":"docs","docConfigDest":"../../documentjs.json","project":{"version":"0.0.3","name":"bit-c3","source":"https://github.com/bitovi-components/bit-c3#0.0.3"}};
+	</script>
+	
+	
+		<script>
+		  steal = {
+			instantiated: {
+			  "bundles/static.css!$css" : null
+			}
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal.production.js"
+				bundles-path="bundles"></script>
+	
+</body>
+
+</html>
