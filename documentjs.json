@@ -1,10 +1,10 @@
 {
 	"versions": {
-		"0.0.1": {
-			"source": "https://github.com/bitovi-components/bit-c3#master"
+		"0.0.4": {
+			"source": "https://github.com/bitovi-components/bit-c3#0.0.4"
 		}
 	},
-	"defaultVersion": "0.0.1",
+	"defaultVersion": "0.0.4",
 	"siteDefaults": {
 		"templates": "theme/templates",
         "static": "theme/static"

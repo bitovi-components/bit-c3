@@ -1,7 +1,7 @@
 {
   "name": "bit-c3",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.3",
+  "description": "Build C3 charts with CanJS components",
   "main": "dist/cjs/bit-c3",
   "dependencies": {
     "can": "2.2.5",
@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "jquery": ">1.11.3",
-    "steal": "^0.10.4",
+    "steal": "^0.10.5",
     "steal-qunit": "^0.0.4",
-    "steal-tools": "^0.10.4"
+    "steal-tools": "^0.10.5"
   },
   "system": {
     "main": "bit-c3",
