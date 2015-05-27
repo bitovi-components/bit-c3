@@ -30,9 +30,9 @@
     "grunt-cli": "^0.1.13",
     "grunt-serve": "^0.1.6",
     "jquery": ">1.11.3",
-    "steal": "^0.10.4",
+    "steal": "^0.10.5",
     "steal-qunit": "^0.0.4",
-    "steal-tools": "^0.10.4",
+    "steal-tools": "^0.10.5",
     "testee": "^0.2.0"
   },
   "system": {
