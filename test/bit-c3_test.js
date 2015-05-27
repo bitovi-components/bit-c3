@@ -157,15 +157,68 @@ test('updateColumn and unloadColumn', 6, () => {
 
 QUnit.module('bit-c3-data-group');
 
-// no tests currently
+test('adding, removing, and updating groups', () => {
+	var value = new can.List([1, 2, 3]),
+		vm = new GroupVM({
+			value: value,
+			groups: {}
+		});
+
+	// adding a value creates a new entry in groups
+	vm.addToGroups();
+	var key = vm.attr('key');
+	deepEqual(vm.attr('groups').attr(key), value, "groups is set correctly");
+
+	// updating value updates the group
+	value.push(4);
+	vm.updateGroup();
+	deepEqual(vm.attr('groups').attr(key), value, "groups is updated correctly");
+
+	// removal removes the group
+	vm.removeFromGroups();
+	equal(vm.attr('groups').attr(key), undefined, "group no longer exists");
+});
 
 QUnit.module('bit-c3-data-name');
 
-// no tests currently
+test('update name', 1, () => {
+	var key = 'foo',
+		value = 'bar',
+		chart = {
+			data: {
+				names: function(obj) {
+					var result = {};
+					result[key] = value;
+					deepEqual(result, obj, "names is called with correct object");
+				}
+			}
+		},
+		vm = new NameVM({
+			chart: chart,
+			key: key,
+			value: value
+		});
+	vm.updateName();
+});
 
 QUnit.module('bit-c3-data-type');
 
-// no tests currently
+test('update name', 2, () => {
+	var key = 'foo',
+		value = 'bar',
+		chart = {
+			transform: function(resVal, resKey) {
+				equal(resVal, value, "transform is called with the correct value");
+				equal(resKey, key, "transform is called with the correct key");
+			}
+		},
+		vm = new TypeVM({
+			chart: chart,
+			key: key,
+			value: value
+		});
+	vm.updateType();
+});
 
 QUnit.module('bit-c3-y-grid');
 
