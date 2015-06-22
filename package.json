@@ -24,6 +24,7 @@
     "c3": "0.4.10"
   },
   "devDependencies": {
+    "can-connect": "0.0.2",
     "documentjs": "git://github.com/bitovi/documentjs#master",
     "funcunit": "^3.0.0",
     "grunt": "~0.4.4",
