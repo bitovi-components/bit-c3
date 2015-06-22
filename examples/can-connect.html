@@ -30,12 +30,12 @@
       // import fixture from 'can-connect/fixture/';
 
       const orderData = [
-        { total: 30 },
-        { total: 200 },
-        { total: 100 },
-        { total: 400 },
-        { total: 150 },
-        { total: 250 }
+        { id: 0, total: 30 },
+        { id: 1, total: 200 },
+        { id: 2, total: 100 },
+        { id: 3, total: 400 },
+        { id: 4, total: 150 },
+        { id: 5, total: 250 }
       ];
 
       // fixture('GET /api/orders', function() {
@@ -48,7 +48,9 @@
         Map: Order
       }, {
         totals() {
-          return Array.prototype.map.call(this, order => order.total);
+          let totals = ['Order total'];
+          this.each(order => totals.push(order.total));
+          return totals;
         }
       });
 
