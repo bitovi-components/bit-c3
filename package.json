@@ -18,10 +18,10 @@
     "prepublish": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
-    "can": "2.2.5",
+    "c3": "0.4.10",
+    "can": "^2.3.0-pre.1",
     "cssify": "0.6.0",
-    "d3": "<=3.5.0",
-    "c3": "0.4.10"
+    "d3": "<=3.5.0"
   },
   "devDependencies": {
     "can-connect": "0.0.2",

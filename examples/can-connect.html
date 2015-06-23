@@ -4,9 +4,7 @@
   </head>
   <body>
     <!-- Template to load -->
-    <script type="text/stache" id="demo-html" can-autorender>
-      <can-import from="bit-c3" />
-
+    <script type="text/stache" id="demo-html">
       <order-model get-list="{}">
         {{#if isPending}}
           Loading...
@@ -22,12 +20,15 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+    <script src="../node_modules/steal/steal.js" id="demo-source" main="@empty">
       import $ from "jquery";
       import can from "can";
+      import 'can/view/import/';
+      import 'can/view/stache/';
+      import 'bit-c3';
       import superMap from 'can-connect/can/super-map/';
       import tag from 'can-connect/can/tag/';
-      // import fixture from 'can-connect/fixture/';
+      import fixture from 'can/util/fixture/';
 
       const orderData = [
         { id: 0, total: 30 },
@@ -37,10 +38,6 @@
         { id: 4, total: 150 },
         { id: 5, total: 250 }
       ];
-
-      // fixture('GET /api/orders', function() {
-      //   return orderData;
-      // });
 
       const Order = can.Map.extend({});
 
@@ -64,8 +61,11 @@
 
       tag('order-model', orderConnection);
 
-      var vm = $("#demo-html").viewModel();
-      vm.attr('value', new Order.List(orderData));
+      fixture('GET /api/orders', function() {
+        return orderData;
+      });
+
+      $('body').append(can.view('demo-html', {}));
     </script>
   </body>
 </html>
