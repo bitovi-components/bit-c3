@@ -7,9 +7,8 @@
 /* global Base: true */
 /* global Product: true */
 /* global Organisation: true */
-/* global Company: true */
 /* global My: true */
-steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-qunit", function () {
+steal("can/model", "can/test", "can/util/fixture", "steal-qunit", function () {
 	QUnit.module('can/model', {
 		setup: function () {}
 	});
@@ -76,6 +75,7 @@ steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-
 				start();
 			});
 	});
+
 	asyncTest('findAll deferred reject', function () {
 		// This test is automatically paused
 		function rejectDeferred(df) {
@@ -923,8 +923,8 @@ steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-
 	});
 	test('uses attr with isNew', function () {
 		// TODO this does not seem to be consistent expect(2);
-		var old = can.__reading;
-		can.__reading = function (object, attribute) {
+		var old = can.__observe;
+		can.__observe = function (object, attribute) {
 			if (attribute === 'id') {
 				ok(true, 'used attr');
 			}
@@ -933,7 +933,7 @@ steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-
 			id: 4
 		});
 		m.isNew();
-		can.__reading = old;
+		can.__observe = old;
 	});
 	test('extends defaults by calling base method', function () {
 		var M1 = can.Model.extend({
@@ -1095,44 +1095,6 @@ steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-
 			equal(items[0].name, 'Thing One', 'items added');
 			start();
 		});
-	});
-	test('Creating nested models adds them to the store (#357)', function () {
-		// Raw data. Nested object is there twice
-		var employees = [{
-			id: 1,
-			name: 'David',
-			company: {
-				id: 2,
-				name: 'Google'
-			}
-		}, {
-			id: 2,
-			name: 'Tom',
-			company: {
-				id: 3,
-				name: 'Amazon'
-			}
-		}, {
-			id: 3,
-			name: 'John',
-			company: {
-				id: 2,
-				name: 'Google'
-			}
-		}];
-		// Company model
-		Company = can.Model.extend({}, {});
-		// Person model with nested Company
-		Person = can.Model.extend({
-			attributes: {
-				company: 'Company.model'
-			}
-		}, {});
-		// Initialize raw data as Model instances
-		var people = Person.models(employees);
-		// Suddenly Google was bought by Bitovi! and we need to change name.
-		people[0].company.attr('name', 'Bitovi');
-		ok(people[0].company === people[2].company, 'found the same company instance');
 	});
 
 	test('destroy not calling callback for new instances (#403)', function () {
@@ -1434,6 +1396,35 @@ steal("can/model", 'can/map/attributes', "can/test", "can/util/fixture", "steal-
 			start();
 		});
 
+	});
+
+	test("findAll rejects when parseModels returns non-array data #1662", function(){
+		can.fixture("/mymodels", function () {
+			return {
+				status: 'success',
+				message: ''
+			};
+		});
+
+		var MyModel = can.Model.extend({
+			findAll: "/mymodels",
+			parseModels: function(raw) {
+				raw.data = undefined;
+				return raw;
+			}
+		}, {});
+
+		stop();
+
+		MyModel.findAll({})
+			.then(function(){
+				ok(false, 'This should not succeed');
+				start();
+			}, function(err){
+				ok(err instanceof Error, 'Got an error');
+				equal(err.message, 'Could not get any raw data while converting using .models');
+				start();
+			});
 	});
 
 	test("Nested lists", function(){

@@ -4,9 +4,10 @@
   "description": "Build C3 charts with CanJS components",
   "main": "dist/cjs/bit-c3",
   "dependencies": {
-    "can": "2.2.5",
-    "d3": "<=3.5.0",
-    "c3": "0.4.10"
+    "c3": "0.4.10",
+    "can": "^2.3.0-pre.1",
+    "can-connect": "0.0.2",
+    "d3": "<=3.5.0"
   },
   "devDependencies": {
     "jquery": ">1.11.3",

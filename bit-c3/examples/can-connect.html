@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Line Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html">
+      <order-model get-list="{}">
+        {{#if isPending}}
+          Loading...
+        {{else}}
+          <bit-c3>
+            <bit-c3-data>
+              <bit-c3-data-column value="{value.totals}" />
+              <bit-c3-data-name key="orders" value="Order volume" />
+            </bit-c3-data>
+          </bit-c3>
+        {{/if}}
+      </order-model>
+    </script>
+
+    <!-- Loading Script -->
+    <script src="../node_modules/steal/steal.js" id="demo-source" main="@empty">
+      import $ from "jquery";
+      import can from "can";
+      import 'can/view/import/';
+      import 'can/view/stache/';
+      import 'bit-c3';
+      import superMap from 'can-connect/can/super-map/';
+      import tag from 'can-connect/can/tag/';
+      import fixture from 'can/util/fixture/';
+
+      const orderData = [
+        { id: 0, total: 30 },
+        { id: 1, total: 200 },
+        { id: 2, total: 100 },
+        { id: 3, total: 400 },
+        { id: 4, total: 150 },
+        { id: 5, total: 250 }
+      ];
+
+      const Order = can.Map.extend({});
+
+      Order.List = can.List.extend({
+        Map: Order
+      }, {
+        totals() {
+          let totals = ['Order total'];
+          this.each(order => totals.push(order.total));
+          return totals;
+        }
+      });
+
+      const orderConnection = superMap({
+        url: '/api/orders',
+        idProp: 'short',
+        Map: Order,
+        List: Order.List,
+        name: 'orders'
+      });
+
+      tag('order-model', orderConnection);
+
+      fixture('GET /api/orders', function() {
+        return orderData;
+      });
+
+      $('body').append(can.view('demo-html', {}));
+    </script>
+  </body>
+</html>
