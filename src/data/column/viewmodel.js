@@ -18,7 +18,7 @@ export default can.Map.extend({
 	'dequeueKey': function() {
 		var value = this.attr('value') && this.attr('value').attr(),
 			key = this.attr('key');
-		if(key === null || (value !== null && value.length && value[0] === key)) {
+		if(value !== null && (key === null || (value.length && value[0] === key))) {
 			this.attr('key', value.shift());
 		}
 		return value;
