@@ -1,10 +1,9 @@
-steal("can/util", "can/view/live","./utils.js",function(can, live, utils){
+steal("can/util", "can/view/live","./utils.js", "./live_attr.js", function(can, live, utils, liveStache) {
 	live = live || can.view.live;
 	
 	var TextSectionBuilder = function(){
 		this.stack = [new TextSection()];
-	},
-		emptyHandler = function(){};
+	};
 	
 	can.extend(TextSectionBuilder.prototype,utils.mixins);
 	
@@ -32,18 +31,18 @@ steal("can/util", "can/view/live","./utils.js",function(can, live, utils){
 				
 				var compute = can.compute(function(){
 					return renderer(scope, options);
-				}, this, false, true);
+				}, null, false);
 				
-				compute.bind("change", emptyHandler);
+				compute.computeInstance.bind("change", can.k);
 				var value = compute();
 				
 				if( compute.computeInstance.hasDependencies ) {
 					if(state.attr) {
 						live.simpleAttribute(this, state.attr, compute);
 					} else {
-						live.attributes( this, compute );
+						liveStache.attributes(this, compute, scope, options);
 					}
-					compute.unbind("change", emptyHandler);
+					compute.computeInstance.unbind("change", can.k);
 				} else {
 					if(state.attr) {
 						can.attr.set(this, state.attr, value);

@@ -5,15 +5,16 @@
   "main": "dist/cjs/bit-c3",
   "dependencies": {
     "c3": "0.4.10",
-    "can": "^2.3.0-pre.1",
-    "can-connect": "0.0.2",
+    "can": "git://github.com/bitovi/canjs.git#master",
+    "can-connect": "^0.3.1",
+    "can-fixture": "0.0.1",
     "d3": "<=3.5.0"
   },
   "devDependencies": {
     "jquery": ">1.11.3",
-    "steal": "^0.10.5",
+    "steal": "^0.12.1",
     "steal-qunit": "^0.0.4",
-    "steal-tools": "^0.10.5"
+    "steal-tools": "^0.12.0"
   },
   "system": {
     "main": "bit-c3",

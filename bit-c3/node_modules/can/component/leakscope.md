@@ -6,7 +6,7 @@ a component's viewModel values in the user content.
 
 @option {Boolean}  `false` limits reading to:
  
-- the component's viewModel from the the component's template, and
+- the component's viewModel from the component's template, and
 - the outer scope values from the user content.
 
 `true` adds the ability to read:
@@ -57,7 +57,7 @@ If the following component is defined:
         tag: "hello-world",
         leakScope: true, // the default value
         template: can.stache("{{greeting}} <content/>{{exclamation}}"),
-        viewModel: { greeting: "Hello", subject: "LEAK" }
+        viewModel: { subject: "LEAK", exclamation: "!" }
     })
 
 And used like so:
@@ -66,7 +66,7 @@ And used like so:
 
 With the following data in the outer scope:
 
-    { subject: "World", exclamation: "!" }
+    { greeting: "Hello", subject: "World"}
 
 Will render the following if `leakScope` is true:
 

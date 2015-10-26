@@ -847,4 +847,15 @@ if(typeof window !== 'undefined' && window.Worker) {
   });
 }
 
+asyncTest("inferGlobals: false will not attempt to define an export", function(){
+  expect(1);
+  System.inferGlobals = false;
+  System['import']('tests/global-with-export2').then(function(mod){
+    deepEqual(mod, {}, "global module has no value");
+    System.inferGlobals = true;
+    start();
+  });
+});
+
+
 })(typeof window == 'undefined' ? global : window);

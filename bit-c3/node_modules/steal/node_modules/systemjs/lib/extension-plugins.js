@@ -32,12 +32,12 @@ function plugins(loader) {
 
         // normalize the plugin name relative to the same parent
         return new Promise(function(resolve) {
-          resolve(loader.normalize(pluginName, parentName, parentAddress)); 
+          resolve(loader.normalize(pluginName, parentName, parentAddress));
         })
         // normalize the plugin argument
         .then(function(_pluginName) {
           pluginName = _pluginName;
-          return loader.normalize(argumentName, parentName, parentAddress);
+          return loader.normalize(argumentName, parentName, parentAddress, true);
         })
         .then(function(argumentName) {
           return argumentName + '!' + pluginName;

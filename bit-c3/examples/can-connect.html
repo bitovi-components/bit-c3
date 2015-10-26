@@ -3,41 +3,35 @@
     <title>Line Chart</title>
   </head>
   <body>
+    <div id="app">
+      Building...
+    </div>
+
     <!-- Template to load -->
-    <script type="text/stache" id="demo-html">
-      <order-model get-list="{}">
-        {{#if isPending}}
-          Loading...
-        {{else}}
-          <bit-c3>
-            <bit-c3-data>
-              <bit-c3-data-column value="{value.totals}" />
-              <bit-c3-data-name key="orders" value="Order volume" />
-            </bit-c3-data>
-          </bit-c3>
-        {{/if}}
-      </order-model>
+    <script type="text/stache" id="demo-template">
+      <order-model get-list="{ period='previous_week' }" {^value}="*previousWeek" />
+      <order-model get-list="{ period='current_week' }" {^value}="*currentWeek" />
+
+      <bit-c3>
+        <bit-c3-data>
+          <bit-c3-data-column key="Last Week" {value}="*previousWeek.totals" />
+          <bit-c3-data-column key="This Week" {value}="*currentWeek.totals" />
+        </bit-c3-data>
+      </bit-c3>
     </script>
 
     <!-- Loading Script -->
     <script src="../node_modules/steal/steal.js" id="demo-source" main="@empty">
       import $ from "jquery";
       import can from "can";
-      import 'can/view/import/';
       import 'can/view/stache/';
       import 'bit-c3';
+
       import superMap from 'can-connect/can/super-map/';
       import tag from 'can-connect/can/tag/';
-      import fixture from 'can/util/fixture/';
+      import fixture from 'can-fixture/fixture';
 
-      const orderData = [
-        { id: 0, total: 30 },
-        { id: 1, total: 200 },
-        { id: 2, total: 100 },
-        { id: 3, total: 400 },
-        { id: 4, total: 150 },
-        { id: 5, total: 250 }
-      ];
+      // Data Model
 
       const Order = can.Map.extend({});
 
@@ -45,7 +39,7 @@
         Map: Order
       }, {
         totals() {
-          let totals = ['Order total'];
+          let totals = [ ];
           this.each(order => totals.push(order.total));
           return totals;
         }
@@ -53,7 +47,7 @@
 
       const orderConnection = superMap({
         url: '/api/orders',
-        idProp: 'short',
+        idProp: 'id',
         Map: Order,
         List: Order.List,
         name: 'orders'
@@ -61,11 +55,35 @@
 
       tag('order-model', orderConnection);
 
-      fixture('GET /api/orders', function() {
-        return orderData;
+      // Mock Backend Responses
+
+      fixture('GET /api/orders', function(request) {
+        let requestData = request.data || {};
+
+        if(requestData.period === 'previous_week') {
+          return [
+            { id: 0, total: 30 },
+            { id: 1, total: 200 },
+            { id: 2, total: 100 },
+            { id: 3, total: 400 },
+            { id: 4, total: 150 },
+            { id: 5, total: 250 }
+          ];
+        }
+        else {
+          return [
+            { id: 6, total: 35 },
+            { id: 7, total: 210 },
+            { id: 8, total: 120 },
+            { id: 9, total: 440 },
+            { id: 10, total: 230 }
+          ];
+        }
       });
 
-      $('body').append(can.view('demo-html', {}));
+      // Render Template
+
+      $('#app').html(can.view('demo-template', { }));
     </script>
   </body>
 </html>
