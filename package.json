@@ -18,7 +18,7 @@
     "prepublish": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
-    "can": "2.2.5",
+    "can": "~2.2.5",
     "cssify": "0.6.0",
     "d3": "<=3.5.0",
     "c3": "0.4.10"
