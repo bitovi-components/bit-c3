@@ -29,7 +29,7 @@
     "grunt": "~0.4.4",
     "grunt-cli": "^0.1.13",
     "grunt-serve": "^0.1.6",
-    "jquery": ">1.11.3",
+    "jquery": "~2.1.4",
     "steal": "^0.10.5",
     "steal-qunit": "^0.0.4",
     "steal-tools": "^0.10.5",
