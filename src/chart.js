@@ -41,7 +41,7 @@ can.Component.extend({
             this.viewModel.attr('chart', chart);
         },
         removed: function() {
-            this.viewmodel.attr('chart', this.viewModel.attr('chart').destroy());
+            this.viewModel.attr('chart', this.viewModel.attr('chart').destroy());
         }
     }
 });
