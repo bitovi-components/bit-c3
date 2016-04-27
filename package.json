@@ -1,6 +1,6 @@
 {
   "name": "bit-c3",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Build C3 charts with CanJS components",
   "main": "dist/cjs/bit-c3",
   "browser": {
@@ -18,7 +18,7 @@
     "prepublish": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
-    "can": "~2.2.5",
+    "can": "^2.2.5",
     "cssify": "0.6.0",
     "d3": "<=3.5.0",
     "c3": "0.4.10"
@@ -30,9 +30,9 @@
     "grunt-cli": "^0.1.13",
     "grunt-serve": "^0.1.6",
     "jquery": "~2.1.4",
-    "steal": "^0.10.5",
-    "steal-qunit": "^0.0.4",
-    "steal-tools": "^0.10.5",
+    "steal": "^0.16.2",
+    "steal-qunit": "^0.1.1",
+    "steal-tools": "^0.16.2",
     "testee": "^0.2.0"
   },
   "system": {
