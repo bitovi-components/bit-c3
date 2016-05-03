@@ -279,3 +279,22 @@ test('randomString generates a correct length string', () => {
 	var stringLength = 50;
 	equal(randomString(stringLength).length, stringLength);
 });
+
+
+QUnit.module('Template tests (slow)');
+
+test('Should remove chart from DOM correctly', 1, (assert) => {
+	let tpl = '{{#if isVisible}}<bit-c3><bit-c3-data><bit-c3-data-column/></bit-c3-data></bit-c3>{{/if}}',
+		vm = new (can.Map.extend({
+			define: {isVisible: {value: true}}
+		}))(),
+		frag = can.stache(tpl)(vm);
+
+	// We need to render the fragment because test requires the "inserted" event of the components being called:
+	$('#qunit-fixture').append(frag);
+
+	vm.attr('isVisible', false);
+
+	// The test will fail if removing the chart from DOM causes a JS exception.
+	assert.ok(true, 'Chart was correctly removed');
+});

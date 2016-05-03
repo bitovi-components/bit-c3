@@ -44,7 +44,10 @@ can.Component.extend({
 			this.viewModel.updateColumn();
 		},
 		removed: function() {
-			this.viewModel.unloadColumn();
+			// check if the chart was not destroyed:
+			if (this.element.parent().scope().attr('chart')){
+				this.viewModel.unloadColumn();
+			}
 		},
 		"{viewModel} valueSerialized": function() {
 			this.viewModel.updateColumn();
