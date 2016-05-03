@@ -46,6 +46,11 @@ can.Component.extend({
 		"{viewModel} change": function(viewModel, ev, attr, type, newVal, oldVal) {
 			// console.log(attr, 'from', oldVal, 'to', newVal);
 			this.viewModel.loadAttributeOnChart(attr);
+		},
+		removed: function(){
+			// This component could be removed only if the chart was destroyed.
+			// Clean up `chart` property to let the child components know that the chart was destroyed:
+			this.viewModel.removeAttr('chart');
 		}
 	}
 });
