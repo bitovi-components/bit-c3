@@ -27,10 +27,15 @@ export default can.Map.extend({
 		var value = this.dequeueKey(this.attr('value')),
 			key = this.attr('key'),
 			chart = this.attr('chart'),
-			pushing = [key].concat(value);
+			pushing = [key].concat(value),
+			columns = [pushing];
+
+		if (this.attr('axisX')){
+			columns.unshift(this.attr('axisX').attr());
+		}
 		if(value && value.length) {
 			chart.load({
-				columns: [pushing]
+				columns: columns
 			});
 		} else {
 			this.unloadColumn();
