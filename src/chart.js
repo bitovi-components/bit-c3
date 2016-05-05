@@ -22,6 +22,8 @@ import ChartVM from './viewmodel';
  *
  * ```html
  * <bit-c3></bit-c3>
+ *
+ * <bit-c3 axis-x-type="category"></bit-c3>
  * ```
  */
 Component.extend({
@@ -31,14 +33,25 @@ Component.extend({
     events: {
         inserted: function(viewModel, ev) {
             var rootElement = ev.target,
-                graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]),
-                chart = c3.generate({
-                    bindto: graphBaseElement,
-                    data: {
-                        columns: []
+              graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]),
+              axisXType = this.viewModel.attr('axisXType'),
+              config = {
+                  bindto: graphBaseElement,
+                  data: {
+                      columns: []
+                  }
+              };
+
+            if (axisXType){
+                config.data.x = 'x';
+                config.axis = {
+                    x: {
+                        type: axisXType
                     }
-                });
-            this.viewModel.chart = chart;
+                }
+            }
+
+            this.viewModel.chart = c3.generate(config);
         },
         removed: function() {
             if (this.viewModel.chart){
