@@ -24,6 +24,8 @@ import ChartVM from './viewmodel';
  * <bit-c3></bit-c3>
  *
  * <bit-c3 axis-x-type="category"></bit-c3>
+ *
+ * <bit-c3 onclick="true" (click)="clickHandler(%event)"></bit-c3>
  * ```
  */
 can.Component.extend({
@@ -48,6 +50,15 @@ can.Component.extend({
                     x: {
                         type: axisXType
                     }
+                }
+            }
+            /**
+             * C3 config data.onclick. If onclick is true then viewModel click event with data will be dispatched.
+             */
+            if (this.viewModel.attr('onclick')){
+                let self = this;
+                config.data.onclick = function(d, element){
+                    self.viewModel.dispatch({type:'click', data:d}, [d]);
                 }
             }
             this.viewModel.attr('chart', c3.generate(config));
