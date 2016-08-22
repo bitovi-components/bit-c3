@@ -24,6 +24,7 @@ import YGridVM from './viewmodel';
  */
 can.Component.extend({
 	tag: "bit-c3-y-grid",
+  leakScope: true,
 	viewModel: YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {

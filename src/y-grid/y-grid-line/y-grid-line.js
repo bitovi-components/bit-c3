@@ -30,6 +30,7 @@ import YGridLineVM from './viewmodel';
  */
 can.Component.extend({
 	tag: "bit-c3-y-grid-line",
+  leakScope: true,
 	viewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {

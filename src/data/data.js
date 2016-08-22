@@ -37,6 +37,7 @@ import DataVM from './viewmodel';
  */
 can.Component.extend({
 	tag: "bit-c3-data",
+  leakScope: true,
 	viewModel: DataVM,
 	events: {
 		inserted: function(viewModel, ev) {

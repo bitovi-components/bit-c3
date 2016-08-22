@@ -37,6 +37,7 @@ import ColumnVM from './viewmodel'
  */
 can.Component.extend({
 	tag: "bit-c3-data-column",
+  leakScope: true,
 	viewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {

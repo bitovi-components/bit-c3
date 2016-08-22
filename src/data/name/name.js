@@ -28,6 +28,7 @@ import NameVM from './viewmodel';
  */
 can.Component.extend({
 	tag: "bit-c3-data-name",
+  leakScope: true,
 	viewModel: NameVM,
 	events: {
 		inserted: function(viewModel, ev) {
