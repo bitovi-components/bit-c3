@@ -9,6 +9,7 @@ import TypeVM from "bit-c3/data/type/";
 import YGridVM from "bit-c3/y-grid/";
 import YGridLineVM from "bit-c3/y-grid/y-grid-line/";
 import {randomString} from "bit-c3/lib/";
+import can from "can/legacy";
 
 F.attach(QUnit);
 
@@ -18,7 +19,7 @@ var flattenCanList = function(list) {
 		flatList.push(value.attr());
 	});
 	return flatList;
-}
+};
 
 QUnit.module('bit-c3');
 
@@ -44,7 +45,7 @@ test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 				deepEqual(names, data, "names is passed the correct data");
 			}
 		}
-	}
+	};
 
 	var vm = new DataVM({
 		chart: chart,
