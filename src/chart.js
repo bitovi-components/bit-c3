@@ -1,4 +1,4 @@
-import can from "can";
+import can from "can/legacy";
 import d3 from "d3";
 import c3 from "c3";
 import template from "./chart.stache!";

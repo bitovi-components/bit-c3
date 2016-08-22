@@ -1,4 +1,4 @@
-import can from "can";
+import can from "can/legacy";
 import YGridVM from './viewmodel';
 
 /**

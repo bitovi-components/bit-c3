@@ -1,4 +1,4 @@
-import can from "can";
+import can from "can/legacy";
 import 'can/map/define/';
 import {randomString} from 'bit-c3/lib/lib';
 
