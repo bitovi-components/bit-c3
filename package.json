@@ -18,12 +18,12 @@
     "prepublish": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
+    "can": "^3.0.0-pre.3",
     "cssify": "0.6.0",
     "d3": "<=3.5.0",
     "c3": "0.4.10"
   },
   "devDependencies": {
-    "can": "^3.0.0-pre.3",
     "documentjs": "git://github.com/bitovi/documentjs#master",
     "funcunit": "^3.0.0",
     "grunt": "~0.4.4",
