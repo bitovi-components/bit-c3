@@ -29,6 +29,7 @@ import YGridLineVM from './viewmodel';
  * ```
  */
 can.Component.extend({
+  leakScope: true,
 	tag: "bit-c3-y-grid-line",
 	viewModel: YGridLineVM,
 	events: {

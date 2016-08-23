@@ -26,6 +26,7 @@ import GroupVM from './viewmodel';
  * ```
  */
 can.Component.extend({
+  leakScope: true,
 	tag: "bit-c3-data-group",
 	viewModel: GroupVM,
 	events: {

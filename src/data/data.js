@@ -1,5 +1,7 @@
 import can from "can/legacy";
 import DataVM from './viewmodel';
+import $ from 'can-jquery';
+import domData from 'can-util/dom/data/';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data <bit-c3-data>
@@ -36,11 +38,12 @@ import DataVM from './viewmodel';
  * ```
  */
 can.Component.extend({
+	leakScope: true,
 	tag: "bit-c3-data",
 	viewModel: DataVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.attr('chart', domData.get.call($(this.element).parent()[0], 'viewModel').attr('chart'));
 			this.viewModel.loadAllAttributesOnChart();
 		},
 		"{viewModel} change": function(viewModel, ev, attr, type, newVal, oldVal) {

@@ -1,5 +1,7 @@
 import can from "can/legacy";
 import ColumnVM from './viewmodel'
+import $ from 'jquery';
+import domData from 'can-util/dom/data/';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-column <bit-c3-data-column>
@@ -36,16 +38,17 @@ import ColumnVM from './viewmodel'
  * ```
  */
 can.Component.extend({
-	tag: "bit-c3-data-column",
+	leakScope: true,
+  tag: "bit-c3-data-column",
 	viewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+      this.viewModel.attr('chart', domData.get.call($(this.element).parent()[0], 'viewModel').attr('chart'));
 			this.viewModel.updateColumn();
 		},
-		removed: function() {
+    beforeremove: function() {
 			// check if the chart was not destroyed:
-			if (this.element.parent().scope().attr('chart')){
+			if (domData.get.call($(this.element).parent()[0], 'viewModel').attr('chart')){
 				this.viewModel.unloadColumn();
 			}
 		},

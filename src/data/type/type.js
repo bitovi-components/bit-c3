@@ -27,6 +27,7 @@ import TypeVM from "./viewmodel";
  * ```
  */
 can.Component.extend({
+  leakScope: true,
 	tag: "bit-c3-data-type",
 	viewModel: TypeVM,
 	events: {

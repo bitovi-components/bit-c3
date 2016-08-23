@@ -18,9 +18,11 @@
     "prepublish": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
+    "c3": "0.4.10",
+    "can-jquery": "^3.0.0-pre.6",
+    "can-util": "^3.0.0-pre.34",
     "cssify": "0.6.0",
-    "d3": "<=3.5.0",
-    "c3": "0.4.10"
+    "d3": "<=3.5.0"
   },
   "devDependencies": {
     "can": "^3.0.0-pre.3",

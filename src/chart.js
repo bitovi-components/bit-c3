@@ -25,6 +25,7 @@ import ChartVM from './viewmodel';
  * ```
  */
 can.Component.extend({
+    leakScope: true,
     tag: "bit-c3",
     template: template,
     viewModel: ChartVM,
@@ -40,7 +41,7 @@ can.Component.extend({
                 });
             this.viewModel.attr('chart', chart);
         },
-        removed: function() {
+        beforeremove: function() {
             this.viewModel.attr('chart', this.viewModel.attr('chart').destroy());
         }
     }
