@@ -34,6 +34,7 @@ can.Component.extend({
 	viewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('lines', this.element.parent().scope().attr('lines'));
 			this.viewModel.addToLines();
 		},

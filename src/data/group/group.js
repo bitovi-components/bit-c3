@@ -31,6 +31,7 @@ can.Component.extend({
 	viewModel: GroupVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('groups', this.element.parent().scope().attr('groups'));
 			this.viewModel.addToGroups();
 		},

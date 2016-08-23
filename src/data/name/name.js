@@ -32,6 +32,7 @@ can.Component.extend({
 	viewModel: NameVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
 			this.viewModel.updateName();
 		},
