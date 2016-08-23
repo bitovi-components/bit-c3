@@ -40,6 +40,7 @@ import domData from 'can-util/dom/data/';
 can.Component.extend({
 	leakScope: true,
 	tag: "bit-c3-data",
+  leakScope: true,
 	viewModel: DataVM,
 	events: {
 		inserted: function(viewModel, ev) {

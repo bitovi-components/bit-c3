@@ -29,9 +29,11 @@ import TypeVM from "./viewmodel";
 can.Component.extend({
   leakScope: true,
 	tag: "bit-c3-data-type",
+  leakScope: true,
 	viewModel: TypeVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
 			this.viewModel.updateType();
 		},

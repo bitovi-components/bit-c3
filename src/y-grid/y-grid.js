@@ -25,9 +25,11 @@ import YGridVM from './viewmodel';
 can.Component.extend({
   leakScope: true,
 	tag: "bit-c3-y-grid",
+  leakScope: true,
 	viewModel: YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
 			this.viewModel.updateLines();
 		},

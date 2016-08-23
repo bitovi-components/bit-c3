@@ -28,9 +28,11 @@ import GroupVM from './viewmodel';
 can.Component.extend({
   leakScope: true,
 	tag: "bit-c3-data-group",
+  leakScope: true,
 	viewModel: GroupVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('groups', this.element.parent().scope().attr('groups'));
 			this.viewModel.addToGroups();
 		},

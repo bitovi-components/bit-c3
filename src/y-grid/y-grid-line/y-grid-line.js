@@ -31,9 +31,11 @@ import YGridLineVM from './viewmodel';
 can.Component.extend({
   leakScope: true,
 	tag: "bit-c3-y-grid-line",
+  leakScope: true,
 	viewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {
+			this.element = $(this.element);
 			this.viewModel.attr('lines', this.element.parent().scope().attr('lines'));
 			this.viewModel.addToLines();
 		},

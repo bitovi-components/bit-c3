@@ -27,6 +27,7 @@ import ChartVM from './viewmodel';
 can.Component.extend({
     leakScope: true,
     tag: "bit-c3",
+    leakScope: true,
     template: template,
     viewModel: ChartVM,
     events: {
