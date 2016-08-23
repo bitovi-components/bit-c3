@@ -1,6 +1,7 @@
 import can from "can/legacy";
 import ColumnVM from './viewmodel'
 import $ from 'jquery';
+import domData from 'can-util/dom/data/';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-column <bit-c3-data-column>
