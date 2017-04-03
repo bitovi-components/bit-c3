@@ -1,6 +1,6 @@
 import DefineMap from "can-define/map/map";
 
-export default DefineMap.extend({
+export default DefineMap.extend({seal: false}, {
 	define: {
 		chart: {
 			type: '*',

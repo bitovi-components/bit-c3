@@ -42,7 +42,6 @@ Component.extend({
 	viewModel: DataVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			debugger
 			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.loadAllAttributesOnChart();
 		},

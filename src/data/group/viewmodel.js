@@ -13,12 +13,18 @@ export default DefineMap.extend({seal: false}, {
 	'addToGroups': function() {
 		var key = randomString(50);
 		this.key = key;
-		this.groups[key] = this.value;
+		if (this.groups){
+			this.groups[key] = this.value;
+		}
 	},
 	'updateGroup': function() {
-		this.groups[this.key] = this.value;
+    if (this.groups){
+    	this.groups[this.key] = this.value;
+    }
 	},
 	'removeFromGroups': function() {
-		this.groups[this.key] = undefined;
+    if (this.groups){
+    	this.groups[this.key] = undefined;
+    }
 	}
 });
