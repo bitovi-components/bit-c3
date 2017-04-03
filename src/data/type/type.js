@@ -1,4 +1,4 @@
-import can from "can";
+import Component from "can-component";
 import TypeVM from "./viewmodel";
 
 /**
@@ -26,12 +26,12 @@ import TypeVM from "./viewmodel";
  * </bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
 	tag: "bit-c3-data-type",
 	viewModel: TypeVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.chart = this.element.parent().scope().chart;
 			this.viewModel.updateType();
 		},
 		"{viewModel} value": function() {

@@ -1,4 +1,4 @@
-import can from "can";
+import Component from "can-component";
 import GroupVM from './viewmodel';
 
 /**
@@ -25,12 +25,12 @@ import GroupVM from './viewmodel';
  * </bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
 	tag: "bit-c3-data-group",
 	viewModel: GroupVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('groups', this.element.parent().scope().attr('groups'));
+			this.viewModel.groups = this.element.parent().scope().groups;
 			this.viewModel.addToGroups();
 		},
 		removed: function() {

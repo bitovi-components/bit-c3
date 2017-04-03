@@ -17,17 +17,18 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
+    <script src="../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
 import $ from "jquery";
-import can from "can";
+import DefineList from "can-define/list/list";
+import canViewModel from "can-view-model";
 
-var data1 = { key: 'data1', label: 'Data 1', data: new can.List(['data1', 30, 200, 100, 400, 150, 250]) },
-    data2 = { key: 'data2', label: 'Data 2', data: new can.List(['data2', 50, 20, 10, 40, 15, 25]) },
-    data3 = { key: 'data3', label: 'Data 3', data: new can.List(['data3', 130, 150, 200, 300, 200, 100]) };
+var data1 = { key: 'data1', label: 'Data 1', data: new DefineList(['data1', 30, 200, 100, 400, 150, 250]) },
+    data2 = { key: 'data2', label: 'Data 2', data: new DefineList(['data2', 50, 20, 10, 40, 15, 25]) },
+    data3 = { key: 'data3', label: 'Data 3', data: new DefineList(['data3', 130, 150, 200, 300, 200, 100]) };
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([data1, data2])
+var vm = canViewModel($("#demo-html"));
+vm.set({
+  dataColumns: new DefineList([data1, data2])
 });
 
 window.setTimeout(() => {
@@ -35,11 +36,11 @@ window.setTimeout(() => {
 }, 2000);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').push(data3);
+  vm.dataColumns.push(data3);
 }, 300);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').shift();
+  vm.dataColumns.shift();
 }, 4000);
     </script>
   </body>

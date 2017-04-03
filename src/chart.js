@@ -1,7 +1,7 @@
-import can from "can";
+import Component from "can-component";
 import d3 from "d3";
 import c3 from "c3";
-import template from "./chart.stache!";
+import view from "./chart.stache";
 import ChartVM from './viewmodel';
 
 /**
@@ -24,9 +24,9 @@ import ChartVM from './viewmodel';
  * <bit-c3></bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
     tag: "bit-c3",
-    template: template,
+    view,
     viewModel: ChartVM,
     events: {
         inserted: function(viewModel, ev) {
@@ -38,10 +38,12 @@ can.Component.extend({
                         columns: []
                     }
                 });
-            this.viewModel.attr('chart', chart);
+            this.viewModel.chart = chart;
         },
         removed: function() {
-            this.viewModel.attr('chart', this.viewModel.attr('chart').destroy());
+            if (this.viewModel.chart){
+                this.viewModel.chart = this.viewModel.chart.destroy();
+            }
         }
     }
 });

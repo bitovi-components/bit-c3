@@ -1,16 +1,13 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
-	define: {
-		chart: {
-			type: '*',
-			value: null
-		},
-		groupsSerialized: {
-			get: function() {
-				return this.attr('groups').serialize();
-			}
+export default DefineMap.extend({
+	chart: {
+		type: '*',
+		value: null
+	},
+	groupsSerialized: {
+		get: function() {
+			return this.groups.get();
 		}
 	},
 	groups: {},
@@ -23,20 +20,20 @@ export default can.Map.extend({
 	loadAttributeOnChart: function(attribute, value) {
 		// if no value is passed, retrieve it
 		if(value === undefined) {
-			value = this.attr(attribute);
+			value = this[attribute];
 		}
 
 		if(attribute.indexOf('.') !== -1) {
 			attribute = attribute.substr(0, attribute.indexOf('.'));
-			value = this.attr(attribute);
+			value = this[attribute];
 		}
 
-		var chart = this.attr('chart');
+		var chart = this.chart;
 		switch(true) {
 			// groups change
 			case (attribute === 'groupsSerialized' || attribute === 'groups'):
 				var groups = [];
-				this.attr('groups').each(function(value, key) {
+				this.groups && this.groups.forEach(function(value, key) {
 					groups.push(value);
 				});
 				chart.groups(groups);
@@ -54,7 +51,7 @@ export default can.Map.extend({
 				chart.data.names(value);
 				break;
 			// standard attributes
-			case (this.attr('standardAttributes').indexOf(attribute) !== -1):
+			case (this.standardAttributes && this.standardAttributes.indexOf(attribute) !== -1):
 				var loadVal = {};
 				loadVal[attribute] = value;
 				chart.load(loadVal);

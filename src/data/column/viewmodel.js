@@ -1,32 +1,29 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
-	define: {
-		chart: {
-			type: '*',
-			value: null
-		},
-		valueSerialized: {
-			get: function(val) {
-				return this.attr('value') && this.attr('value').serialize();
-			}
-		}
-	},
+export default DefineMap.extend({seal: false}, {
+	chart: {
+    type: '*',
+    value: null
+  },
+  valueSerialized: {
+    get: function(val) {
+      return this.value && this.value.get();
+    }
+  },
 	'value': null,
 	'key': null,
 	'dequeueKey': function() {
-		var value = this.attr('value') && this.attr('value').attr(),
-			key = this.attr('key');
+		var value = this.value && this.value.get(),
+			key = this.key;
 		if(value !== null && (key === null || (value.length && value[0] === key))) {
-			this.attr('key', value.shift());
+			this.key = value.shift();
 		}
 		return value;
 	},
 	'updateColumn': function() {
-		var value = this.dequeueKey(this.attr('value')),
-			key = this.attr('key'),
-			chart = this.attr('chart'),
+		var value = this.dequeueKey(this.value),
+			key = this.key,
+			chart = this.chart,
 			pushing = [key].concat(value);
 		if(value && value.length) {
 			chart.load({
@@ -37,8 +34,8 @@ export default can.Map.extend({
 		}
 	},
 	'unloadColumn': function() {
-		this.attr('chart').unload({
-			ids: this.attr('key')
+		this.chart.unload({
+			ids: this.key
 		});
 	}
 });

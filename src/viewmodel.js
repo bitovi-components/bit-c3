@@ -1,5 +1,7 @@
-import can from "can";
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
-	chart: null
+export default DefineMap.extend({
+	chart: {
+		value: null
+  }
 });

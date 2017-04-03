@@ -1,13 +1,10 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 import {randomString} from 'bit-c3/lib/lib';
 
-export default can.Map.extend({
-	define: {
-		'valueSerialized': {
-			get: function() {
-				return this.attr('value').serialize();
-			}
+export default DefineMap.extend({seal: false}, {
+	'valueSerialized': {
+		get: function() {
+			return this.value.get();
 		}
 	},
 	'groups': null,
@@ -15,13 +12,13 @@ export default can.Map.extend({
 	'value': null,
 	'addToGroups': function() {
 		var key = randomString(50);
-		this.attr('key', key);
-		this.attr('groups').attr(key, this.attr('value'));
+		this.key = key;
+		this.groups[key] = this.value;
 	},
 	'updateGroup': function() {
-		this.attr('groups').attr(this.attr('key'), this.attr('value'));
+		this.groups[this.key] = this.value;
 	},
 	'removeFromGroups': function() {
-		this.attr('groups').removeAttr(this.attr('key'));
+		this.groups[this.key] = undefined;
 	}
 });
