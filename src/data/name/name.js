@@ -1,5 +1,6 @@
 import Component from "can-component";
 import NameVM from './viewmodel';
+import canViewModel from 'can-view-model';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-name <bit-c3-data-name>
@@ -31,7 +32,7 @@ Component.extend({
 	viewModel: NameVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.chart = this.element.parent().scope().chart;
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateName();
 		},
 		"{viewModel} value": function() {

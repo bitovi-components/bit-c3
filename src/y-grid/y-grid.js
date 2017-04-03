@@ -1,4 +1,5 @@
 import Component from "can-component";
+import canViewModel from "can-view-model";
 import YGridVM from './viewmodel';
 
 /**
@@ -27,7 +28,7 @@ Component.extend({
 	viewModel: YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.chart = this.element.parent().scope().chart;
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateLines();
 		},
 		removed: function() {

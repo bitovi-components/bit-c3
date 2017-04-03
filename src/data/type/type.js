@@ -1,4 +1,5 @@
 import Component from "can-component";
+import canViewModel from "can-view-model";
 import TypeVM from "./viewmodel";
 
 /**
@@ -31,7 +32,7 @@ Component.extend({
 	viewModel: TypeVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.chart = this.element.parent().scope().chart;
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateType();
 		},
 		"{viewModel} value": function() {

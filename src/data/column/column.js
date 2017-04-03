@@ -1,6 +1,5 @@
 import Component from "can-component";
 import ColumnVM from './viewmodel';
-import $ from 'jquery';
 import canViewModel from 'can-view-model';
 
 /**
@@ -42,12 +41,12 @@ Component.extend({
 	viewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.chart = canViewModel($(this.element).parent()).chart;
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateColumn();
 		},
 		removed: function() {
 			// check if the chart was not destroyed:
-			if (canViewModel($(this.element).parent()).chart){
+			if (canViewModel(this.element.parentElement).chart){
 				this.viewModel.unloadColumn();
 			}
 		},

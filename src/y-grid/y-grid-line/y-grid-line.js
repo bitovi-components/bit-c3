@@ -1,4 +1,5 @@
 import Component from "can-component";
+import canViewModel from "can-view-model";
 import YGridLineVM from './viewmodel';
 
 /**
@@ -33,7 +34,7 @@ Component.extend({
 	viewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.lines = this.element.parent().scope().lines;
+			this.viewModel.lines = canViewModel(this.element.parentElement).lines;
 			this.viewModel.addToLines();
 		},
 		removed: function() {

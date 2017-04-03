@@ -1,4 +1,5 @@
 import Component from "can-component";
+import canViewModel from "can-view-model";
 import GroupVM from './viewmodel';
 
 /**
@@ -30,7 +31,7 @@ Component.extend({
 	viewModel: GroupVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.groups = this.element.parent().scope().groups;
+			this.viewModel.groups = canViewModel(this.element.parentElement).groups;
 			this.viewModel.addToGroups();
 		},
 		removed: function() {
