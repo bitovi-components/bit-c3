@@ -1,4 +1,4 @@
-import './bit-c3.less!';
+import './bit-c3.less';
 import './chart';
 import './data/data';
 import './data/column/column';
