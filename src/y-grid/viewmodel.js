@@ -1,6 +1,6 @@
 import DefineMap from "can-define/map/map";
 
-export default DefineMap.extend({
+export default DefineMap.extend({seal: false}, {
 	define: {
 		chart: {
 			type: '*',
@@ -15,7 +15,7 @@ export default DefineMap.extend({
 	lines: {},
 	updateLines: function() {
 		var lines = [];
-		this.lines.forEach(function(value, key) {
+    this.lines && this.lines.forEach(function(value, key) {
 			lines.push(value);
 		});
 		this.chart.ygrids(lines);

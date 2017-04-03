@@ -21,12 +21,18 @@ export default DefineMap.extend({seal: false}, {
 	'addToLines': function() {
 		var key = randomString(50);
 		this.key = key;
-		this.lines[key] = this.gridLine;
+		if (this.lines){
+      this.lines[key] = this.gridLine;
+		}
 	},
 	'updateLines': function() {
-		this.lines[this.key] = this.gridLine;
+    if (this.lines){
+      this.lines[this.key] = this.gridLine;
+    }
 	},
 	'removeFromLines': function() {
-		this.lines[this.key] = undefined;
+    if (this.lines){
+      this.lines[this.key] = undefined;
+    }
 	}
 });

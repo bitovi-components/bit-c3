@@ -20,28 +20,31 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
-var data1 = new can.List(['data1', 30, 200, 100, 400, 150, 250]),
-    data2 = new can.List(['data2', 130, 340, 200, 500, 250, 350]),
-    data3 = new can.List(['data3', 400, 500, 450, 700, 600, 500]),
+var data1 = new DefineList(['data1', 30, 200, 100, 400, 150, 250]),
+    data2 = new DefineList(['data2', 130, 340, 200, 500, 250, 350]),
+    data3 = new DefineList(['data3', 400, 500, 450, 700, 600, 500]),
     xKey = 'x',
-    x = new can.List([xKey, '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06']),
+    x = new DefineList([xKey, '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06']),
     xType = 'timeseries',
     xTickFormat = '%Y-%m-%d';
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([x, data1, data2]),
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([x, data1, data2]),
   xKey: xKey,
   xType: xType,
   xTickFormat: xTickFormat
 });
+domData.set.call(element, "viewModel", vm);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').push(data3);
+  vm.dataColumns.push(data3);
 }, 1000);
     </script>
   </body>
