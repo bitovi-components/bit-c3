@@ -10,8 +10,12 @@ export default DefineMap.extend({
 			return this.groups.get();
 		}
 	},
-	groups: {},
-	standardAttributes: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done'],
+	groups: {
+		value: {}
+	},
+	standardAttributes: {
+		value: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done']
+	},
 	loadAllAttributesOnChart: function() {
 		this.each((item, key) => {
 			this.loadAttributeOnChart(key, item);
