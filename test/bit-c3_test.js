@@ -26,11 +26,37 @@ var flattenCanList = function(list) {
 
 QUnit.module('bit-c3 config');
 
-test('Should configure x-axis', 1, (assert) => {
+test('Should configure x-axis using type', 1, (assert) => {
 	let tpl = '<bit-c3 axis-x-type="category"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
 	let frag = stache(tpl)({});
 	let vm = canViewModel(frag.querySelector('bit-c3'));
 	assert.deepEqual(vm.config, {data:{columns:[],x:'x'},axis:{x:{type:'category'}},bindto:undefined}, 'Config object is defined correctly');
+});
+
+test('Should configure x-axis using full config', 1, (assert) => {
+	let tpl = '<bit-c3 {axis-x}="axisX"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
+	let frag = stache(tpl)({
+		axisX: {
+			type: 'category',
+			tick: {
+				rotate: -45,
+				multiline: false
+			},
+			height: 130
+		}
+	});
+	let vm = canViewModel(frag.querySelector('bit-c3'));
+	assert.deepEqual(vm.config, {
+		data: { columns:[], x:'x' },
+		axis: {
+			x: {
+				type:'category',
+				tick: { rotate: -45, multiline: false },
+				height: 130
+			}
+		},
+		bindto: undefined
+	}, 'Config object is defined correctly');
 });
 
 QUnit.module('bit-c3-data');

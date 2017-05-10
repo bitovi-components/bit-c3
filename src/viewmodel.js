@@ -15,6 +15,12 @@ export default DefineMap.extend({
 	 */
 	axisXType: 'string',
 	/**
+	 * Full config for x-axis.
+	 */
+	axisX: {
+		type: '*'
+	},
+	/**
 	 * Config object that c3 chart will be generated with.
 	 */
 	config: {
@@ -32,6 +38,12 @@ export default DefineMap.extend({
 						type: this.axisXType
 					}
 				}
+			}
+			if (this.axisX) {
+				config.data.x = 'x';
+				config.axis = {
+					x: this.axisX
+				};
 			}
 			return config;
 		}
