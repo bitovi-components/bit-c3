@@ -22,35 +22,38 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
-var data1 = new can.List(['data1', 30, 200, 100, 400, -150, 250]),
-    data2 = new can.List(['data2', 130, 100, -100, 200, -150, 50]),
-    data3 = new can.List(['data3', -230, 200, 200, -300, 250, 250]),
-    data4 = new can.List(['data4', 100, -50, 150, 200, -300, -100]),
+var data1 = new DefineList(['data1', 30, 200, 100, 400, -150, 250]),
+    data2 = new DefineList(['data2', 130, 100, -100, 200, -150, 50]),
+    data3 = new DefineList(['data3', -230, 200, 200, -300, 250, 250]),
+    data4 = new DefineList(['data4', 100, -50, 150, 200, -300, -100]),
     type = 'bar',
-    yGridLines = new can.List([{value: 0}]);
+    yGridLines = new DefineList([{value: 0}]);
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([data1, data2, data3]),
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([data1, data2, data3]),
   dataGroup: ['data1', 'data2'],
   type: type,
   yGridLines: yGridLines
 });
+domData.set.call(element, "viewModel", vm);
 
 window.setTimeout(() => {
-  vm.attr('dataGroup').push('data3');
+  vm.dataGroup.push('data3');
 }, 1000);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').push(data4);
+  vm.dataColumns.push(data4);
 }, 1500);
 
 window.setTimeout(() => {
-  vm.attr('dataGroup').push('data4');
+  vm.dataGroup.push('data4');
 }, 2000);
     </script>
   </body>

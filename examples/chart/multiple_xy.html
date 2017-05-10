@@ -17,21 +17,24 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
 var x1Key = 'x1',
     x2Key = 'x2',
-    x1 = { key: x1Key, data: new can.List([10, 30, 45, 50, 70, 100]) },
-    x2 = { key: x2Key, data: new can.List([30, 50, 75, 100, 120]) },
-    data1 = { key: "data1", xKey: x1Key, data: new can.List([30, 200, 100, 400, 150, 250]) },
-    data2 = { key: "data2", xKey: x2Key, data: new can.List([20, 180, 240, 100, 190]) };
+    x1 = { key: x1Key, data: new DefineList([10, 30, 45, 50, 70, 100]) },
+    x2 = { key: x2Key, data: new DefineList([30, 50, 75, 100, 120]) },
+    data1 = { key: "data1", xKey: x1Key, data: new DefineList([30, 200, 100, 400, 150, 250]) },
+    data2 = { key: "data2", xKey: x2Key, data: new DefineList([20, 180, 240, 100, 190]) };
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([x1, x2, data1, data2])
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([x1, x2, data1, data2])
 });
+domData.set.call(element, "viewModel", vm);
     </script>
   </body>
 </html>

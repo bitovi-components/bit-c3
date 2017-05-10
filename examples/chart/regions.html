@@ -19,9 +19,11 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
 var data1 = {
       key: "data1",
@@ -29,18 +31,19 @@ var data1 = {
         {'start':1, 'end':2, 'style':'dashed'},
         {'start':3}
       ],
-      data: new can.List([30, 200, 100, 400, 150, 250])
+      data: new DefineList([30, 200, 100, 400, 150, 250])
     },
     data2 = {
       key: "data2",
       regions: [{'end':3}],
-      data: new can.List([50, 20, 10, 40, 15, 25])
+      data: new DefineList([50, 20, 10, 40, 15, 25])
     };
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([data1, data2])
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([data1, data2])
 });
+domData.set.call(element, "viewModel", vm);
     </script>
   </body>
 </html>

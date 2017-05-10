@@ -20,24 +20,28 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
 var type = "bar",
-    data1 = { key: "data1", data: new can.List([30, 20, 50, 40, 60, 50]) },
-    data2 = { key: "data2", data: new can.List([200, 130, 90, 240, 130, 220]) },
-    data3 = { key: "data3", type: "spline", data: new can.List([300, 200, 160, 400, 250, 250]) },
-    data4 = { key: "data4", type: "line", data: new can.List([200, 130, 90, 240, 130, 220]) },
-    data5 = { key: "data5", data: new can.List([130, 120, 150, 140, 160, 150]) },
-    data6 = { key: "data6", type: "area", data: new can.List([90, 70, 20, 50, 60, 120]) };
+    data1 = { key: "data1", data: new DefineList([30, 20, 50, 40, 60, 50]) },
+    data2 = { key: "data2", data: new DefineList([200, 130, 90, 240, 130, 220]) },
+    data3 = { key: "data3", type: "spline", data: new DefineList([300, 200, 160, 400, 250, 250]) },
+    data4 = { key: "data4", type: "line", data: new DefineList([200, 130, 90, 240, 130, 220]) },
+    data5 = { key: "data5", data: new DefineList([130, 120, 150, 140, 160, 150]) },
+    data6 = { key: "data6", type: "area", data: new DefineList([90, 70, 20, 50, 60, 120]) };
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
   type: type,
-  dataColumns: new can.List([data1, data2, data3, data4, data5, data6]),
+  dataColumns: new DefineList([data1, data2, data3, data4, data5, data6]),
   dataGroups: [['data1', 'data2']]
 });
+domData.set.call(element, "viewModel", vm);
+
     </script>
   </body>
 </html>

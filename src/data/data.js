@@ -1,5 +1,7 @@
-import can from "can";
+import Component from "can-component";
 import DataVM from './viewmodel';
+import $ from 'jquery';
+import canViewModel from 'can-view-model';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data <bit-c3-data>
@@ -35,12 +37,12 @@ import DataVM from './viewmodel';
  * </bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
 	tag: "bit-c3-data",
 	viewModel: DataVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.loadAllAttributesOnChart();
 		},
 		"{viewModel} change": function(viewModel, ev, attr, type, newVal, oldVal) {
@@ -50,7 +52,7 @@ can.Component.extend({
 		removed: function(){
 			// This component could be removed only if the chart was destroyed.
 			// Clean up `chart` property to let the child components know that the chart was destroyed:
-			this.viewModel.removeAttr('chart');
+			this.viewModel.chart = undefined;
 		}
 	}
 });

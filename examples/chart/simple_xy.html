@@ -17,32 +17,35 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
 
-var data1 = new can.List(['data1', 30, 200, 100, 400, 150, 250]),
-    data2 = new can.List(['data2', 130, 340, 200, 500, 250, 350]),
-    data3 = new can.List(['data3', 80, 150, 100, 180, 80, 150]),
+var data1 = new DefineList(['data1', 30, 200, 100, 400, 150, 250]),
+    data2 = new DefineList(['data2', 130, 340, 200, 500, 250, 350]),
+    data3 = new DefineList(['data3', 80, 150, 100, 180, 80, 150]),
     xKey = 'x',
-    x = new can.List([xKey, 30, 50, 100, 230, 300, 310]);
+    x = new DefineList([xKey, 30, 50, 100, 230, 300, 310]);
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([x, data1, data2]),
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([x, data1, data2]),
   xKey: xKey
 });
+domData.set.call(element, "viewModel", vm);
 
 window.setTimeout(() => {
   data1.replace(['data1', 100, 250, 150, 200, 100, 350]);
 }, 1000);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').push(data3);
+  vm.dataColumns.push(data3);
 }, 1500);
 
 window.setTimeout(() => {
-  vm.attr('dataColumns').splice(1, 1);
+  vm.dataColumns.splice(1, 1);
 }, 2000);
     </script>
   </body>

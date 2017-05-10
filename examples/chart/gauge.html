@@ -16,12 +16,15 @@
     </script>
 
     <!-- Loading Script -->
-    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can/view/autorender/">
-import $ from "jquery";
-import can from "can";
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+import domData from "can-util/dom/data/data";
+import canBatch from "can-event/batch/batch";
 
 var type = "gauge",
-    data = new can.List(['data', 91.4]),
+    data = new DefineList(['data', 91.4]),
     gauge: {
       // label: {
       //   format: function(value, ratio) {
@@ -34,7 +37,7 @@ var type = "gauge",
       // units: ' %',
       // width: 39 // for adjusting arc thickness
     },
-    colorPattern = new can.List(['#FF0000', '#F97600', '#F6C600', '#60B044']),
+    colorPattern = new DefineList(['#FF0000', '#F97600', '#F6C600', '#60B044']),
     colorThreshold = {
       // unit: 'value', // percentage is default
       // max: 200, // 100 is default
@@ -42,50 +45,51 @@ var type = "gauge",
     },
     height = 180;
 
-var vm = $("#demo-html").viewModel();
-vm.attr({
-  dataColumns: new can.List([data]),
+var element = document.getElementById("demo-html");
+var vm = new DefineMap({
+  dataColumns: new DefineList([data]),
   type: type,
   height: height
 });
+domData.set.call(element, "viewModel", vm);
 
 setTimeout(function () {
-  can.batch.start();
+  canBatch.start();
   data.pop();
   data.push(10);
-  can.batch.stop();
+  canBatch.stop();
 }, 1000);
 
 
 setTimeout(function () {
-  can.batch.start();
+  canBatch.start();
   data.pop();
   data.push(50);
-  can.batch.stop();
+  canBatch.stop();
 }, 2000);
 
 
 setTimeout(function () {
-  can.batch.start();
+  canBatch.start();
   data.pop();
   data.push(70);
-  can.batch.stop();
+  canBatch.stop();
 }, 3000);
 
 
 setTimeout(function () {
-  can.batch.start();
+  canBatch.start();
   data.pop();
   data.push(0);
-  can.batch.stop();
+  canBatch.stop();
 }, 4000);
 
 
 setTimeout(function () {
-  can.batch.start();
+  canBatch.start();
   data.pop();
   data.push(100);
-  can.batch.stop();
+  canBatch.stop();
 }, 5000);
     </script>
   </body>

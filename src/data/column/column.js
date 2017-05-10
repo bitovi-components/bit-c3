@@ -1,5 +1,6 @@
-import can from "can";
-import ColumnVM from './viewmodel'
+import Component from "can-component";
+import ColumnVM from './viewmodel';
+import canViewModel from 'can-view-model';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-column <bit-c3-data-column>
@@ -35,17 +36,17 @@ import ColumnVM from './viewmodel'
  * </bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
 	tag: "bit-c3-data-column",
 	viewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateColumn();
 		},
 		removed: function() {
 			// check if the chart was not destroyed:
-			if (this.element.parent().scope().attr('chart')){
+			if (canViewModel(this.element.parentElement).chart){
 				this.viewModel.unloadColumn();
 			}
 		},

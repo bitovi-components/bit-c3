@@ -1,18 +1,15 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
-	define: {
-		chart: {
-			type: '*',
-			value: null
-		}
+export default DefineMap.extend({
+	chart: {
+		type: '*',
+		value: null
 	},
 	'key': null,
 	'updateName': function() {
-		var chart = this.attr('chart'),
+		var chart = this.chart,
 			newName = {};
-		newName[this.attr('key')] = this.attr('value');
+		newName[this.key] = this.value;
 		chart.data.names(newName);
 	}
 });

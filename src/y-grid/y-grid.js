@@ -1,4 +1,5 @@
-import can from "can";
+import Component from "can-component";
+import canViewModel from "can-view-model";
 import YGridVM from './viewmodel';
 
 /**
@@ -22,12 +23,12 @@ import YGridVM from './viewmodel';
  * </bit-c3>
  * ```
  */
-can.Component.extend({
+Component.extend({
 	tag: "bit-c3-y-grid",
 	viewModel: YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {
-			this.viewModel.attr('chart', this.element.parent().scope().attr('chart'));
+			this.viewModel.chart = canViewModel(this.element.parentElement).chart;
 			this.viewModel.updateLines();
 		},
 		removed: function() {

@@ -1,7 +1,6 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
+export default DefineMap.extend({seal: false}, {
 	define: {
 		chart: {
 			type: '*',
@@ -9,16 +8,16 @@ export default can.Map.extend({
 		},
 		linesSerialized: {
 			get: function() {
-				return this.attr('lines').serialize();
+				return this.lines.get();
 			}
 		}
 	},
 	lines: {},
 	updateLines: function() {
 		var lines = [];
-		this.attr('lines').each(function(value, key) {
+    this.lines && this.lines.forEach(function(value, key) {
 			lines.push(value);
 		});
-		this.attr('chart').ygrids(lines);
+		this.chart.ygrids(lines);
 	}
 });

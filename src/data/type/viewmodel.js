@@ -1,7 +1,6 @@
-import can from "can";
-import 'can/map/define/';
+import DefineMap from "can-define/map/map";
 
-export default can.Map.extend({
+export default DefineMap.extend({seal: false}, {
 	define: {
 		chart: {
 			type: '*',
@@ -10,7 +9,7 @@ export default can.Map.extend({
 	},
 	'key': null,
 	'updateType': function() {
-		var chart = this.attr('chart');
-		chart.transform(this.attr('value'), this.attr('key'));
+		var chart = this.chart;
+		chart.transform(this.value, this.key);
 	}
 });
