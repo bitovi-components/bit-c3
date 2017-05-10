@@ -32,29 +32,15 @@ Component.extend({
     viewModel: ChartVM,
     events: {
         inserted: function(viewModel, ev) {
-            var rootElement = ev.target,
-              graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]),
-              axisXType = this.viewModel.attr('axisXType'),
-              config = {
-                  bindto: graphBaseElement,
-                  data: {
-                      columns: []
-                  }
-              };
+            let rootElement = ev.target;
 
-            if (axisXType){
-                config.data.x = 'x';
-                config.axis = {
-                    x: {
-                        type: axisXType
-                    }
-                }
-            }
+            this.viewModel.graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]);
 
-            this.viewModel.chart = c3.generate(config);
+            this.viewModel.chart = c3.generate(this.viewModel.config);
         },
         removed: function() {
             if (this.viewModel.chart){
+                this.viewModel.graphBaseElement = undefined;
                 this.viewModel.chart = this.viewModel.chart.destroy();
             }
         }

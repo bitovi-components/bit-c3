@@ -27,8 +27,8 @@ export default DefineMap.extend({seal: false}, {
 			pushing = [key].concat(value),
 			columns = [pushing];
 
-		if (this.attr('axisX')){
-			columns.unshift(this.attr('axisX').attr());
+		if (this.axisX){
+			columns.unshift(this.axisX.get());
 		}
 		if(value && value.length) {
 			chart.load({
