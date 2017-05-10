@@ -33,16 +33,18 @@ test('Should configure x-axis using type', 1, (assert) => {
 	assert.deepEqual(vm.config, {data:{columns:[],x:'x'},axis:{x:{type:'category'}},bindto:undefined}, 'Config object is defined correctly');
 });
 
-test('Should configure x-axis using full config', 1, (assert) => {
-	let tpl = '<bit-c3 {axis-x}="axisX"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
+test('Should configure axis using full config', 1, (assert) => {
+	let tpl = '<bit-c3 {axis}="axis"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
 	let frag = stache(tpl)({
-		axisX: {
-			type: 'category',
-			tick: {
-				rotate: -45,
-				multiline: false
-			},
-			height: 130
+		axis: {
+			x: {
+				type: 'category',
+				tick: {
+					rotate: -45,
+					multiline: false
+				},
+				height: 130
+			}
 		}
 	});
 	let vm = canViewModel(frag.querySelector('bit-c3'));
