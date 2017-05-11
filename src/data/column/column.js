@@ -60,7 +60,7 @@ Component.extend({
 		},
 		removed: function() {
 			// check if the chart was not destroyed:
-			if (canViewModel(this.element.parentElement).chart){
+			if (this.element.parentElement && canViewModel(this.element.parentElement).chart){
 				this.viewModel.unloadColumn();
 			}
 		},

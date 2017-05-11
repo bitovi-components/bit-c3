@@ -1,6 +1,5 @@
 import Component from "can-component";
 import DataVM from './viewmodel';
-import $ from 'jquery';
 import canViewModel from 'can-view-model';
 
 /**
