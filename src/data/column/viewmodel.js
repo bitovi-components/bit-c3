@@ -24,10 +24,15 @@ export default DefineMap.extend({seal: false}, {
 		var value = this.dequeueKey(this.value),
 			key = this.key,
 			chart = this.chart,
-			pushing = [key].concat(value);
+			pushing = [key].concat(value),
+			columns = [pushing];
+
+		if (this.axisX){
+			columns.unshift(this.axisX.get());
+		}
 		if(value && value.length) {
 			chart.load({
-				columns: [pushing]
+				columns: columns
 			});
 		} else {
 			this.unloadColumn();

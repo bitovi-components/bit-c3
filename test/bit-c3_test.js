@@ -12,6 +12,7 @@ import {randomString} from "bit-c3/lib/";
 import DefineList from "can-define/list/list";
 import DefineMap from "can-define/map/map";
 import stache from "can-stache";
+import canViewModel from "can-view-model";
 
 F.attach(QUnit);
 
@@ -25,7 +26,32 @@ var flattenCanList = function(list) {
 
 QUnit.module('bit-c3');
 
-// no tests currently
+test('Should configure chart using a passed config', 1, (assert) => {
+	let tpl = '<bit-c3 {config}="config"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
+	let frag = stache(tpl)({
+		config: {
+			axis: {
+				x: {
+					type: 'category',
+					tick: { rotate: -45, multiline: false },
+					height: 130
+				}
+			}
+		}
+	});
+	let vm = canViewModel(frag.querySelector('bit-c3'));
+	assert.deepEqual(vm.config, {
+		data: { columns:[], x:'x' },
+		axis: {
+			x: {
+				type:'category',
+				tick: { rotate: -45, multiline: false },
+				height: 130
+			}
+		},
+		bindto: undefined
+	}, 'Config object is defined correctly');
+});
 
 QUnit.module('bit-c3-data');
 

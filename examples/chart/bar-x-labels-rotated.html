@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Bar Chart</title>
+  </head>
+  <body>
+    <!-- Template to load -->
+    <script type="text/stache" id="demo-html" can-autorender>
+<can-import from="bit-c3" />
+<bit-c3 {config}="config">
+  <bit-c3-data type="{type}">
+    {{#each dataColumns}}
+      <bit-c3-data-column value="{.}" {axis-x}="axisXData" />
+    {{/each}}
+  </bit-c3-data>
+</bit-c3>
+    </script>
+
+<!-- TODO add support for 
+  <c3-bar width-ratio="0.5" width="100" />
+-->
+
+    <!-- Loading Script -->
+    <script src="../../node_modules/steal/steal.js" id="demo-source" main="can-view-autorender">
+import DefineList from "can-define/list/list";
+import DefineMap from "can-define/map/map";
+import canViewModel from "can-view-model";
+
+let data1 = new DefineList(['data1', 30, 200, 100, 400, 150, 250]),
+    data2 = new DefineList(['data2', 130, 100, 140, 200, 150, 50]),
+    type = 'bar',
+    config = {
+      axis: {
+        x: {
+          type: 'category',
+          tick: {
+            rotate: -45,
+            multiline: false
+          },
+          height: 130
+        }
+      }
+    },
+    axisXData = new DefineList(['x','cat 1','cat 2','cat 3','cat 4','cat 5','cat 6']);
+
+var element = document.getElementById("demo-html");
+canViewModel(element).set({
+  dataColumns: new DefineList([data1, data2]),
+  type,
+  config,
+  axisXData
+});
+    </script>
+  </body>
+</html>
+  

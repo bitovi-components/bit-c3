@@ -35,6 +35,20 @@ import canViewModel from 'can-view-model';
  *   </bit-c3-data>
  * </bit-c3>
  * ```
+ *
+ * With config:
+ * ```js
+ * let vm = {
+ *   config: {axis: {x: {type: 'category'}}}
+ * }
+ * ```
+ * ```html
+ * <bit-c3 {config}="config">
+ *   <bit-c3-data>
+ *     <bit-c3-data-column key="dataSet1" value="[1, 2, 3]" axis-x="['x','cat 1','cat 2','cat 3']" />
+ *   </bit-c3-data>
+ * </bit-c3>
+ * ```
  */
 Component.extend({
 	tag: "bit-c3-data-column",
