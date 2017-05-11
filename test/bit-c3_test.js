@@ -24,26 +24,18 @@ var flattenCanList = function(list) {
 	return flatList;
 }
 
-QUnit.module('bit-c3 config');
+QUnit.module('bit-c3');
 
-test('Should configure x-axis using type', 1, (assert) => {
-	let tpl = '<bit-c3 axis-x-type="category"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
-	let frag = stache(tpl)({});
-	let vm = canViewModel(frag.querySelector('bit-c3'));
-	assert.deepEqual(vm.config, {data:{columns:[],x:'x'},axis:{x:{type:'category'}},bindto:undefined}, 'Config object is defined correctly');
-});
-
-test('Should configure axis using full config', 1, (assert) => {
-	let tpl = '<bit-c3 {axis}="axis"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
+test('Should configure chart using a passed config', 1, (assert) => {
+	let tpl = '<bit-c3 {config}="config"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
 	let frag = stache(tpl)({
-		axis: {
-			x: {
-				type: 'category',
-				tick: {
-					rotate: -45,
-					multiline: false
-				},
-				height: 130
+		config: {
+			axis: {
+				x: {
+					type: 'category',
+					tick: { rotate: -45, multiline: false },
+					height: 130
+				}
 			}
 		}
 	});

@@ -11,37 +11,18 @@ export default DefineMap.extend({
 		type: '*'
 	},
 	/**
-	 * Full config for axis.
-	 */
-	axis: {
-		type: '*'
-	},
-	/**
-	 * Config param for x-axis type.
-	 */
-	axisXType: 'string',
-	/**
 	 * Config object that c3 chart will be generated with.
 	 */
 	config: {
-		get () {
-			let config = {
-				bindto: this.graphBaseElement,
-				data: {
-					columns: []
-				}
+		type: '*',
+		get (val = {}) {
+			let config = val;
+			config.bindto = this.graphBaseElement;
+			config.data = {
+				columns: []
 			};
-			if (this.axisXType){
+			if (val.axis && val.axis.x) {
 				config.data.x = 'x';
-				config.axis = {
-					x: {
-						type: this.axisXType
-					}
-				}
-			}
-			if (this.axis) {
-				config.data.x = 'x';
-				config.axis = this.axis;
 			}
 			return config;
 		}
