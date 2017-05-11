@@ -9,6 +9,7 @@ publish:
 	git push --tags
 
 publish-docs:
+	not-ready-yet
 	npm install
 	git checkout -b gh-pages
 	npm run document

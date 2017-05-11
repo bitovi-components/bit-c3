@@ -11,7 +11,8 @@
                     "github": "https://github.com/bitovi-components/bit-c3"
                 },
                 "version": "0.2.1"
-            }
+            },
+            "dest": "docs"
         }
     }
 }
