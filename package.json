@@ -1,6 +1,6 @@
 {
   "name": "bit-c3",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Build C3 charts with CanJS components",
   "main": "dist/cjs/bit-c3",
   "browser": {
