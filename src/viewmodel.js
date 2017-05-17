@@ -18,11 +18,13 @@ export default DefineMap.extend({
 		get (val = {}) {
 			let config = val;
 			config.bindto = this.graphBaseElement;
-			config.data = {
-				columns: []
-			};
-			if (val.axis && val.axis.x) {
-				config.data.x = 'x';
+			if (!config.data){
+				config.data = {
+					columns: []
+				};
+				if (val.axis && val.axis.x && val.axis.x.type === 'category' && !val.axis.x.categories) {
+					config.data.x = 'x';
+				}
 			}
 			return config;
 		}
