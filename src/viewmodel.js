@@ -15,8 +15,8 @@ export default DefineMap.extend({
 	 */
 	config: {
 		type: '*',
-		get (val = {}) {
-			let config = val;
+		get (val) {
+			let config = val || {};
 			config.bindto = this.graphBaseElement;
 			if (!config.data){
 				config.data = {
