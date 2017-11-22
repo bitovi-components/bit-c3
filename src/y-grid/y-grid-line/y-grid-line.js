@@ -31,7 +31,7 @@ import YGridLineVM from './viewmodel';
  */
 Component.extend({
 	tag: "bit-c3-y-grid-line",
-	viewModel: YGridLineVM,
+	ViewModel: YGridLineVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.lines = canViewModel(this.element.parentElement).lines;

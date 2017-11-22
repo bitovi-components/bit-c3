@@ -28,7 +28,7 @@ import GroupVM from './viewmodel';
  */
 Component.extend({
 	tag: "bit-c3-data-group",
-	viewModel: GroupVM,
+	ViewModel: GroupVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.groups = canViewModel(this.element.parentElement).groups;

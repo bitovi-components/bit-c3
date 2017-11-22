@@ -25,7 +25,7 @@ import YGridVM from './viewmodel';
  */
 Component.extend({
 	tag: "bit-c3-y-grid",
-	viewModel: YGridVM,
+	ViewModel: YGridVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.chart = canViewModel(this.element.parentElement).chart;

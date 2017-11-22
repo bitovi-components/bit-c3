@@ -22,7 +22,7 @@ export default DefineMap.extend({
 				config.data = {
 					columns: []
 				};
-				if (val.axis && val.axis.x && val.axis.x.type === 'category' && !val.axis.x.categories) {
+				if (val && val.axis && val.axis.x && val.axis.x.type === 'category' && !val.axis.x.categories) {
 					config.data.x = 'x';
 				}
 			}

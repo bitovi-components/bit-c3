@@ -12,27 +12,27 @@ export default DefineMap.extend({seal: false}, {
 			}
 		}
 	} ,
-	lines: null,
-	value: null,
-	text: null,
-	position: null,
-	class: null,
-	'key': null,
-	'addToLines': function() {
+	lines: { value: null },
+	value: { value: null },
+	text: { value: null },
+	position: { value: null },
+	class: { value: null },
+	key: { value: null },
+	addToLines: function() {
 		var key = randomString(50);
 		this.key = key;
 		if (this.lines){
-      this.lines[key] = this.gridLine;
+			this.lines[key] = this.gridLine;
 		}
 	},
-	'updateLines': function() {
-    if (this.lines){
-      this.lines[this.key] = this.gridLine;
-    }
+	updateLines: function() {
+		if (this.lines){
+			this.lines[this.key] = this.gridLine;
+		}
 	},
-	'removeFromLines': function() {
-    if (this.lines){
-      this.lines[this.key] = undefined;
-    }
+	removeFromLines: function() {
+		if (this.lines){
+			this.lines[this.key] = undefined;
+		}
 	}
 });

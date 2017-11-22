@@ -29,7 +29,7 @@ import TypeVM from "./viewmodel";
  */
 Component.extend({
 	tag: "bit-c3-data-type",
-	viewModel: TypeVM,
+	ViewModel: TypeVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.chart = canViewModel(this.element.parentElement).chart;

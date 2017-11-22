@@ -7,12 +7,11 @@
     <script type="text/stache" id="demo-html" can-autorender>
 <can-import from="bit-c3" />
 <bit-c3>
-  <bit-c3-data type="{type}">
-    {{#each dataColumns}}
-      <bit-c3-data-column value="{.}" />
+  <bit-c3-data type:from="type">
+    {{#each ../dataColumns column=value}}
+      <bit-c3-data-column value:from="column" />
     {{/each}}
   </bit-c3-data>
-  <c3-donut title="{title}" />
 </bit-c3>
     </script>
 

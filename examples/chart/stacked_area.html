@@ -9,11 +9,11 @@
 <bit-c3>
   <bit-c3-data>
     {{#each dataColumns}}
-      <bit-c3-data-column key="{key}" value="{data}" />
-      <bit-c3-data-type key="{key}" value="{type}" />
+      <bit-c3-data-column key:from="key" value:from="data" />
+      <bit-c3-data-type key:from="key" value:from="type" />
     {{/each}}
     {{#each dataGroups}}
-      <bit-c3-data-group value="{.}" />
+      <bit-c3-data-group value:from="." />
     {{/each}}
   </bit-c3-data>
 </bit-c3>
