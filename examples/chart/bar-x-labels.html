@@ -6,10 +6,10 @@
     <!-- Template to load -->
     <script type="text/stache" id="demo-html" can-autorender>
 <can-import from="bit-c3" />
-<bit-c3 {config}="config">
+<bit-c3 config:from="config">
   <bit-c3-data type:from="type">
-    {{#each dataColumns}}
-      <bit-c3-data-column value:from="." {axis-x}="axisX" />
+    {{#each ../dataColumns column=value}}
+      <bit-c3-data-column value:from="column" axisX:from="../axisX" />
     {{/each}}
   </bit-c3-data>
 </bit-c3>

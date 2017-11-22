@@ -8,9 +8,9 @@
 <can-import from="bit-c3" />
 <bit-c3>
   <bit-c3-data>
-    {{#each dataColumns}}
-      <bit-c3-data-column key:from="key" value:from="data" />
-      {{#if xKey}}<bit-c3-data-x key:from="key" value="{xKey}" />{{/if}}
+    {{#each ../dataColumns column=value}}
+      <bit-c3-data-column key:from="column.key" value:from="column.data" />
+      {{#if xKey}}<bit-c3-data-x key:from="column.key" value:from="column.xKey" />{{/if}}
     {{/each}}
   </bit-c3-data>
 </bit-c3>
