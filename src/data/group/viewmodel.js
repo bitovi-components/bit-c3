@@ -7,24 +7,24 @@ export default DefineMap.extend({seal: false}, {
 			return this.value.get();
 		}
 	},
-	'groups': null,
-	'key': null,
-	'value': null,
-	'addToGroups': function() {
+	groups: { value: null },
+	key: { value: null },
+	value: { value: null },
+	addToGroups: function() {
 		var key = randomString(50);
 		this.key = key;
 		if (this.groups){
 			this.groups[key] = this.value;
 		}
 	},
-	'updateGroup': function() {
-    if (this.groups){
-    	this.groups[this.key] = this.value;
-    }
+	updateGroup: function() {
+		if (this.groups){
+			this.groups[this.key] = this.value;
+		}
 	},
-	'removeFromGroups': function() {
-    if (this.groups){
-    	this.groups[this.key] = undefined;
-    }
+	removeFromGroups: function() {
+		if (this.groups){
+			this.groups[this.key] = undefined;
+		}
 	}
 });

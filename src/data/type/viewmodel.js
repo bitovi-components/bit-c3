@@ -7,8 +7,8 @@ export default DefineMap.extend({seal: false}, {
 			value: null
 		}
 	},
-	'key': null,
-	'updateType': function() {
+	key: { value: null },
+	updateType: function() {
 		var chart = this.chart;
 		chart.transform(this.value, this.key);
 	}

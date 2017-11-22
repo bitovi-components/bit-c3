@@ -5,8 +5,8 @@ export default DefineMap.extend({
 		type: '*',
 		value: null
 	},
-	'key': null,
-	'updateName': function() {
+	key: { value: null },
+	updateName: function() {
 		var chart = this.chart,
 			newName = {};
 		newName[this.key] = this.value;
