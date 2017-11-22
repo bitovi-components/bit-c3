@@ -11,10 +11,14 @@ export default DefineMap.extend({
 		}
 	},
 	groups: {
-		value: {}
+		value: function () {
+			return {}
+		}
 	},
 	standardAttributes: {
-		value: ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done']
+		value: function () {
+			return ['url', 'json', 'columns', 'rows', 'classes', 'categories', 'axes', 'colors', 'types', 'unload', 'done']
+		}
 	},
 	loadAllAttributesOnChart: function() {
 		this.each((item, key) => {
