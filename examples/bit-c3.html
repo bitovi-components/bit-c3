@@ -9,8 +9,8 @@
 <bit-c3>
   <bit-c3-data>
     {{#each dataColumns}}
-      <bit-c3-data-column value="{data}" />
-      <bit-c3-data-name key="{key}" value="{label}" />
+      <bit-c3-data-column value:from="data" />
+      <bit-c3-data-name key:from="key" value="{label}" />
     {{/each}}
   </bit-c3-data>
 </bit-c3>

@@ -6,10 +6,10 @@
     <!-- Template to load -->
     <script type="text/stache" id="demo-html" can-autorender>
 <can-import from="bit-c3" />
-<bit-c3 size-height="{height}">
-  <bit-c3-data type="{type}">
-    {{#each dataColumns}}
-      <bit-c3-data-column value="{.}" />
+<bit-c3 sizeHeight:from="height">
+  <bit-c3-data type:from="type">
+    {{#each ../dataColumns}}
+      <bit-c3-data-column value:from="." />
     {{/each}}
   </bit-c3-data>
 </bit-c3>
@@ -25,7 +25,7 @@ import canBatch from "can-event/batch/batch";
 
 var type = "gauge",
     data = new DefineList(['data', 91.4]),
-    gauge: {
+    gauge = {
       // label: {
       //   format: function(value, ratio) {
       //     return value;
