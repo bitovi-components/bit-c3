@@ -52,7 +52,7 @@ import canViewModel from 'can-view-model';
  */
 Component.extend({
 	tag: "bit-c3-data-column",
-	viewModel: ColumnVM,
+	ViewModel: ColumnVM,
 	events: {
 		inserted: function(viewModel, ev) {
 			this.viewModel.chart = canViewModel(this.element.parentElement).chart;

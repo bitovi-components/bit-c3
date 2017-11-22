@@ -29,7 +29,7 @@ import ChartVM from './viewmodel';
 Component.extend({
     tag: "bit-c3",
     view,
-    viewModel: ChartVM,
+    ViewModel: ChartVM,
     events: {
         inserted: function(viewModel, ev) {
             let rootElement = ev.target;
