@@ -1,4 +1,4 @@
-import { DefineMap } from "can"
+import { DefineMap, viewModel as canViewModel } from "can"
 
 export default DefineMap.extend({
 	chart: {
@@ -21,7 +21,7 @@ export default DefineMap.extend({
 		}
 	},
 	loadAllAttributesOnChart: function() {
-		this.each((item, key) => {
+		this.forEach((item, key) => {
 			this.loadAttributeOnChart(key, item);
 		});
 	},
@@ -69,5 +69,9 @@ export default DefineMap.extend({
 				console.warn('The', attribute, 'property cannot be updated');
 				break;
 		}
-	}
+	},
+	connectedCallback: function(el) {
+		this.chart = canViewModel(el.parentElement).chart;
+		this.loadAllAttributesOnChart();
+	},
 });

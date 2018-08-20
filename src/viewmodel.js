@@ -28,6 +28,7 @@ export default DefineMap.extend({
 					config.data.x = 'x';
 				}
 			}
+			console.log('config', config)
 			return config;
 		}
 	},
