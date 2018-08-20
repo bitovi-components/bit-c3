@@ -1,5 +1,4 @@
-import Component from "can-component";
-import canViewModel from "can-view-model";
+import { Component, viewModel as canViewModel } from "can";
 import GroupVM from './viewmodel';
 
 /**

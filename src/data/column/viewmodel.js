@@ -1,4 +1,4 @@
-import DefineMap from "can-define/map/map";
+import { DefineMap } from "can"
 
 export default DefineMap.extend({seal: false}, {
 	chart: {
