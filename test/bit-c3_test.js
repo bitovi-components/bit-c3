@@ -26,7 +26,7 @@ var flattenCanList = function(list) {
 
 QUnit.module('bit-c3');
 
-test('Should configure chart using a passed config', 1, (assert) => {
+QUnit.test('Should configure chart using a passed config', 1, (assert) => {
 	let tpl = '<bit-c3 {config}="config"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
 	let frag = stache(tpl)({
 		config: {
@@ -55,7 +55,7 @@ test('Should configure chart using a passed config', 1, (assert) => {
 
 QUnit.module('bit-c3-data');
 
-test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
+QUnit.test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 	var groupsArray = [['group1a', 'group1b'], ['group2']],
 		groups = new DefineList(groupsArray),
 		transform = 'line',
@@ -63,14 +63,14 @@ test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 
 	var chart = {
 		groups: function(data) {
-			deepEqual(groupsArray, flattenCanList(new DefineList(data)), "groups is passed the correct data")
+			assert.deepEqual(groupsArray, flattenCanList(new DefineList(data)), "groups is passed the correct data")
 		},
 		transform: function(data) {
-			deepEqual(transform, data, "transform is passed the correct data")
+			assert.deepEqual(transform, data, "transform is passed the correct data")
 		},
 		data: {
 			names: function(data) {
-				deepEqual(names, data, "names is passed the correct data");
+				assert.deepEqual(names, data, "names is passed the correct data");
 			}
 		}
 	}
@@ -97,10 +97,10 @@ test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 	vm.loadAttributeOnChart('groups', groups);
 
 	// test chart
-	equal(undefined, vm.loadAttributeOnChart('chart'), "chart changes are ignored");
+	assert.equal(undefined, vm.loadAttributeOnChart('chart'), "chart changes are ignored");
 
 	// test standard attributes
-	equal(undefined, vm.loadAttributeOnChart('standardAttributes'), "standardAttributes changes are ignored");
+	assert.equal(undefined, vm.loadAttributeOnChart('standardAttributes'), "standardAttributes changes are ignored");
 
 	// test names
 	vm.loadAttributeOnChart('names', names);
@@ -110,7 +110,7 @@ test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 		vm.chart.load = function(obj) {
 			var expected = {};
 			expected[value] = 'foo';
-			deepEqual(expected, obj, "load is passed the correct data for " + value);	
+			assert.deepEqual(expected, obj, "load is passed the correct data for " + value);	
 		}
 		vm.loadAttributeOnChart(value, 'foo');
 	})
@@ -121,37 +121,37 @@ test('loadAttributeOnChart and loadAllAttributesOnChart', 20, () => {
 
 QUnit.module('bit-c3-data-column');
 
-test('dequeueKey', () => {
+QUnit.test('dequeueKey', () => {
 	var vm = new ColumnVM({
 		value: new DefineList(['key', 1, 2, 3])
 	});
 
 	// no key set - gets key from DataVM
-	deepEqual(vm.dequeueKey(), [1, 2, 3], 'dequeueKey returns data without first element');
-	equal(vm.key, 'key', 'key is set as first value in set');
+	assert.deepEqual(vm.dequeueKey(), [1, 2, 3], 'dequeueKey returns data without first element');
+	assert.equal(vm.key, 'key', 'key is set as first value in set');
 
 	// change data, key doesn't change
 	vm.value.push(4);
-	deepEqual(vm.dequeueKey(), [1, 2, 3, 4], "dequeueKey returns data without first element after key is set and doesn't change");
-	equal(vm.key, 'key', "key doesn't change if data changes but key doesn't");
+	assert.deepEqual(vm.dequeueKey(), [1, 2, 3, 4], "dequeueKey returns data without first element after key is set and doesn't change");
+	assert.equal(vm.key, 'key', "key doesn't change if data changes but key doesn't");
 
 	// key, old key remains with data
 	vm.key = 'newKey';
-	deepEqual(vm.dequeueKey(), ['key', 1, 2, 3, 4], "first element is no longer key, remains with data");
-	equal(vm.key, 'newKey', 'new key is set and not changed by data set');	
+	assert.deepEqual(vm.dequeueKey(), ['key', 1, 2, 3, 4], "first element is no longer key, remains with data");
+	assert.equal(vm.key, 'newKey', 'new key is set and not changed by data set');	
 });
 
-test('updateColumn and unloadColumn', 6, () => {
+QUnit.test('updateColumn and unloadColumn', 6, () => {
 	var chart = {
 		load: function(obj) {
-			deepEqual(obj, {
+			assert.deepEqual(obj, {
 				'columns': [
 					['key', 1, 2, 3]
 				]
 			}, "load called with correct value");
 		},
 		unload: function(obj) {
-			deepEqual(obj, {
+			assert.deepEqual(obj, {
 				'ids': 'key'
 			});
 		}
@@ -186,7 +186,7 @@ test('updateColumn and unloadColumn', 6, () => {
 
 QUnit.module('bit-c3-data-group');
 
-test('adding, removing, and updating groups', () => {
+QUnit.test('adding, removing, and updating groups', () => {
 	var value = new DefineList([1, 2, 3]),
 		vm = new GroupVM({
 			value: value,
@@ -196,21 +196,21 @@ test('adding, removing, and updating groups', () => {
 	// adding a value creates a new entry in groups
 	vm.addToGroups();
 	var key = vm.key;
-	deepEqual(vm.groups[key], value, "groups is set correctly");
+	assert.deepEqual(vm.groups[key], value, "groups is set correctly");
 
 	// updating value updates the group
 	value.push(4);
 	vm.updateGroup();
-	deepEqual(vm.groups[key], value, "groups is updated correctly");
+	assert.deepEqual(vm.groups[key], value, "groups is updated correctly");
 
 	// removal removes the group
 	vm.removeFromGroups();
-	equal(vm.groups[key], undefined, "group no longer exists");
+	assert.equal(vm.groups[key], undefined, "group no longer exists");
 });
 
 QUnit.module('bit-c3-data-name');
 
-test('updateName', 1, () => {
+QUnit.test('updateName', 1, () => {
 	var key = 'foo',
 		value = 'bar',
 		chart = {
@@ -218,7 +218,7 @@ test('updateName', 1, () => {
 				names: function(obj) {
 					var result = {};
 					result[key] = value;
-					deepEqual(result, obj, "names is called with correct object");
+					assert.deepEqual(result, obj, "names is called with correct object");
 				}
 			}
 		},
@@ -232,13 +232,13 @@ test('updateName', 1, () => {
 
 QUnit.module('bit-c3-data-type');
 
-test('updateType', 2, () => {
+QUnit.test('updateType', 2, () => {
 	var key = 'foo',
 		value = 'bar',
 		chart = {
 			transform: function(resVal, resKey) {
-				equal(resVal, value, "transform is called with the correct value");
-				equal(resKey, key, "transform is called with the correct key");
+				assert.equal(resVal, value, "transform is called with the correct value");
+				assert.equal(resKey, key, "transform is called with the correct key");
 			}
 		},
 		vm = new TypeVM({
@@ -251,11 +251,11 @@ test('updateType', 2, () => {
 
 QUnit.module('bit-c3-y-grid');
 
-test('updateLine', 1, () => {
+QUnit.test('updateLine', 1, () => {
 	var line = 'foo',
 		chart = {
 			ygrids: function(obj) {
-				deepEqual(obj, [line], "ygrids is passed the correct value");
+				assert.deepEqual(obj, [line], "ygrids is passed the correct value");
 			}
 		},
 		vm = new YGridVM({
@@ -267,7 +267,7 @@ test('updateLine', 1, () => {
 
 QUnit.module('bit-c3-y-grid-line');
 
-test('adding, removing, and updating lines', () => {
+QUnit.test('adding, removing, and updating lines', () => {
 	var value = 'foo',
 		text = 'bar',
 		line = {
@@ -283,36 +283,36 @@ test('adding, removing, and updating lines', () => {
 		});
 
 	// gridline getter
-	deepEqual(vm.gridLine, line, "gridline getter makes correct object");
+	assert.deepEqual(vm.gridLine, line, "gridline getter makes correct object");
 
 	// adding a value creates a new entry in lines
 	vm.addToLines();
 	var key = vm.key;
-	deepEqual(vm.lines[key], line, "lines is set correctly");
+	assert.deepEqual(vm.lines[key], line, "lines is set correctly");
 
 	// updating value updates the lines
 	var newVal = 'baz';
 	line.value = newVal;
 	vm.value = newVal;
 	vm.updateLines();
-	deepEqual(vm.lines[key], line, "lines is updated correctly");
+	assert.deepEqual(vm.lines[key], line, "lines is updated correctly");
 
 	// removal removes the line
 	vm.removeFromLines();
-	equal(vm.lines[key], undefined, "line no longer exists");
+	assert.equal(vm.lines[key], undefined, "line no longer exists");
 });
 
 QUnit.module('lib');
 
-test('randomString generates a correct length string', () => {
+QUnit.test('randomString generates a correct length string', () => {
 	var stringLength = 50;
-	equal(randomString(stringLength).length, stringLength);
+	assert.equal(randomString(stringLength).length, stringLength);
 });
 
 
 QUnit.module('Template tests (slow)');
 
-test('Should remove chart from DOM correctly', 1, (assert) => {
+QUnit.test('Should remove chart from DOM correctly', 1, (assert) => {
 	let tpl = '{{#if isVisible}}<bit-c3><bit-c3-data><bit-c3-data-column/></bit-c3-data></bit-c3>{{/if}}',
 		vm = new (DefineMap.extend({
 			isVisible: {value: true}
