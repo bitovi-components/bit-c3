@@ -1,4 +1,4 @@
-import DefineMap from "can-define/map/map";
+import { DefineMap } from "can"
 import {randomString} from 'bit-c3/lib/lib';
 
 export default DefineMap.extend({seal: false}, {

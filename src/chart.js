@@ -1,6 +1,4 @@
-import Component from "can-component";
-import d3 from "d3";
-import c3 from "c3";
+import { Component } from "can";
 import view from "./chart.stache";
 import ChartVM from './viewmodel';
 
@@ -29,22 +27,7 @@ import ChartVM from './viewmodel';
 Component.extend({
     tag: "bit-c3",
     view,
-    ViewModel: ChartVM,
-    events: {
-        inserted: function(viewModel, ev) {
-            let rootElement = ev.target;
-
-            this.viewModel.graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]);
-
-            this.viewModel.chart = c3.generate(this.viewModel.config);
-        },
-        removed: function() {
-            if (this.viewModel.chart){
-                this.viewModel.graphBaseElement = undefined;
-                this.viewModel.chart = this.viewModel.chart.destroy();
-            }
-        }
-    }
+    ViewModel: ChartVM
 });
 
 export default ChartVM;

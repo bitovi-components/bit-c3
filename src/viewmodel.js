@@ -1,4 +1,6 @@
-import DefineMap from "can-define/map/map";
+import { DefineMap } from "can";
+import d3 from "d3";
+import c3 from "c3";
 
 export default DefineMap.extend({
 	chart: {
@@ -26,7 +28,23 @@ export default DefineMap.extend({
 					config.data.x = 'x';
 				}
 			}
+			console.log('config', config)
 			return config;
+		}
+	},
+	connectedCallback: function(el) {
+		let rootElement = el;
+
+		this.graphBaseElement = d3.select(rootElement.getElementsByClassName('chart-container')[0]);
+
+		this.chart = c3.generate(this.config);
+
+		let _this = this
+		return function() {
+			if (_this.chart){
+				_this.graphBaseElement = undefined;
+				_this.chart = _this.chart.destroy();
+			}
 		}
 	}
 });

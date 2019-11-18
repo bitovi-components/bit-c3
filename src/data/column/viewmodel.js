@@ -1,4 +1,4 @@
-import DefineMap from "can-define/map/map";
+import { DefineMap, viewModel as canViewModel } from "can"
 
 export default DefineMap.extend({seal: false}, {
 	chart: {
@@ -42,5 +42,16 @@ export default DefineMap.extend({seal: false}, {
 		this.chart.unload({
 			ids: this.key
 		});
+	},
+	connectedCallback: function(el) {
+		this.chart = canViewModel(el.parentElement).chart;
+		this.updateColumn();
+		const _this = this;
+		return function() {
+			// check if the chart was not destroyed:
+			if (el.parentElement && canViewModel(el.parentElement).chart){
+				_this.unloadColumn();
+			}
+		}
 	}
 });

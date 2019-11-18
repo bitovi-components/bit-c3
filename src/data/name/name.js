@@ -1,6 +1,5 @@
-import Component from "can-component";
+import { Component, viewModel as canViewModel } from "can";
 import NameVM from './viewmodel';
-import canViewModel from 'can-view-model';
 
 /**
  * @module {can.Component} bit-c3.components.bit-c3-data-name <bit-c3-data-name>

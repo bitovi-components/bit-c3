@@ -9,10 +9,7 @@ import TypeVM from "bit-c3/data/type/";
 import YGridVM from "bit-c3/y-grid/";
 import YGridLineVM from "bit-c3/y-grid/y-grid-line/";
 import {randomString} from "bit-c3/lib/";
-import DefineList from "can-define/list/list";
-import DefineMap from "can-define/map/map";
-import stache from "can-stache";
-import canViewModel from "can-view-model";
+import { DefineList, DefineMap, stache, viewModel as canViewModel } from "can";
 
 F.attach(QUnit);
 
@@ -27,7 +24,7 @@ var flattenCanList = function(list) {
 QUnit.module('bit-c3');
 
 test('Should configure chart using a passed config', 1, (assert) => {
-	let tpl = '<bit-c3 {config}="config"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
+	let tpl = '<bit-c3 config:from="config"><bit-c3-data><bit-c3-data-column /></bit-c3-data></bit-c3>';
 	let frag = stache(tpl)({
 		config: {
 			axis: {

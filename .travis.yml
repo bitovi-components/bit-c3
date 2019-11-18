@@ -1,7 +1,6 @@
 language: node_js
 script: npm test
 node_js: 7.3
-cache: yarn
 addons:
   firefox: '51.0'
 dist: xenial
